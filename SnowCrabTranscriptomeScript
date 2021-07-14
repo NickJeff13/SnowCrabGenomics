@@ -1,0 +1,31 @@
+!#/bin/bash
+
+#Trinity scripts - RNA transcriptome assembly, and checking transcriptome results
+#Run Trinity on all tissue RNA files combined, with specific trimmomatic parameters set
+./Trinity --seqType fq --max_memory 200G --left Brain_R1.fastq,Gill_R1.fastq,Heart_R1.fastq,Hepato_R1.fastq,Leg_R1.fastq --right Brain_R2.fastq,Gill_R2.fastq,Heart_R2.fastq,Hepato_R2.fastq,Leg_R2.fastq --CPU 40 --trimmomatic --quality_trimming_params "ILLUMINACLIP:../Trimmomatic-0.39TruSeq3-PE-2.fa:2:30:10:2:keepBothReads LEADING:3 TRAILING:3 MINLEN:36 AVGQUAL:30" --output SnowCrabtrinity_AssemblyTrimmed --verbose
+
+# this only used <40Gb memory, and more like <20Gb the whole time
+# Now build a bowtie reference
+
+bowtie2-build SnowCrabtrinity_AssemblyTrimmed/Trinity.fasta SnowCrabtrinity_AssemblyTrimmed/Trinity.fasta && \
+bowtie2 -p 10 -q --no-unal -k 20 -x SnowCrabtrinity_AssemblyTrimmed/Trinity.fasta -1 Gill_R1.fastq -2 Gill_R2.fastq 2>align_stats.txt | samtools view -@10 -Sb -o bowtie2.bam
+
+#Next run Transdecoder on the assembly
+cd TransDecoder-TransDecoder-v5.5.0/
+./TransDecoder.LongOrfs -t Trinity.fasta  && \
+./TransDecoder.Predict -t Trinity.fasta
+
+#Make a blast db for local use
+makeblastdb -in uniprot_sprot.fasta -dbtype prot
+
+#Run a blastp query using the transdecoder results
+blastp -query Trinity.fasta.transdecoder.pep -db ../Trinity/uniprot_sprot.fasta -num_threads 10 -max_target_seqs 5 -outfmt 6 -evalue 1e-5 > SCswissprot.blastp.outfmt6
+
+
+
+#Run BUSCO to assess completeness using the arthropod busco database arthropoda_odb10
+busco -m transcriptome -i ../../../../hdd2/Trinity/SnowCrabtrinity_AssemblyTrimmed/Trinity.fasta -o SnowCrabBusco -l arthropoda_odb10
+
+#BLAST query of transcriptome Trinity.fasta and UniProt database with evalue 1e-20
+blastx -query ../SnowCrabtrinity_AssemblyTrimmed/Trinity.fasta -db ../uniprot_sprot.fasta -out blastx.outfmt6 -evalue 1e-20 -num_threads 10 -max_target_seqs 1 -outfmt 6
+
