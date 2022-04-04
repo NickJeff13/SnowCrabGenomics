@@ -9,3 +9,7 @@ __Contact:__      nick.jeffery@dfo-mpo.gc.ca
 3. Transcriptome assembly using RNA-seq from five tissues
 4. Pool-seq of 15 snow crab populations across Atlantic Canada to examine population structure
 
+# Component 4: PoolSeq
+### Sampling
+
+![map](figures/CrabTempMap_Cropped-01.jpg)
