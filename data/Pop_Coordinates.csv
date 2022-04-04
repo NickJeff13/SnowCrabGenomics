@@ -1,0 +1,27 @@
+Name,Code,Region,Year,Lat,Long
+S10092017,NS_A,Maritimes,10/09/2017,46.558,-60.14983
+S23092017,NS_B,Maritimes,23/09/2017,46.0235,-58.951
+S03102017,NS_C,Maritimes,03/10/2017,44.45433,-63.25367
+S08102017,NS_D,Maritimes,08/10/2017,44.45767,-60.865
+S24102017,NS_E,Maritimes,24/10/2017,44.0905,-59.24933
+S12112017,NS_F,Maritimes,12/11/2017,44.20467,-60.25667
+S01122017,NS_G,Maritimes,01/12/2017,44.7685,-59.59533
+S03122017,NS_H,Maritimes,03/12/2017,45.22683,-58.4525
+S19122017,NS_I,Maritimes,19/12/2017,45.271,-59.77767
+Cape Breton,CBT,Gulf,17/08/2017,46.7374,-61.3537
+Bay des Chaleurs 1,BDC1,Gulf,14/05/2018,48.0404,-64.986
+Bay des Chaleurs 2,BDC2,Gulf,14/05/2018,47.92496,-65.02831
+Bradelle Bank,BBN,Gulf,01/06/2018,47.327,-62.92
+Carson Canyon,CCN,Newfoundland,01/09/2017,45.48,-48.669
+Lab2S5440,Lab1,Newfoundland,,53,-52
+Lab4,Lab4,Newfoundland,,50.5,-52
+LabMSEX,LabMSEX,Newfoundland,,47,-49
+Lab3N200,Lab3N200,Newfoundland,,44,-48.7
+Lab10B,Lab10B,Newfoundland,,45,-55
+Lab11E,Lab11E,Newfoundland,,46.5,-56.5
+Lab3B,Lab3B,Newfoundland,,50.5,-56
+Lab5A,Lab5A,Newfoundland,,49,-53.5
+Lab6B,Lab6B,Newfoundland,,48,-53.5
+Lab8A,Lab8A,Newfoundland,,46.5,-53
+QC1,QC1,Quebec,,49.4,-65
+QC2,QC2,Quebec,,49.5,-61

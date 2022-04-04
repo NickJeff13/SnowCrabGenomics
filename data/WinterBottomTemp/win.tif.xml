@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en"><Esri><CreaDate>20181105</CreaDate><CreaTime>12092500</CreaTime><ArcGISFormat>1.0</ArcGISFormat><SyncOnce>TRUE</SyncOnce><DataProperties><lineage><Process ToolSource="c:\program files (x86)\arcgis\desktop10.6\ArcToolbox\Toolboxes\Conversion Tools.tbx\ASCIIToRaster" Date="20181105" Time="120925">ASCIIToRaster "C:/Users/LowenB/Desktop/B_wint folder/asc/win.asc" "C:\Users\LowenB\Desktop\B_wint folder\tiff\win.tif" FLOAT</Process></lineage></DataProperties></Esri></metadata>
