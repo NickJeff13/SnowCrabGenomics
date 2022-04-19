@@ -21,12 +21,13 @@ java -jar ../../picard.jar CreateSequenceDictionary --REFERENCE SnowCrabGenome.f
 
 cd /hdd2/Snow_Crab_PoolSeq/Trimmed
 #added the Read Groups flag in this version (-R) which will hopefully carry over to the de-duped bam files next
+#$outfile will add the pool number to the Read Group line, removed the {} which is used with parallel, not a for loop
 for f1 in *R1Trimmed.fastq.gz;
   do outfile=${f1%%_R1Trimmed.fastq.gz}"" ;
   echo $outfile\.bam ;
   ../../bwa-mem2/bwa-mem2 mem \
   -t 32 \
-  -R "@RG\tID:{}\tSM:{}\tLB:SnowCrab" \
+  -R "@RG\tID:$outfile\tSM:$outfile\tLB:SnowCrab" \
    ../Genome/SnowCrabGenome.fasta \
   $outfile\_R1Trimmed.fastq.gz  $outfile\_R2Trimmed.fastq.gz\
   | samtools sort -o $outfile\.sorted.bam -T $outfile -@ 32 -m 3G ;
