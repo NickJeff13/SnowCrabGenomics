@@ -1,7 +1,7 @@
 
 cd /hdd2/Snow_Crab_PoolSeq/Trimmed
 
-samtools mpileup -B -f ../Genome/SnowCrabGenome.fasta Pool-1.sorted.indelrealigned.bam Pool-2.sorted.indelrealigned.bam Pool-3.sorted.indelrealigned.bam Pool-4.sorted.indelrealigned.bam Pool-5.sorted.indelrealigned.bam \
+samtools mpileup -B -f ../Genome/SnowCrabGenome.fasta Pool-1.sorted.indelrealigned.bam Pool-2.sorted.indelrealigned.bam Pool-3.sorted.indelrealigned.bam Pool-4.sorted.indelrealigned.bam	Pool-5.sorted.indelrealigned.bam \
 Pool-6.sorted.indelrealigned.bam Pool-7.sorted.indelrealigned.bam Pool-8.sorted.indelrealigned.bam Pool-9.sorted.indelrealigned.bam Pool-10.sorted.indelrealigned.bam \
 Pool-11.sorted.indelrealigned.bam Pool-12.sorted.indelrealigned.bam Pool-13.sorted.indelrealigned.bam Pool-14.sorted.indelrealigned.bam Pool-15.sorted.indelrealigned.bam > SnowCrabAllPools.mpileup
 
@@ -13,14 +13,21 @@ Pool-11.sorted.indelrealigned.bam Pool-12.sorted.indelrealigned.bam Pool-13.sort
  
  #Next we will create the sync file in using the new package Grenedalf
  #If we're in the directory where my mpile up is, don't need to specify full path under --pileup-path, just the file name
-../../../home/mcrg/grenedalf/bin/grenedalf sync-file --pileup-path hdd2/Snow_Crab_PoolSeq/Trimmed/SnowCrabAllPools.mpileup \
---pileup-min-base-qual 30 \
+ 
+../../../home/mcrg/grenedalf/bin/grenedalf sync-file --pileup-path Trimmed/SnowCrabAllPools.mpileup \
+--pileup-min-base-qual 35 \
 --pileup-quality-encoding sanger \
---out-dir hdd2/Snow_Crab_PoolSeq/Trimmed/Grenedalf_Analyses \
---file-prefix SnowCrab --verbose --threads 15
+--out-dir Grenedalf_Analyses \
+--file-prefix SnowCrab35 --verbose --threads 15
+#This took about 12 hours to complete but didn't use a ton of ram 
 
 ls *_mpileup | parallel -j 23 'java -ea -Xmx8g -jar ../../../../../home/mcrg/popoolation2_1201/mpileup2sync.jar \
   --input {} --output {.}.sync \
   --fastq-type sanger --min-qual 20 --threads 2'
   
  #for gnu parallel {} is the default input string, and {.} is used to mean we want the output to have the same name as the input string, minus its extension
+
+#Compare Grenedalf output to Popoolation2
+java -ea -Xmx80g -jar ../../../../../home/mcrg/popoolation2_1201/mpileup2sync.jar \
+  --input SnowCrabAllPools.mpileup --output SnowCrabPopool2.sync \
+  --fastq-type sanger --min-qual 35 --threads 24 

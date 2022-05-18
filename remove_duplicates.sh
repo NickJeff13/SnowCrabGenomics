@@ -14,4 +14,7 @@ MarkDuplicates \
 --REMOVE_DUPLICATES true
 --CREATE_INDEX true'
 
+#try validating one of them
+
+java -jar ../../../picard.jar ValidateSamFile -I Pool-1.sorted.DeDupRG.bam -MODE SUMMARY
 
