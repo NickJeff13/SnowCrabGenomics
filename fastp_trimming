@@ -1,0 +1,19 @@
+#!/bin/bash
+#Run fastp on raw snow crab reads to trim em good
+projdir="/hdd2/Snow_Crab_PoolSeq/RawReads"
+cd $projdir
+
+#export to make parallel happy
+export fastp
+export projdir
+export Sample
+
+#Run fastp on all the files using parallel
+
+cat CrabReadNames.txt | \
+parallel -j 15 \
+'fastp -i  {}  -I {} \
+-q 30 \
+-o {.}_R1.trimmed.fastq.gz \
+-O {.}_R2.trimmed.fastq.gz \
+--thread 4 '
