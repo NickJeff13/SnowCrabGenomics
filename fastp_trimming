@@ -12,8 +12,8 @@ export Sample
 
 cat CrabReadNames.txt | \
 parallel -j 15 \
-'fastp -i  {}  -I {} \
+'fastp -i  {}_R1.fastq.gz  -I {}_R2.fastq.gz \
 -q 30 \
--o {.}_R1.trimmed.fastq.gz \
--O {.}_R2.trimmed.fastq.gz \
+-o {}_R1.trimmed.fastq.gz \
+-O {}_R2.trimmed.fastq.gz \
 --thread 4 '
