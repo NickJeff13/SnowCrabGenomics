@@ -16,4 +16,4 @@ parallel -j 15 \
 -q 30 \
 -o {}_R1.trimmed.fastq.gz \
 -O {}_R2.trimmed.fastq.gz \
---thread 4 '
+--thread 1 '

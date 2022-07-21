@@ -14,3 +14,8 @@ poolsizes=42,48,48,48,31,37,24,47,47,28,32,31,48,42,39
 #3. Allele frequency spectrum heatmap
 ../../../home/mcrg/grenedalf/bin/grenedalf afs-heatmap --sync-path Grenedalf/SnowCrabcounts.sync --sample-name-list poolnames.txt \
 --window-width 20000 --resolution 100 --max-frequency 1 --spectrum-type unfolded --file-prefix SnowCrabAFS --verbose --threads 40
+
+#4. Diversity statistics
+../../../home/mcrg/grenedalf/bin/grenedalf diversity --sync-path Grenedalf/SnowCrabcounts.sync --sample-name-list poolnames.txt \
+--window-width 20000  --pool-sizes $poolsizes --measure all --min-allele-count 2 --min-coverage 30 --max-coverage 4000 \
+--separator-char tab --file-prefix SnowCrabDiversity  --verbose --threads 40

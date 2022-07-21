@@ -1,9 +1,9 @@
 
 cd /hdd2/Snow_Crab_PoolSeq/Trimmed
 
-samtools mpileup -B -f ../Genome/SnowCrabGenome.fasta Pool-1.sorted.indelrealigned.bam Pool-2.sorted.indelrealigned.bam Pool-3.sorted.indelrealigned.bam Pool-4.sorted.indelrealigned.bam	Pool-5.sorted.indelrealigned.bam \
-Pool-6.sorted.indelrealigned.bam Pool-7.sorted.indelrealigned.bam Pool-8.sorted.indelrealigned.bam Pool-9.sorted.indelrealigned.bam Pool-10.sorted.indelrealigned.bam \
-Pool-11.sorted.indelrealigned.bam Pool-12.sorted.indelrealigned.bam Pool-13.sorted.indelrealigned.bam Pool-14.sorted.indelrealigned.bam Pool-15.sorted.indelrealigned.bam > SnowCrabAllPools.mpileup
+samtools mpileup -B -f ../Genome/SnowCrab/SnowCrabGenome.fasta Pool-1.sorted.deDupRG.indelrealigned.bam Pool-2.sorted.deDupRG.indelrealigned.bam Pool-3.sorted.deDupRG.indelrealigned.bam Pool-4.sorted.deDupRG.indelrealigned.bam Pool-5.sorted.deDupRG.indelrealigned.bam \
+Pool-6.sorted.deDupRG.indelrealigned.bam Pool-7.sorted.deDupRG.indelrealigned.bam Pool-8.sorted.deDupRG.indelrealigned.bam Pool-9.sorted.deDupRG.indelrealigned.bam Pool-10.sorted.deDupRG.indelrealigned.bam \
+Pool-11.sorted.deDupRG.indelrealigned.bam Pool-12.sorted.deDupRG.indelrealigned.bam Pool-13.sorted.deDupRG.indelrealigned.bam Pool-14.sorted.deDupRG.indelrealigned.bam Pool-15.sorted.deDupRG.indelrealigned.bam > SnowCrabAllPools.mpileup
 
 #here the -B flag is for base alignment quality but we don't want to filter based on this so use this flag
 #-f is the reference genome again - this isn't necessarily needed here but we can use it so we know the actual reference nucleotide instead of just N 
