@@ -1,0 +1,17 @@
+Crab HiC Alignment to Genome Stats
+1703179047 + 0 in total (QC-passed reads + QC-failed reads)
+1356931680 + 0 primary
+0 + 0 secondary
+346247367 + 0 supplementary
+0 + 0 duplicates
+0 + 0 primary duplicates
+1676282452 + 0 mapped (98.42% : N/A)
+1330035085 + 0 primary mapped (98.02% : N/A)
+1356931680 + 0 paired in sequencing
+678465840 + 0 read1
+678465840 + 0 read2
+225725992 + 0 properly paired (16.64% : N/A)
+1311264096 + 0 with itself and mate mapped
+18770989 + 0 singletons (1.38% : N/A)
+1049457488 + 0 with mate mapped to a different chr
+504336924 + 0 with mate mapped to a different chr (mapQ>=5)

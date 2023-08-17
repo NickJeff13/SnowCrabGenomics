@@ -1,0 +1,40 @@
+#BUSCO genomes for snow crab
+conda create -n SnowCrabGenomics -c conda-forge -c bioconda busco=5.5.0
+conda activate SnowCrabGenomics
+
+cd /mnt/sdb/Snow_Crab_Genome
+busco -i SnowCrabGenome.fasta \
+-o SnowCrab_NCBIout \
+--mode genome \
+--lineage_dataset arthropoda_odb10
+
+
+'
+---------------------------------------------------
+	|Results from dataset arthropoda_odb10             |
+	---------------------------------------------------
+	|C:91.4%[S:89.6%,D:1.8%],F:5.2%,M:3.4%,n:1013      |
+	|926	Complete BUSCOs (C)                        |
+	|908	Complete and single-copy BUSCOs (S)        |
+	|18	Complete and duplicated BUSCOs (D)         |
+	|53	Fragmented BUSCOs (F)                      |
+	|34	Missing BUSCOs (M)                         |
+	|1013	Total BUSCO groups searched                |
+	---------------------------------------------------
+2023-08-17 09:48:36 INFO:	BUSCO analysis done. Total running time: 70757 seconds
+2023-08-17 09:48:36 INFO:	Results written in /mnt/sdb/Snow_Crab_Genome/SnowCrab_NCBIout'
+
+
+#Now try the one with HiC scaffolds
+busco -i SnowCrab_scaffolds.fa \
+-o SnowCrab_HICout \
+--mode genome \
+--lineage_dataset arthropoda_odb10
+
+
+
+#Finally, try the Illumina one I made
+busco -i VGPSnowCrab.fasta \
+-o VGBSnowCrab \
+--mode genome \
+--lineage_dataset arthropoda_odb10
