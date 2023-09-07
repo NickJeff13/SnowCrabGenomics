@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+#align HiC reads to genome from NCBI and create a sorted bam file
 ./bwa-mem2/bwa-mem2 mem \
 Snow_Crab_PoolSeq/Genome/SnowCrabGenome.fasta \
 qChiOpi1_S_2476_R1_R1_001.fastq.gz \
@@ -33,4 +34,14 @@ name=SnowCrab \
 ref=SnowCrabGenome.fasta \
 fa=Scaffolded/scaffolds_final.fa
 
+##################################################
+##Try SALSA to see if it's more intuitive!#######
+#################################################
+#first make our HiC bam alignment file into bed format using bedtools
+#assuming in crab fastq folder
+../../../home/mcrg/bedtools2/bin/bamToBed -i CrabHiC.sorted.bam > HiCalignment.bed
+sort -k 4 HiCalignment.bed > tmp && mv tmp HiCalignment.bed
 
+#create an index of the genome with samtools faidx if not done already
+#now run SALSA with the indexed assembly, and the HiC reads (the bed file) and enzyme. m=yes in this code allows for correcting assembly errors with the HiC data
+python run_pipeline.py -a SnowCrabGenome.fasta -l SnowCrabGenome.fasta.fai -b HiCalignment.bed -e {Your Enzyme} -o scaffolds -m yes

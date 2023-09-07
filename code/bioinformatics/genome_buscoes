@@ -31,10 +31,80 @@ busco -i SnowCrab_scaffolds.fa \
 --mode genome \
 --lineage_dataset arthropoda_odb10
 
+'
+---------------------------------------------------
+	|Results from dataset arthropoda_odb10             |
+	---------------------------------------------------
+	|C:91.4%[S:89.6%,D:1.8%],F:5.2%,M:3.4%,n:1013      |
+	|926	Complete BUSCOs (C)                        |
+	|908	Complete and single-copy BUSCOs (S)        |
+	|18	Complete and duplicated BUSCOs (D)         |
+	|53	Fragmented BUSCOs (F)                      |
+	|34	Missing BUSCOs (M)                         |
+	|1013	Total BUSCO groups searched                |
+	---------------------------------------------------
+2023-08-18 08:48:05 INFO:	BUSCO analysis done. Total running time: 69060 seconds
+2023-08-18 08:48:05 INFO:	Results written in /mnt/sdb/Snow_Crab_Genome/SnowCrab_HICout
+So the busco scores are the exact same, which makes sense because the HiC just scaffolds the genome and doesn't add to it
+'
+
 
 
 #Finally, try the Illumina one I made
-busco -i VGPSnowCrab.fasta \
+busco -i snowcrab-scaffolds.fa \
 -o VGBSnowCrab \
 --mode genome \
 --lineage_dataset arthropoda_odb10
+
+'
+	***** Results: *****
+
+	C:19.3%[S:19.0%,D:0.3%],F:39.1%,M:41.6%,n:1013	   
+	195	Complete BUSCOs (C)			   
+	192	Complete and single-copy BUSCOs (S)	   
+	3	Complete and duplicated BUSCOs (D)	   
+	396	Fragmented BUSCOs (F)			   
+	422	Missing BUSCOs (M)			   
+	1013	Total BUSCO groups searched		   
+
+Assembly Statistics:
+	20898862	Number of scaffolds
+	20919923	Number of contigs
+	2200877825	Total length
+	0.062%	Percent gaps
+	101	Scaffold N50
+	101	Contigs N50
+
+
+Dependencies and versions:
+	hmmsearch: 3.1
+	bbtools: 39.01
+	metaeuk: 6.a5d39d9
+	busco: 5.5.0
+'
+
+
+#also do the transcriptome
+
+busco -i Trinity_TranscriptomeTrimmed.fasta \
+-o SCtranscript_Busco \
+--mode transcriptome \
+--lineage_dataset arthropoda_odb10
+
+
+'
+	***** Results: *****
+
+	C:96.8%[S:36.3%,D:60.5%],F:1.8%,M:1.4%,n:1013	   
+	981	Complete BUSCOs (C)			   
+	368	Complete and single-copy BUSCOs (S)	   
+	613	Complete and duplicated BUSCOs (D)	   
+	18	Fragmented BUSCOs (F)			   
+	14	Missing BUSCOs (M)			   
+	1013	Total BUSCO groups searched		   
+
+Dependencies and versions:
+	hmmsearch: 3.1
+	metaeuk: 6.a5d39d9
+	busco: 5.5.0
+'

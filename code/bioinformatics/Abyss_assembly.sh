@@ -66,3 +66,7 @@ in='iChiOpi2-CL11_TRIMMED1.fastq iChiOpi2-CL11_TRIMMED2.fastq'
 
 #Do some jellyfishin' on the illumina reads with Jellyfish v 2.3.0
 jellyfish count -C -m 41 -s 6000000000 -t 40 *.fastq -o crabreads.jf
+
+#Run jellyfish count on my new Abyss genome
+jellyfish count -m 51 -s 2000000000 -t 20 snowcrab-scaffolds.fa -o VGPgenome.jf
+jellyfish histo -t 20 VGPgenome.jf > VGPgenomereads.histo
