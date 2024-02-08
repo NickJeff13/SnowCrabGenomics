@@ -29,7 +29,7 @@ CrabHiC.sorted.bam
 
 #visualize in JupiterPlot
 #Still in Crab Genome folder
-../../home/mcrg/JupiterPlot-49e7a27/jupiter \
+../../../home/mcrg/JupiterPlot-master/jupiter \
 name=SnowCrab \
 ref=SnowCrabGenome.fasta \
 fa=Scaffolded/scaffolds_final.fa
@@ -44,4 +44,21 @@ sort -k 4 HiCalignment.bed > tmp && mv tmp HiCalignment.bed
 
 #create an index of the genome with samtools faidx if not done already
 #now run SALSA with the indexed assembly, and the HiC reads (the bed file) and enzyme. m=yes in this code allows for correcting assembly errors with the HiC data
-python run_pipeline.py -a SnowCrabGenome.fasta -l SnowCrabGenome.fasta.fai -b HiCalignment.bed -e {Your Enzyme} -o scaffolds -m yes
+#-e is the enzyme used for restriction, GATC,GANTC are the Arima enzyme sites
+python2 ../../../home/mcrg/SALSA-master/run_pipeline.py -a SnowCrabGenome.fasta -l SnowCrabGenome.fasta.fai -b HiCalignment.bed -e GATC,GANTC -o HiCscaffolds -m yes
+
+
+
+#####################Try YaHS too######
+
+ ./yahs ../../../mnt/sdb/Snow_Crab_Genome/SnowCrabGenome.fasta ../../../mnt/sdb/Snow_Crab_Genome/CrabHiC.sorted.bam
+ 
+ #now process for Juicer and Juicebox - assuming in Yahs directory now
+(./juicer pre ../../../mnt/sdb/Snow_Crab_Genome/HiCalignment.bed SnowCrab_YaHS_Out/yahs.out_scaffolds_final.agp ../../../mnt/sdb/Snow_Crab_Genome/SnowCrabGenome.fasta.fai \
+| sort -k2,2d -k6,6d -T ./ --parallel=20 -S40G | awk 'NF' > alignments_sorted.txt.part) && (mv alignments_sorted.txt.part alignments_sorted.txt)
+ 
+ 
+#next step is to generate HiC contact matrix using juicer_tools
+java -jar -Xmx128G juicer_tools_1.22.01.jar pre alignments_sorted.txt out.hic.part scaffolds_final.chrom.sizes && mv out.hic.part out.hic
+#the out.hic file can be loaded into Juicebox for visualization
+
