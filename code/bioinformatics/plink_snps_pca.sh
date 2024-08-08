@@ -10,9 +10,9 @@ plink --vcf $VCF --double-id --allow-extra-chr \
 
 #now a PCA
 plink --vcf $VCF --double-id --allow-extra-chr \
---make-bed --pca --out snowcrab
+--make-bed --pca --out snowcrab.recode --mind
 #--set-missing-var-ids --extract snowcrab.prune.in \
 
-#compare with Exon data
+#compare with Exon data - dont need the --mind flag as missing inds have been removed for this data
 plink --vcf $EXON --double-id --allow-extra-chr \
 --make-bed --pca --out exon
