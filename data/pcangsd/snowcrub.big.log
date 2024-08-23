@@ -1,0 +1,24 @@
+PCAngsd v1.2
+Time: 20/06/2024 23:17:51
+Directory: /gpfs/fs7/grdi/genarcc/wp3/snowcrab
+Options:
+	--beagle /gpfs/fs7/grdi/genarcc/wp3/snowcrab/beaglesfornick/snowcrub.beagle.gz
+	--threads 64
+	--out /gpfs/fs7/grdi/genarcc/wp3/snowcrab/PCANGSD_out/snowcrub.big
+	--iter 500
+	--selection
+	--snp_weights
+	--admix
+	--sites_save
+
+Loaded 9070764 sites and 1145 individuals.
+Number of sites after MAF filtering (0.05): 9070764
+
+PCAngsd converged in 189 iterations using 2 eigenvectors.
+Saved covariance matrix as /gpfs/fs7/grdi/genarcc/wp3/snowcrab/PCANGSD_out/snowcrub.big.cov
+Saved test statistics as /gpfs/fs7/grdi/genarcc/wp3/snowcrab/PCANGSD_out/snowcrub.big.selection
+Saved SNP weights as /gpfs/fs7/grdi/genarcc/wp3/snowcrab/PCANGSD_out/snowcrub.big.weights
+Saved admixture proportions as /gpfs/fs7/grdi/genarcc/wp3/snowcrab/PCANGSD_out/snowcrub.big.admix.3.Q
+Saved ancestral allele frequencies proportions as /gpfs/fs7/grdi/genarcc/wp3/snowcrab/PCANGSD_out/snowcrub.big.admix.3.P
+Saved boolean vector of sites kept after filtering as /gpfs/fs7/grdi/genarcc/wp3/snowcrab/PCANGSD_out/snowcrub.big.sites
+Total elapsed time: 287m44s
