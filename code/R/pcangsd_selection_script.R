@@ -23,15 +23,15 @@ qqchi<-function(x,...){
 qqchi(sel)
 
 # convert test statistic to p-value
-pval<-1-pchisq(s,1)
+pval<-1-pchisq(sel,1)
 
 ## read positions (hg38)
-p<-read.table("Demo2PCANGSD_2.sites",colC=c("factor","integer"),sep="_")
+p<-read.table("data/pcangsd/snowcrub.big.sites")
 
 names(p)<-c("chr","pos")
 
 ## make manhatten plot
-plot(-log10(pval),col=p$chr,xlab="Chromosomes",main="Manhattan plot")
+plot(-log10(pval),xlab="Chromosomes",main="Manhattan plot")
 
 
 ## zoom into region

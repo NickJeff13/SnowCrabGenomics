@@ -54,6 +54,8 @@ plot_extent <- crab_coords%>%
 crab_map <- ggplot()+
             geom_sf(data=basemap)+
             geom_sf(data=cfas,fill=NA)+
-            geom_sf(data=crab_coords)+
+            geom_sf(data=crab_coords, size=3)+
             coord_sf(expand=0,xlim=plot_extent[c(1,3)],ylim=plot_extent[c(2,4)])+
             theme_bw();crab_map
+
+ggsave(filename = "CrapMap_2024_AllPops.png",plot = crab_map, device = "png", path = "figures/", width = 10, height=8, dpi = 320, units = "in")
