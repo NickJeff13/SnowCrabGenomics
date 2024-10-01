@@ -29,6 +29,6 @@ __Figure 2__ DTO extractions for minimum bottom temperature observed between 200
 
 __Figure 3__ DTO extractions for maximum bottom temperature observed between 2004-2024 based the GLORYS ocean reanalysis model. Model is based on monthly average time steps.
 
-![ ](figures/maximum_bottom_temp.png)
+![ ](figures/mean_bottom_temp.png)
 
 __Figure 4__ DTO extractions for mean bottom temperature observed between 2004-2024 based the GLORYS ocean reanalysis model. Model is based on monthly average time steps.
