@@ -43,3 +43,6 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+data/admixture/exon.recode.10.Q
+*.P
+*.Q
