@@ -1,0 +1,52 @@
+#Run baypass on a baypass file generated in poolfstat in R
+#To do this, I converted my sync file from popoolation2 into a 'pooldata' format in poolfstat
+#THEN I converted pooldata to baypass using the pooldata2genobaypass function
+
+#I did not do any LD trimming, just reading in the baypass file into baypass to do some downstream analyses
+
+
+#the poolsize input file should be "for Pool–Seq experiment, the haploid size (twice the number of pooled in-dividuals for diploid species) of each population should be provided"
+#the d0yij flag is some sort of delta parameter that needs to be an integer smaller than the smallest pool size
+../../../../home/mcrg/baypass_public-master/sources/g_baypass -npop 15 -gfile CrubBayPassSUBSET.genobaypass.sub -poolsizefile CrubBayPassSUBSET.poolsize -d0yij 10 -outprefix CrubPoolBayPass -npilot 100
+
+####and here are the results once the run is done
+BayPass Version 2.3
+Reading and checking input data
+Reading and checking analysis parameters
+Analysis started. It will consist of:
+    i)100 pilot runs of  500 iterations (to adjust proposal distributions)
+   ii) a burn-in period of  5000 iterations
+  iii) final MCMC sampling of 1000 parameter values sampled every  20 iterations (i.e.,   20000 iterations)
+ Note: progress bars indicate the progression at each of the three steps
+       while the given e.t.a. is the (estimated) remaining time until full completion of the analysis
+
+                                             Pilot Runs (Step 1/3)
+100% |****************************************************************************************************| e.t.a.: 1 d 17 h 15 min 48 sec
+
+                                              Burn-in (Step 2/3)
+100% |****************************************************************************************************| e.t.a.: 1 d  8 h 58 min 39 sec
+
+                                            MCMC sampling (Step 3/3)
+100% |****************************************************************************************************| e.t.a.: 0 d  0 h  0 min  0 sec
+
+Analysis completed in  5 d  4 h 54 min 28 sec
+See the log file for details about the run: ZosBayPass_baypass.log
+
+###Now run the simulated dataset with 20,000 SNPs generated using the simulate.baypass R function in poolfstat
+../../../../../home/mcrg/baypass_2.3/sources/g_baypass -npop 23 -gfile G.ZM.BP.sim -poolsizefile Zos.poolsizes -d0yij 10 -outprefix ZM.BP.sim -npilot 100
+
+
+####And run the subset (50,000 SNPs) file
+
+../../../../../home/mcrg/baypass_2.3/sources/g_baypass -npop 23 -gfile CrubBayPassSUBSET.genobaypass -poolsizefile CrubBayPassSUBSET.poolsize -d0yij 10 -outprefix CrubBayPassSUBSET -npilot 100
+
+#Initial data screening
+BayPass Version 2.3
+Reading and checking input data
+Reading and checking analysis parameters
+Analysis started. It will consist of:
+    i)100 pilot runs of  500 iterations (to adjust proposal distributions)
+   ii) a burn-in period of  5000 iterations
+  iii) final MCMC sampling of 1000 parameter values sampled every  20 iterations (i.e.,   20000 iterations)
+ Note: progress bars indicate the progression at each of the three steps
+       while the given e.t.a. is the (estimated) remaining time until full completion of the analysis

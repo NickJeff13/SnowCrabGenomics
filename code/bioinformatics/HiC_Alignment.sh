@@ -49,16 +49,15 @@ python2 ../../../home/mcrg/SALSA-master/run_pipeline.py -a SnowCrabGenome.fasta 
 
 
 
-#####################Try YaHS too######
-
- ./yahs ../../../mnt/sdb/Snow_Crab_Genome/SnowCrabGenome.fasta ../../../mnt/sdb/Snow_Crab_Genome/CrabHiC.sorted.bam
- 
- #now process for Juicer and Juicebox - assuming in Yahs directory now
-(./juicer pre ../../../mnt/sdb/Snow_Crab_Genome/HiCalignment.bed SnowCrab_YaHS_Out/yahs.out_scaffolds_final.agp ../../../mnt/sdb/Snow_Crab_Genome/SnowCrabGenome.fasta.fai \
-| sort -k2,2d -k6,6d -T ./ --parallel=20 -S40G | awk 'NF' > alignments_sorted.txt.part) && (mv alignments_sorted.txt.part alignments_sorted.txt)
- 
- 
 #next step is to generate HiC contact matrix using juicer_tools
 java -jar -Xmx128G juicer_tools_1.22.01.jar pre alignments_sorted.txt out.hic.part scaffolds_final.chrom.sizes && mv out.hic.part out.hic
 #the out.hic file can be loaded into Juicebox for visualization
 
+#try Juicer
+#in home/mcrg/Juicer
+./scripts/juicer.sh -d /mnt/sdb/juicer \
+-p references/sizes.genome \
+-y restriction_sites/SnowCrabGenome_Arima.txt \
+-z references/SnowCrabGenome.fasta \
+-t 60 \
+-D /mnt/sdb/juicer
