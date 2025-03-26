@@ -1,7 +1,7 @@
 #Plotting treemix results
 source("C:/Users/JEFFERYN/Downloads/treemix-1.13/treemix-1.13/src/plotting_funcs.R")
 
-plot_tree("Treemix_out/snowcrab_lcWGS_100k_filter_regions.gz.4")
+plot_tree2("Treemix_out_pops/snowcrab_lcWGS_100k_filter_pops_out.gz.8")
 
 plot_resid("ZosteraTreemixOuput6",pop_order = "Treemixpoporder.txt")
 
