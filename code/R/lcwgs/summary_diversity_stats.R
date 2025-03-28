@@ -1,11 +1,31 @@
 library(ggplot2)
+library(patchwork)
 
-crab.het <- read.csv("data/Exon_SNPs_InbreedingStats.csv", header = T) %>% glimpse()
+
+# Plotting Inbreeding coefficient from vcftools ---------------------------
+
+#Exon derived SNPS
+crab.het <- read.table("data/Exon_SNPs_InbreedingStats.csv", header = T, sep="\t") %>% glimpse()
 
 p1 <- ggplot()+ 
   geom_boxplot(data = crab.het, aes(x=POP, y=F, fill=POP),colour="black",  alpha=0.7)+
   theme_bw()+
-  theme(axis.text.x=element_text(angle=45, vjust=0.8, hjust=1))
+  guides(fill=guide_legend(nrow=3,byrow=T))+
+  theme(axis.text.x=element_text(angle=45, vjust=0.8, hjust=1), legend.position = "bottom");p1
 
-ggsave("figures/CrabPops_Fis.png", plot = p1, device = "png", width = 10, height=8,
+
+
+# all 8,384,961 SNPs
+
+all.snp.het <- read.table(file = "data/Full_SNPs_InbreedingStats.csv", header = T, sep = "\t") %>% glimpse()
+
+p2 <- ggplot()+
+  geom_boxplot(data=all.snp.het, aes(x=POP, y=F, fill=POP), colour="black", alpha=0.7)+
+  theme_bw()+
+  theme(axis.text.x=element_text(angle=45, vjust=0.8, hjust=1), legend.position = "none",
+        axis.title.x =element_blank());p2
+
+p2/p1
+
+ggsave("figures/CrabPops_Fis.png", plot = last_plot(), device = "png", width = 10, height=8,
        units = "in", dpi = 300)
