@@ -29,3 +29,25 @@ p2/p1
 
 ggsave("figures/CrabPops_Fis.png", plot = last_plot(), device = "png", width = 10, height=8,
        units = "in", dpi = 300)
+
+
+# Tajima's D --------------------------------------------------------------
+
+#Ran filtered all SNP dataset with Taj D in vcftools, 8,384,961 SNPs and 1145 inds
+
+taj.d <- read.table("/mnt/sdb/SnowCrab_LCWGS/allsnpsFiltered.Tajima.D", header = T) %>% glimpse()
+
+taj.d <- taj.d %>% filter(!TajimaD == "NaN") %>% sample_n(10000)
+
+taj.d$Position <- paste0(taj.d$CHROM,  sep="_", taj.d$BIN_START)
+
+
+p3 <- ggplot()+
+      geom_line(data=taj.d, aes(x=Position, y=TajimaD, group=1))+
+      labs(x= "SNP Position",
+           y="Tajima's D")+
+      theme_bw()+
+      theme(axis.text.x=element_blank())
+
+ggsave("figures/AllSNPs_TajimasD.png", plot=p3, device="png", width=10, height=8, dpi=300)
+      

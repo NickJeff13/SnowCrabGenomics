@@ -48,6 +48,7 @@ plot_lims <- mean_df%>%
             st_bbox()
 
 #process site mean data for the last two decades (2004-2024)
+#temperature
 site_mean_df <- mean_df%>%
   filter(var=="thetao",
          grouping=="annual")%>%
@@ -68,6 +69,26 @@ site_mean_df <- mean_df%>%
   st_as_sf(coords=c("long","lat"),crs=latlong)%>%
   st_transform(CanProj)
 
+#salinity
+site_mean_df2 <- mean_df%>%
+  filter(var=="so",
+         grouping=="annual")%>%
+  mutate(year=as.numeric(time))%>%
+  filter(year>2003)%>%
+  group_by(site,season)%>%
+  summarise(lat=unique(lat),
+            long=unique(long),
+            prec_lower = quantile(mean,0.1),
+            prec_upper = quantile(mean,0.9),
+            mean=mean(mean),
+            min=min(min),
+            max=max(max),
+            sd=sd(mean))%>%
+  ungroup()%>%
+  data.frame()%>%
+  mutate(season=str_to_title(season))%>%
+  st_as_sf(coords=c("long","lat"),crs=latlong)%>%
+  st_transform(CanProj)
 
 #make some plots
 
