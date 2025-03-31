@@ -24,16 +24,17 @@ snow_crab_extent <- snow_crab%>%
                     st_transform(latlong)
 
 #load canadawide GEBCO
-# can_gebco <- rast("r:/Science/CESD/HES_MPAGroup/Data/Bathymetry/GEBCO/gebco_2019_Canada.tif")
-# 
-# atlantic_gebco <- can_gebco%>%
-#                   terra::crop(.,snow_crab_extent%>%st_transform(st_crs(can_gebco)))
-# #create contour 
-# contour_250 <- as.contour(atlantic_gebco,levels=-250)%>%
-#                st_as_sf()%>%
-#                st_transform(latlong)
-# 
-# st_write(contour_250,dsn = "data/bathymetry/contour_250.shp")
+can_gebco <- rast("r:/Science/CESD/HES_MPAGroup/Data/Bathymetry/GEBCO/gebco_2019_Canada.tif")
+
+#crop to Atlantic canada
+atlantic_gebco <- can_gebco%>%
+                  terra::crop(.,snow_crab_extent%>%st_transform(st_crs(can_gebco)))
+#create contour
+contour_250 <- as.contour(atlantic_gebco,levels=-250)%>%
+               st_as_sf()%>%
+               st_transform(latlong)
+
+st_write(contour_250,dsn = "data/bathymetry/contour_250.shp")
 
 contour_250 <- st_read("data/bathymetry/contour_250.shp") #read it in 
 
