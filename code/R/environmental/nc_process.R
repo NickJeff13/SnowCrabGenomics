@@ -10,7 +10,7 @@ library(stringr)
 library(purrr)
 
 #load functions
-source("code/R/nc_open.R")# opening and (pre)processing scripts
+source("code/R/environmental/nc_open.R")# opening and (pre)processing scripts
 
 #read in population coordinates
 pop_coords <- read.csv("data/DTO extractions/Pop_Coords2024_with_GLORYS_info.csv")%>%
@@ -20,7 +20,7 @@ pop_coords <- read.csv("data/DTO extractions/Pop_Coords2024_with_GLORYS_info.csv
                      lat=Lat,long=Long)
 
 #filepaths for all the nc datafiles
-nc_paths <- dir("data/DTO extractions/locations_nc/",full.names = TRUE)
+nc_paths <- dir("data/DTO extractions/locations_nc_1x1/",full.names = TRUE)
 
 process_nc_file_year <- function(nc_path) {
         
@@ -68,6 +68,9 @@ process_nc_file_decade <- function(nc_path) {
 #apply and group the dataset together. 
 mean_df_year <- map_dfr(nc_paths, process_nc_file_year)
 mean_df_decade <- map_dfr(nc_paths,process_nc_file_decade)
+mean_df_year$site <- gsub("-","", mean_df_year$site)
+mean_df_decade$site <- gsub("-","", mean_df_decade$site)
+
 
 mean_df <- mean_df_year%>%
            rename(time=year)%>%
