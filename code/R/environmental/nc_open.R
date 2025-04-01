@@ -112,7 +112,7 @@ nc_process <- function(fname){
   require(ncdf4)
   require(purrr)
   
-  source("Code/R/nc_open.R") #this is needed to open the data. 
+  source("code/R/environmental/nc_open.R") #this is needed to open the data. 
   
   #get metadata from netcdf
   nc <- nc_unload(fname)

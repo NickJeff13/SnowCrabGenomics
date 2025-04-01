@@ -129,10 +129,17 @@ p3 <- ggplot()+
   scale_fill_viridis(option="C")+
   coord_sf(expand=0,xlim=plot_lims[c(1,3)],ylim=plot_lims[c(2,4)])+
   labs(fill=expression("Temperature ("*degree*C*")"),
-       title="Mean bottom temperature")
+       title="Mean bottom temperature");p3
 
 #save plots
 ggsave("figures/minimum_bottom_temp.png",p1,height=6,width=6,units="in",dpi=300)
 ggsave("figures/maximum_bottom_temp.png",p2,height=6,width=6,units="in",dpi=300)
 ggsave("figures/mean_bottom_temp.png",p3,height=6,width=6,units="in",dpi=300)
 
+
+#Drop the geometry values from the above data to make it easier to merge with coords file
+site_temp <- site_mean_df %>% st_drop_geometry()
+site_salin <- site_mean_df2 %>% st_drop_geometry()
+
+write.csv(x = site_temp, file = "data/DTO extractions/Site_TemperatureData.csv", quote = F)
+write.csv(x = site_salin, file = "data/DTO extractions/Site_SalinityData.csv", quote = F)
