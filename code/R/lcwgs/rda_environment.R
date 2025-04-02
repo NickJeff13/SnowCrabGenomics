@@ -11,32 +11,41 @@ library(dplyr)
 library(lfmm)
 library(qvalue)
 library(ggplot2)
+library(ggrepel)
 library(FactoMineR)
 library(factoextra)
+library(Polychrome)
 
 #We need 1) genotypes per individual, 2) environmental data per site and individual, and 3) GPS coordinates per individual
 # We will be using the exome dataset as the full snp dataset will take a long time
 
 ########RDA Pop Plot Function########
+palette <- c("Bradelle Bank" ="#FFFFFF", "Chaleurs"= "#0000FF", "CMA 10A"= "#FF0000", "CMA 10B"= "#00FF00", 
+             "CMA 12C"= "#000033", "CMA 12G"= "#FF00B6", "CMA 3B"="#005300", "CMA 3D"= "#FFD300", 
+             "CMA 3N200"= "#009FFF", "CMA 4" ="#9A4D42", "CMA 5A"= "#00FFBE", "CMA 6B"= "#783FC1", 
+             "CMA 8A"= "#1F9698", "CMA N5440"="#FFACFD", "Fortune Bay"= "#B1CC71",  "Laurentian Chan" ="#F1085C",
+             "Lilly Canyon"= "#FE8F42","Mar B"= "#DD00FF", "Mar C"= "#201A01", "Mar D"= "#720055", "Mar E"= "#766C95", 
+             "NAFO 3L" ="#02AD24", "NAFO 4X" = "#C8FF00", "NENSin"= "#886C00", "NENSout"="#FFB79F", "Quebec"= "#858567", 
+             "St Marys Bay"= "#A10300", "Trinity Bay"= "#14F9FF", "West Cape Breton"= "#00479E")
 #ggplot
 RDA_plot <- function(envdata,sitedata, xaxislab, yaxislab, nudgeX,nudgeY,r2x, r2y, r2,vjust,hjust){ #xaxis and yaxis are the RDAs to be plotted from envdata
   ggplot(sitedata, aes(x=RDA1, y=RDA2))+
     geom_hline(linewidth=0.3, colour = "grey20", yintercept = 0) + #horizontal line through the origin
     geom_vline(linewidth=0.3, colour = "grey20", xintercept = 0) + #vertical line through the origin
     # geom_point(size=3, alpha = 0.7,shape=20,colour = "grey70", data = snpdata) + #SNPs
-    geom_segment(data = envdata, aes(x=0, xend=RDA1, y=0, yend=RDA2), 
+    geom_segment(data = envdata, aes(x=0, xend=RDA1*3, y=0, yend=RDA2*3), 
                  arrow = ggplot2::arrow(length = unit(0.25, "cm")),
-                 colour = "navy", linewidth = 0.4) +#env arrows
-    geom_text_repel(data = envdata, aes(x=RDA1, y=RDA2,label = Labels), 
-                    size = 3,colour = "navy",parse = T,
+                 colour = "navy", linewidth = 1) +#env arrows
+    geom_text_repel(data = envdata, aes(x=RDA1*3, y=RDA2*3,label = Labels), 
+                    size = 5,colour = "navy",parse = T,
                     segment.color=NA,box.padding=0,
-                    nudge_x =nudgeX,#PC1,PC2,Linf
+                    nudge_x =nudgeX,#however many enviro variables we have
                     nudge_y = nudgeY) + #labels for env arrows
-    geom_point(data = sitedata, size=1, alpha = 0.7, aes(shape=Pop,fill=Pop,  colour=Pop)) + #sample  points
-    scale_shape_manual(values = shapes) +
+    geom_point(data = sitedata,  aes(fill=Pop),shape=21, color="black", size=3, alpha = 0.7) + #sample  points
+    #scale_shape_manual(values = shapes) +
     scale_fill_manual(values=palette)+
-    scale_colour_manual(values=palette)+
-    annotate("text",x=r2x,y=r2y,label=r2, parse=T,vjust=vjust,hjust=hjust,size=3) +
+    #scale_colour_manual(values=palette)+
+    annotate("text",x=r2x,y=r2y,label=r2, parse=T,vjust=vjust,hjust=hjust,size=5) +
     xlab(xaxislab) +
     ylab(yaxislab) +
     guides(color = guide_legend(override.aes = list(size = 2))) +
@@ -169,7 +178,7 @@ crab.env.rda <- rda(exon.ordered[,1:134087] ~ GLORYS.depth..m. + summer_sal + wi
 summary(crab.env.rda) #constrained proportion =0.007953 
 RsquareAdj(crab.env.rda) #r square=0.00785, rsq adj=0.0014
 
-signif.env.rda <- anova.cca(crab.env.rda, parallel = 40, permutations = 999)
+signif.env.rda <- anova.cca(crab.env.rda, parallel = 40, permutations = 999) #p=0.001
 anova.cca(crab.env.rda, by="terms", parallel=40)
 anova.cca(crab.env.rda, by="axis", parallel=40)
 
@@ -178,3 +187,36 @@ anova.cca(crab.env.rda, by="axis", parallel=40)
 
 #3. Run an RDA on just lat and long
 
+
+
+# Plot the RDAs -----------------------------------------------------------
+
+#extract data for ggplot
+SNPPoints_GenEnvPCA_RDA <- as.data.frame(scores(crab.env.rda, scaling = 3, display = "species"))
+IndivPoints_GenEnvPCA_RDA <- as.data.frame(scores(crab.env.rda, scaling = 3, display = "sites")) %>% 
+  cbind(env.snps.merged %>% dplyr::select(c(ind,pop))) %>% 
+  dplyr::mutate(Pop = factor(pop, levels = c("Bradelle Bank", "Chaleurs", "CMA 10A", "CMA 10B", "CMA 12C",  "CMA 12G",  "CMA 3B", "CMA 3D",          
+                                             "CMA 3N200",  "CMA 4", "CMA 5A", "CMA 6B", "CMA 8A", "CMA N5440", "Fortune Bay",  "Laurentian Chan", 
+                                             "Lilly Canyon","Mar B", "Mar C","Mar D", "Mar E", "NAFO 3L", "NAFO 4X", "NENSin", "NENSout",
+                                             "Quebec", "St Marys Bay", "Trinity Bay", "West Cape Breton")))
+
+                EnvArrows_GenEnvPCA_RDA <- as.data.frame(scores(crab.env.rda, scaling = 2, display = "bp")) %>%
+                                                           dplyr::mutate(Labels = c("Depth","Summer_salinity","Winter_temp_min","Winter_temp_mean",
+                                                                                    "Spring_temp_mean","Summer_temp_max", "Fall_temp_min"))
+
+# use the RDA_plot function made at the start
+crab.env.rda.plot1 <- RDA_plot(envdata = EnvArrows_GenEnvPCA_RDA,
+                               #snpdata= SNPPoints_GenEnvPCA_RDA,
+                               sitedata=IndivPoints_GenEnvPCA_RDA,
+                               xaxislab="RDA 1",
+                               yaxislab="RDA 2",
+                               nudgeX = 0,
+                               nudgeY = 0,
+                               r2x=2.7,
+                               r2y=2.5,
+                               r2=paste("Adjusted~R^2","== 0.001"),
+                               hjust=1, 
+                               vjust=0)
+crab.env.rda.plot1
+
+ggsave("figures/Crab_RDA_EnvOnly.png", plot = crab.env.rda.plot1, height=8, width=10, units = "in", dpi=300)
