@@ -192,8 +192,9 @@ summary(crab.env.rda.latloncond) #proportion conditioned =0.0023, proportion con
 RsquareAdj(crab.env.rda.latloncond) #R2 =0.00766, r2 adj =0.0011
 
 #3. Run an RDA on just lat and long
-
-
+crab.latlong.rda <- rda(exon.ordered[,1:134087] ~ Lat + Long, 
+                               data=env.dat.inds, scale =T)
+summary(crab.latlong.rda) #constrained=0.00229
 
 # Plot the RDAs -----------------------------------------------------------
 
@@ -226,3 +227,54 @@ crab.env.rda.plot1 <- RDA_plot(envdata = EnvArrows_GenEnvPCA_RDA,
 crab.env.rda.plot1
 
 ggsave("figures/Crab_RDA_EnvOnly.png", plot = crab.env.rda.plot1, height=8, width=10, units = "in", dpi=300)
+
+
+
+# Identification of environment associated outliers -----------------------
+
+rda.loadings <- scores(crab.env.rda, choices=c(1:3), display="species")
+hist(rda.loadings[,1]) #normal distribution
+
+# function from online tutorial for selecting statistical outliers based on loadings and standard deviations
+outliers <- function(x,z){
+  lims <- mean(x) + c(-1, 1) * z * sd(x)     # find loadings +/-z sd from mean loading     
+  x[x < lims[1] | x > lims[2]]               # locus names in these tails
+}
+
+# apply function to RDA axes of interest
+
+out1 <- outliers(rda.loadings[,1], 3) #542
+out2 <- outliers(rda.loadings[,2], 3) #392
+out3 <- outliers(rda.loadings[,3], 3) #452
+
+out1 <- cbind.data.frame(rep(1,times=length(out1)), names(out1), unname(out1))
+out2 <- cbind.data.frame(rep(2,times=length(out2)), names(out2), unname(out2))
+out3 <- cbind.data.frame(rep(3,times=length(out3)), names(out3), unname(out3))
+
+colnames(out1) <- colnames(out2) <- colnames(out3) <- c("axis","snp","loading")
+
+outliers <- rbind(out1, out2, out3)
+outliers$snp <- as.character(outliers$snp)
+
+#Add correlations with SNP loading and environment to see which loci load against which vars
+
+env.cor <- matrix(nrow=(outliers), ncol=8)  # 8 columns for 8 predictors
+colnames(env.cor) <- c("AMT","MDR","sdT","AP","cvP","NDVI","Elev","Tree")
+
+for (i in 1:length(outliers$snp)) {
+  nam <- outliers[i,2]
+  snp.gen <- gen.imp[,nam]
+  env.cor[i,] <- apply(pred,2,function(x) cor(x,snp.gen))
+}
+
+cand <- cbind.data.frame(cand,env.cor)  
+head(cand)
+
+
+
+
+
+
+# Save data ---------------------------------------------------------------
+
+save.image(file = "Crab_Enviro_RDA.RData")
