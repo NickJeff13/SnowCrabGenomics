@@ -183,7 +183,13 @@ anova.cca(crab.env.rda, by="terms", parallel=40)
 anova.cca(crab.env.rda, by="axis", parallel=40)
 
 #2. Run the same RDA but controlling for lat and long
+crab.env.rda.latloncond <- rda(exon.ordered[,1:134087] ~ GLORYS.depth..m. + summer_sal + winter_temp_min + 
+                                 winter_temp_mean + spring_temp_mean + summer_temp_max + fall_temp_min + 
+                                 Condition(Lat + Long), 
+                               data=env.dat.inds, scale =T)
 
+summary(crab.env.rda.latloncond) #proportion conditioned =0.0023, proportion constrained =0.00766
+RsquareAdj(crab.env.rda.latloncond) #R2 =0.00766, r2 adj =0.0011
 
 #3. Run an RDA on just lat and long
 
@@ -212,7 +218,7 @@ crab.env.rda.plot1 <- RDA_plot(envdata = EnvArrows_GenEnvPCA_RDA,
                                yaxislab="RDA 2",
                                nudgeX = 0,
                                nudgeY = 0,
-                               r2x=2.7,
+                               r2x=3.2,
                                r2y=2.5,
                                r2=paste("Adjusted~R^2","== 0.001"),
                                hjust=1, 
