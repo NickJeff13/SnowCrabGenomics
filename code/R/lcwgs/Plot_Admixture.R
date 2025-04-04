@@ -1,16 +1,12 @@
 library(dplyr)
 library(ggplot2)
 
-#check CV
-CV=read.table("CV_DU2_220K", header=F)
-plot(CV$V4)
-
 #read in .Q file  and combine results with .fam file
-tbl=read.table("data/admixture/exon.recode.10.Q")
+tbl=read.table("/mnt/sdb/SnowCrab_LCWGS/Admixture_Output/snowcrab.recode.3.Q")
 
-#quick plot of results
+#quick plot of results, pick colours based on value of K testing
 barplot(t(as.matrix(tbl)), col=c("firebrick","blue","forestgreen", "gold", "turquoise", "grey","limegreen", "aliceblue", "orange","purple"),
-        xlab="Individual #", ylab="Ancestry", border=NA)
+        xlab="Individual", ylab="Ancestry", border=NA)
 
 #read .fam file
 
@@ -21,7 +17,7 @@ fam$V2 <- gsub(".*i5.","",fam$V2)
 fam$V2 <- gsub(".realigned.bam","",fam$V2)
 
 #combine results and .fam file
-results_q5=as.data.frame(cbind(fam[,1:2], tbl))
+results_q2=as.data.frame(cbind(fam[,1:2], tbl))
 colnames(results_q5)=c("Pop", "ID", "q1","q2","q3","q4","q5","q6","q7","q8","q9","q10")
 
 #Reorder individuals by Pop

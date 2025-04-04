@@ -24,7 +24,7 @@ spp[grep("^MC", pca$ind)] <- "Maritime C"
 spp[grep("^ME", pca$ind)] <- "Maritime E"
 spp[grep("^MB", pca$ind)] <- "Maritime B"
 spp[grep("^Q", pca$ind)] <- "Quebec"
-spp[grep("^LC", pca$ind)] <- "Lily Canyon"
+spp[grep("^LC", pca$ind)] <- "Lilly Canyon"
 spp[grep("^3B", pca$ind)] <- "CMA 3B"
 spp[grep("^6B", pca$ind)] <- "CMA 6B"
 spp[grep("^TB", pca$ind)] <- "TrinityBay"
@@ -33,7 +33,7 @@ spp[grep("^4_", pca$ind)] <- "CMA 4"
 spp[grep("^BdC", pca$ind)] <- "Chaleurs"
 spp[grep("^5A", pca$ind)] <- "CMA 5A"
 spp[grep("^8A", pca$ind)] <- "CMA 8A"
-spp[grep("^CPS", pca$ind)] <- "Offshore GrandBanks"
+spp[grep("^CPS", pca$ind)] <- "NAFO 3L"
 spp[grep("^3D", pca$ind)] <- "CMA 3D"
 spp[grep("^10A", pca$ind)] <- "CMA 10A"
 spp[grep("^SMB", pca$ind)] <- "StMarysBay"
@@ -43,12 +43,12 @@ spp[grep("^WCB_M", pca$ind)] <- "WCB_Male"
 spp[grep("^3N", pca$ind)] <- "CMA 3N200"
 spp[grep("^NENS", pca$ind)] <- "NENS"
 spp[grep("^4X", pca$ind)] <- "NAFO 4X"
-spp[grep("^6222", pca$ind)] <- "LAB6222"
-spp[grep("^2420", pca$ind)] <- "LAB2420"
+spp[grep("^6222", pca$ind)] <- "CMA 12G"
+spp[grep("^2420", pca$ind)] <- "CMA 12C"
 spp[grep("^AW", pca$ind)] <- "LaurentianChannel"
 spp[grep("^D0", pca$ind)] <- "Maritime D"
 spp[grep("^BB", pca$ind)] <- "Bradelle"
-spp[grep("^T[[:digit:]]", pca$ind)] <- "Torngat"
+spp[grep("^T[[:digit:]]", pca$ind)] <- "CMA N5440"
 
 
 
@@ -68,7 +68,7 @@ loc[grep("^4_", pca$ind)] <- "CMA 4"
 loc[grep("^BdC", pca$ind)] <- "Chaleurs"
 loc[grep("^5A", pca$ind)] <- "CMA 5A"
 loc[grep("^8A", pca$ind)] <- "CMA 8A"
-loc[grep("^CPS", pca$ind)] <- "Offshore GrandBanks"
+loc[grep("^CPS", pca$ind)] <- "NAFO 3L"
 loc[grep("^3D", pca$ind)] <- "CMA 3D"
 loc[grep("^10A", pca$ind)] <- "CMA 10A"
 loc[grep("^SMB", pca$ind)] <- "StMarysBay"
@@ -78,12 +78,13 @@ loc[grep("^WCB_M", pca$ind)] <- "WCB_Male"
 loc[grep("^3N", pca$ind)] <- "CMA 3N200"
 loc[grep("^NENS", pca$ind)] <- "NENS"
 loc[grep("^4X", pca$ind)] <- "NAFO 4X"
-loc[grep("^6222", pca$ind)] <- "LAB6222"
-loc[grep("^2420", pca$ind)] <- "LAB2420"
+loc[grep("^6222", pca$ind)] <- "CMA 12G"
+loc[grep("^2420", pca$ind)] <- "CMA 12C"
 loc[grep("^AW", pca$ind)] <- "LaurentianChannel"
 loc[grep("^D0", pca$ind)] <- "Maritime D"
 loc[grep("^BB", pca$ind)] <- "Bradelle"
-loc[grep("^T[[:digit:]]", pca$ind)] <- "Torngat"
+loc[grep("^T[[:digit:]]", pca$ind)] <- "CMA N5440"
+
 # combine - if you want to plot each in different colours
 spp_loc <- paste0(spp, "_", loc)
 
@@ -108,7 +109,7 @@ b + xlab(paste0("PC1 (", signif(pve$pve[1], 3), "%)")) + ylab(paste0("PC2 (", si
 
 b + xlab(paste0("PC2 (", signif(pve$pve[2], 3), "%)")) + ylab(paste0("PC3 (", signif(pve$pve[3], 3), "%)"))
 
-ggsave("Exon_PCA_facet_PC1PC2.png",plot = b, device = "png", path = "figures/", width = 16, height = 12, units = "in", dpi = 320)
+ggsave("Plink_Exon_PCA_facet_PC1PC2.png",plot = b, device = "png", path = "figures/", width = 16, height = 12, units = "in", dpi = 320)
 
 #plot without facet 
 b2 <- ggplot(pca, aes(PC1, PC2)) + geom_point(aes(fill = spp), shape=21, col="black", size = 3) +
@@ -119,7 +120,7 @@ b2 + xlab(paste0("PC1 (", signif(pve$pve[1], 3), "%)")) + ylab(paste0("PC2 (", s
 
 #b2 + xlab(paste0("PC2 (", signif(pve$pve[2], 3), "%)")) + ylab(paste0("PC3 (", signif(pve$pve[3], 3), "%)"))
 
-ggsave("Exon_PCA_PC1PC2.png",plot = b2, device = "png", path = "figures/", width = 16, height = 12, units = "in", dpi = 320)
+ggsave("Plink_Exon_PCA_PC1PC2.png",plot = b2, device = "png", path = "figures/", width = 16, height = 12, units = "in", dpi = 320)
 
 ### Now do the full SNP dataset - 9 million SNPs!!
 pca <- read_table("data/plink pca/snowcrab.eigenvec", col_names = FALSE)
@@ -141,7 +142,7 @@ spp[grep("^MC", pca$ind)] <- "Maritime C"
 spp[grep("^ME", pca$ind)] <- "Maritime E"
 spp[grep("^MB", pca$ind)] <- "Maritime B"
 spp[grep("^Q", pca$ind)] <- "Quebec"
-spp[grep("^LC", pca$ind)] <- "Lily Canyon"
+spp[grep("^LC", pca$ind)] <- "Lilly Canyon"
 spp[grep("^3B", pca$ind)] <- "CMA 3B"
 spp[grep("^6B", pca$ind)] <- "CMA 6B"
 spp[grep("^TB", pca$ind)] <- "TrinityBay"
@@ -150,7 +151,7 @@ spp[grep("^4_", pca$ind)] <- "CMA 4"
 spp[grep("^BdC", pca$ind)] <- "Chaleurs"
 spp[grep("^5A", pca$ind)] <- "CMA 5A"
 spp[grep("^8A", pca$ind)] <- "CMA 8A"
-spp[grep("^CPS", pca$ind)] <- "Offshore GrandBanks"
+spp[grep("^CPS", pca$ind)] <- "NAFO 3L"
 spp[grep("^3D", pca$ind)] <- "CMA 3D"
 spp[grep("^10A", pca$ind)] <- "CMA 10A"
 spp[grep("^SMB", pca$ind)] <- "StMarysBay"
@@ -160,12 +161,12 @@ spp[grep("^WCB_M", pca$ind)] <- "WCB_Male"
 spp[grep("^3N", pca$ind)] <- "CMA 3N200"
 spp[grep("^NENS", pca$ind)] <- "NENS"
 spp[grep("^4X", pca$ind)] <- "NAFO 4X"
-spp[grep("^6222", pca$ind)] <- "LAB6222"
-spp[grep("^2420", pca$ind)] <- "LAB2420"
+spp[grep("^6222", pca$ind)] <- "CMA 12G"
+spp[grep("^2420", pca$ind)] <- "CMA 12C"
 spp[grep("^AW", pca$ind)] <- "LaurentianChannel"
 spp[grep("^D0", pca$ind)] <- "Maritime D"
 spp[grep("^BB", pca$ind)] <- "Bradelle"
-spp[grep("^T[[:digit:]]", pca$ind)] <- "Torngat"
+spp[grep("^T[[:digit:]]", pca$ind)] <- "CMA N5440"
 
 
 
@@ -176,7 +177,7 @@ loc[grep("^MC", pca$ind)] <- "Maritime C"
 loc[grep("^ME", pca$ind)] <- "Maritime E"
 loc[grep("^MB", pca$ind)] <- "Maritime B"
 loc[grep("^Q", pca$ind)] <- "Quebec"
-loc[grep("^LC", pca$ind)] <- "Lily Canyon"
+loc[grep("^LC", pca$ind)] <- "Lilly Canyon"
 loc[grep("^3B", pca$ind)] <- "CMA 3B"
 loc[grep("^6B", pca$ind)] <- "CMA 6B"
 loc[grep("^TB", pca$ind)] <- "TrinityBay"
@@ -185,7 +186,7 @@ loc[grep("^4_", pca$ind)] <- "CMA 4"
 loc[grep("^BdC", pca$ind)] <- "Chaleurs"
 loc[grep("^5A", pca$ind)] <- "CMA 5A"
 loc[grep("^8A", pca$ind)] <- "CMA 8A"
-loc[grep("^CPS", pca$ind)] <- "Offshore GrandBanks"
+loc[grep("^CPS", pca$ind)] <- "NAFO 3L"
 loc[grep("^3D", pca$ind)] <- "CMA 3D"
 loc[grep("^10A", pca$ind)] <- "CMA 10A"
 loc[grep("^SMB", pca$ind)] <- "StMarysBay"
@@ -195,12 +196,13 @@ loc[grep("^WCB_M", pca$ind)] <- "WCB_Male"
 loc[grep("^3N", pca$ind)] <- "CMA 3N200"
 loc[grep("^NENS", pca$ind)] <- "NENS"
 loc[grep("^4X", pca$ind)] <- "NAFO 4X"
-loc[grep("^6222", pca$ind)] <- "LAB6222"
-loc[grep("^2420", pca$ind)] <- "LAB2420"
+loc[grep("^6222", pca$ind)] <- "CMA 12G"
+loc[grep("^2420", pca$ind)] <- "CMA 12C"
 loc[grep("^AW", pca$ind)] <- "LaurentianChannel"
 loc[grep("^D0", pca$ind)] <- "Maritime D"
 loc[grep("^BB", pca$ind)] <- "Bradelle"
-loc[grep("^T[[:digit:]]", pca$ind)] <- "Torngat"
+loc[grep("^T[[:digit:]]", pca$ind)] <- "CMA N5440"
+
 # combine - if you want to plot each in different colours
 spp_loc <- paste0(spp, "_", loc)
 
@@ -225,7 +227,8 @@ c + xlab(paste0("PC1 (", signif(pve$pve[1], 3), "%)")) + ylab(paste0("PC2 (", si
 
 c + xlab(paste0("PC2 (", signif(pve$pve[2], 3), "%)")) + ylab(paste0("PC3 (", signif(pve$pve[3], 3), "%)"))
 
-ggsave("AllSNPs_PCA_facet_PC1PC2.png",plot = c, device = "png", path = "figures/", width = 16, height = 12, units = "in", dpi = 320)
+ggsave("Plink_AllSNPs_PCA_facet_PC1PC2.png", plot = c, device = "png", 
+       path = "figures/", width = 16, height = 12, units = "in", dpi = 320)
 
 #non-faceted
 e <- ggplot(pca, aes(PC1, PC2)) + geom_point(aes(fill = spp), shape=21, col="black", size = 3) #+ stat_ellipse(aes(col=spp))
@@ -236,8 +239,7 @@ e + xlab(paste0("PC1 (", signif(pve$pve[1], 3), "%)")) + ylab(paste0("PC2 (", si
 e + xlab(paste0("PC2 (", signif(pve$pve[2], 3), "%)")) + ylab(paste0("PC3 (", signif(pve$pve[3], 3), "%)"))
 e + xlab(paste0("PC1 (", signif(pve$pve[1], 3), "%)")) + ylab(paste0("PC3 (", signif(pve$pve[3], 3), "%)"))
 
-ggsave("AllSNPs_PCA_PC1PC2.png",plot = e, device = "png", path = "figures/", width = 16, height = 12, units = "in", dpi = 320)
-
+ggsave("Plink_AllSNPs_PCA_PC1PC2.png",plot = e, device = "png", path = "figures/", width = 16, height = 12, units = "in", dpi = 320)
 
 
 ##########
