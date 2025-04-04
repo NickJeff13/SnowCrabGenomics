@@ -1,7 +1,17 @@
 #!/usr/bin/bash
 
+
+#First filter the VCF for maf and missing data using vcftools
+
+vcftools --gzvcf allcrub.vcf.gz \
+ --maf 0.05 \
+ --max-missing 0.9 \
+ --recode \
+ --out allcrabs.maffiltered.missingfiltered
+ 
+
 #run plink on snow crab vcf 
-VCF=/mnt/sdb/SnowCrab_LCWGS/allcrub.vcf.gz
+VCF=/mnt/sdb/SnowCrab_LCWGS/allcrabs.maffiltered.missingfiltered.vcf.gz
 EXON=/mnt/sdb/SnowCrab_LCWGS/allcrub.exon.dp2.recode.vcf.gz
 
 #plink is in our bash source so it will run from anywhere
