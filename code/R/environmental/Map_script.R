@@ -36,6 +36,12 @@ crab_coords <- read.csv("data/Pop_Coords2025.csv")%>%
   st_as_sf(coords=c("Long","Lat"),crs=latlong)%>%
   st_transform(latlong)
 
+# Read in bathymetry contour 
+
+bathy <- read_sf("data/shapefiles/bathymetry/contour_250.shp") %>% 
+  st_transform(latlong)
+
+
 #Basemap ----
 basemap <- rbind(ne_states(country = "Canada",returnclass = "sf")%>%
                    dplyr::select(name_en,geometry)%>%
@@ -63,6 +69,7 @@ plot_extent <- crab_coords%>%
 crab_map <- ggplot()+
   geom_sf(data=basemap)+
   #geom_sf(data=cfas,fill=NA)+
+  geom_sf(data=bathy, fill=NA)+
   geom_sf(data=crab_coords, aes(fill=Region),colour= "black",shape=21, size=4)+
   #geom_sf_label(data=crab_coords, aes(label = SampleSite))+
   coord_sf(expand=0,xlim=plot_extent[c(1,3)],ylim=plot_extent[c(2,4)])+
@@ -70,7 +77,11 @@ crab_map <- ggplot()+
 
 ggsave(filename = "Figure1_CrabMap.png",plot = crab_map, device = "png", path = "figures/", width = 10, height = 8, dpi = 320, units = "in")
 
+
+
 #OR use this older way with marmap and some base plotting
+
+
 
 ##Snow Crab Locations Map#####
 source("PlotBathy2.R")
