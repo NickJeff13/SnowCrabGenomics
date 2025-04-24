@@ -30,14 +30,18 @@ for (i in 1:3)
   plot(xx$loadings[,i], pch=19, cex=.3, ylab=paste0("Loadings PC",i))
 
 # Maf and missingness filtered SNPs
-maf.filtered.snp <-read.pcadapt(input = "MAF_Filtered_Plink/snowcrab.maffiltered.bed", type = "bed")
-maf.pcadapt <- pcadapt(maf.filtered.snp, K=2)
+maf.filtered.snp <-read.pcadapt(input = "/mnt/sdb/SnowCrab_LCWGS/MAF_Filtered_Plink/snowcrab.maffiltered.bed", type = "bed")
+
+maf.pcadapt <- pcadapt(maf.filtered.snp, K=3)
+
 plot(maf.pcadapt,option="screeplot")
 plot(maf.pcadapt, option="scores")
 plot(maf.pcadapt, option="manhattan")
 
 
-#Try the imputed exome snps
+
+# Exome SNPs --------------------------------------------------------------
+
 exo.snps <-read.pcadapt(input = "exon.recode.bed", type = "bed")
 #1072 individuals 134087 snps
 

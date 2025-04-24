@@ -1,0 +1,19 @@
+# BUSCO version is: 5.5.0 
+# The lineage dataset is: arthropoda_odb10 (Creation date: 2020-09-10, number of genomes: 90, number of BUSCOs: 1013)
+# Summarized benchmarking in BUSCO notation for file /mnt/sdb/SnowCrabRNA/SnowCrabtrinity_AssemblyTrimmed/Trinity_TranscriptomeTrimmed.fasta
+# BUSCO was run in mode: euk_tran
+
+	***** Results: *****
+
+	C:96.8%[S:36.3%,D:60.5%],F:1.8%,M:1.4%,n:1013	   
+	981	Complete BUSCOs (C)			   
+	368	Complete and single-copy BUSCOs (S)	   
+	613	Complete and duplicated BUSCOs (D)	   
+	18	Fragmented BUSCOs (F)			   
+	14	Missing BUSCOs (M)			   
+	1013	Total BUSCO groups searched		   
+
+Dependencies and versions:
+	hmmsearch: 3.1
+	metaeuk: 6.a5d39d9
+	busco: 5.5.0
