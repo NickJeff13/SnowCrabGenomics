@@ -1,0 +1,183 @@
+
+TreeMix v. 1.13
+$Revision: 231 $
+
+npop:4 nsnp:92781
+Estimating covariance matrix in 92 blocks of size 1000
+SEED: 1740152818
+Starting from:
+((Newfoundland:0.00013844,Gulf:0.000252131):0.000187976,Maritimes:0.000187976);
+Adding Labrador [4/4]
+ln(likelihood): 69.920646 
+(((Newfoundland:9.54194e-05,Labrador:0.000956093):5.94684e-05,Maritimes:0.000297074):0.000114445,Gulf:0.000114445);
+Targeting migration to vicinity of:
+Gulf Labrador
+Newfoundland Maritimes
+Newfoundland Labrador
+Newfoundland Newfoundland
+
+Gulf Labrador
+Maritimes Newfoundland
+Newfoundland Maritimes
+Maritimes Newfoundland
+Newfoundland Maritimes
+Maritimes Newfoundland
+Labrador Gulf
+Newfoundland Maritimes
+Maritimes Newfoundland
+Trying Gulf Labrador
+Gulf:0.000114445 Labrador:0.000956093
+1->2 0.099995285 125.75673 69.920646
+2->1 0.099995285 125.75673 125.75673
+p2->1 0.10127305 69.920646 125.75673
+Trying Labrador Gulf
+Labrador:0.000956093 Gulf:0.000141691
+Trying Maritimes Newfoundland
+Maritimes:0.000297074 Newfoundland:9.54194e-05
+1->2 0.099995285 125.75673 125.75673
+2->1 0.3970964 125.75673 125.75673
+p1->2 4.0751289e-05 69.920634 125.75673
+((Labrador:0.000956091,Newfoundland:9.54296e-05):5.94708e-05,Maritimes:0.000297074):0.000114445 Newfoundland:9.54296e-05
+Trying Newfoundland Maritimes
+Newfoundland:9.54296e-05 Maritimes:0.000297074
+Migration added
+Local updates around node 1: 0 ln(lk):125.75673 
+Local updates around node 2: 0 ln(lk):125.75673 
+Updates in migration position: 0 ln(lk):125.75673 
+Switches in migration direction: 0 ln(lk):125.75673 
+ln(likelihood):125.75673 
+Targeting migration to vicinity of:
+Labrador Labrador
+Newfoundland Newfoundland
+Newfoundland Maritimes
+Newfoundland Labrador
+
+Newfoundland Newfoundland
+Newfoundland Maritimes
+Newfoundland Labrador
+Maritimes Newfoundland
+Labrador Newfoundland
+Labrador Labrador
+Newfoundland Newfoundland
+Newfoundland Maritimes
+Newfoundland Labrador
+Maritimes Newfoundland
+Labrador Newfoundland
+Labrador Labrador
+Newfoundland Newfoundland
+Newfoundland Maritimes
+Newfoundland Labrador
+Maritimes Newfoundland
+Labrador Newfoundland
+Labrador Labrador
+Newfoundland Newfoundland
+Newfoundland Maritimes
+Newfoundland Labrador
+Maritimes Newfoundland
+Labrador Newfoundland
+Labrador Labrador
+Trying Labrador Labrador
+Labrador:0.00119881 Labrador:0.00119881
+p1->2 0.099995285 125.75673 125.75673
+Trying Labrador Newfoundland
+Labrador:0.00151722 Newfoundland:7.76796e-05
+p1->2 0.099995285 125.75673 125.75673
+(Maritimes:0.000287055,(Newfoundland:9.58997e-05,Labrador:0.00119881):7.72082e-05):0.000100207 Newfoundland:9.58997e-05
+1->2 0.099995285 125.75673 125.75673
+(Newfoundland:0.000105431,Labrador:0.00119023):8.57864e-05 Newfoundland:0.000105431
+Trying Maritimes Newfoundland
+(Maritimes:0.000287055,(Newfoundland:0.000105431,Labrador:0.00119023):8.57864e-05):0.000100207 Newfoundland:0.000105431
+Maritimes:0.000287055 Newfoundland:0.000105431
+1->2 0.099995285 125.75673 125.75673
+2->1 0.0008357527 125.75673 125.75673
+Trying Newfoundland Labrador
+Newfoundland:7.76796e-05 Labrador:0.00119881
+Trying Newfoundland Maritimes
+Newfoundland:7.76796e-05 Maritimes:0.0002876
+Trying Newfoundland Newfoundland
+((Labrador:0.00119881,Newfoundland:7.76796e-05):7.72728e-05,Maritimes:0.0002876):0.000100174 Newfoundland:7.76796e-05
+(Labrador:0.00119881,Newfoundland:7.76796e-05):7.72728e-05 Newfoundland:7.76796e-05
+Newfoundland:7.76796e-05 Newfoundland:7.76796e-05
+ln(likelihood):125.75673 
+Targeting migration to vicinity of:
+Labrador Labrador
+Gulf Gulf
+Newfoundland Maritimes
+Newfoundland Newfoundland
+
+Gulf Gulf
+Newfoundland Maritimes
+Maritimes Newfoundland
+Labrador Labrador
+Newfoundland Maritimes
+Maritimes Newfoundland
+Labrador Labrador
+Newfoundland Maritimes
+Maritimes Newfoundland
+Labrador Labrador
+Trying Gulf Gulf
+Gulf:0.000138698 Gulf:0.000138698
+Trying Labrador Labrador
+((Newfoundland:7.768e-05,Labrador:0.0011988):7.72078e-05,Maritimes:0.000287055):0.000100211 Labrador:0.0011988
+1->2 0.099995285 125.75673 125.75673
+(Newfoundland:6.80297e-05,Labrador:0.00152493):8.68581e-05 (Newfoundland:6.80297e-05,Labrador:0.00152493):8.68581e-05
+p1->2 0.099995285 125.75673 125.75673
+(Newfoundland:7.768e-05,Labrador:0.0011988):9.53172e-05 Labrador:0.0011988
+1->2 0.099995285 125.75673 125.75673
+Labrador:0.0015172 (Maritimes:0.000287055,(Newfoundland:7.768e-05,Labrador:0.0015172):7.72078e-05):0.000100211
+Labrador:0.0015172 (Newfoundland:7.768e-05,Labrador:0.0015172):7.72078e-05
+Labrador:0.0015172 Labrador:0.0015172
+Trying Maritimes Newfoundland
+Maritimes:0.000287055 Newfoundland:7.768e-05
+1->2 0.099995285 125.75673 125.75673
+2->1 0.0008357527 125.75673 125.75673
+p1->2 0.099995285 125.75673 125.75673
+Trying Newfoundland Maritimes
+Newfoundland:0.000105431 Maritimes:0.000287055
+ln(likelihood):125.75673 
+Targeting migration to vicinity of:
+Newfoundland Labrador
+Gulf Labrador
+Gulf Newfoundland
+Newfoundland Newfoundland
+
+Gulf Newfoundland
+Gulf Labrador
+Gulf Newfoundland
+Gulf Labrador
+Newfoundland Newfoundland
+Newfoundland Labrador
+Labrador Newfoundland
+Newfoundland Newfoundland
+Newfoundland Labrador
+Labrador Newfoundland
+Trying Gulf Labrador
+Gulf:0.000138693 ((Newfoundland:7.76804e-05,Labrador:0.00119879):7.72074e-05,Maritimes:0.000287055):0.000100216
+1->2 0.099995285 125.75673 125.75673
+2->1 0.099995285 125.75673 125.75673
+Gulf:4.75021e-05 Labrador:0.00119879
+2->1 0.099995285 125.75673 125.75673
+p2->1 0.099995285 125.75673 125.75673
+Gulf:0.000183596 (Newfoundland:7.76804e-05,Labrador:0.00119851):7.72074e-05
+1->2 0.099995285 125.75673 125.75673
+Trying Gulf Newfoundland
+Gulf:0.000149828 (Maritimes:0.000264785,(Newfoundland:7.76804e-05,Labrador:0.00119879):0.00012006):0.000111351
+Gulf:0.000149828 Newfoundland:7.76804e-05
+1->2 0.0008357527 125.75673 125.75673
+2->1 0.099995285 125.75673 125.75673
+Gulf:0.000188421 (Labrador:0.00119946,Newfoundland:7.67156e-05):8.68576e-05
+Trying Labrador Newfoundland
+(Maritimes:0.000278369,(Labrador:0.00119946,Newfoundland:7.67156e-05):8.68576e-05):0.000116176 Newfoundland:7.67156e-05
+1->2 0.099995285 125.75673 125.75673
+Labrador:0.00119021 Newfoundland:0.000105432
+p1->2 0.099995285 125.75673 125.75673
+p2->1 0.099995285 125.75673 125.75673
+(Labrador:0.00151719,Newfoundland:7.76804e-05):7.72074e-05 Newfoundland:7.76804e-05
+Trying Newfoundland Labrador
+Newfoundland:7.76804e-05 Labrador:0.00151719
+Trying Newfoundland Newfoundland
+(Maritimes:0.000287055,(Labrador:0.00151719,Newfoundland:7.76804e-05):7.72074e-05):0.000100216 Newfoundland:7.76804e-05
+Newfoundland:7.76804e-05 Newfoundland:7.76804e-05
+(Labrador:0.00151719,Newfoundland:7.76804e-05):7.72074e-05 Newfoundland:7.76804e-05
+ln(likelihood):125.75673 
+DONE.

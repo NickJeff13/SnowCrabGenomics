@@ -1,0 +1,1 @@
+#Note - the FST results file for the 9M SNPs is too large to upload here. I have uploaded a subset file (but this does not include ALL results!!)
