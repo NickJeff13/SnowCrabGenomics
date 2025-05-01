@@ -1,11 +1,14 @@
 library(qqman)
+library(dplyr)
 library(ggplot2)
+library(tidyverse)
+library(ggtext)
 
 #Script for plotting FST results for sex comparison (Manhattan plots)
 
 #read snow crab data and plot manhattan for sex differences - data is FST comparison between sexes (175 individuals from WCB, BB)
 #Fst values for all 9M snps
-all_fst<-data.table::fread("/filepath/snowcrab/snowcrab_sex_maf001_updateID_fst.fst")
+all_fst<-data.table::fread("data/SexDifferences/snowcrab_sex_maf001_updateID_fst.fst")
 #check file
 nrow(all_fst)
 head(all_fst)
@@ -20,8 +23,11 @@ hist(all_fst$FST)
 
 #Density plot of fst values
 ggplot(all_fst, aes(x=FST)) + 
-  geom_density(col="dodgerblue", linewidth=1.5)+  # Overlay with transparent density plot
+  geom_density(col="dodgerblue", linewidth=1.25)+  # Overlay with transparent density plot
   theme_classic()
+
+ggsave("figures/Sex_SNP_Fst_Density.png", plot = last_plot(), device = "png", 
+       width = 10, height = 8, dpi =300)
 
 #Subset data for plotting manhattan - don't need to plot all 9M snps, plot top SNPs and subset of low value SNPs
 #subset top snps
@@ -31,11 +37,56 @@ low_fst<-all_fst[which(all_fst$FST<0.2),]
 subsample<-low_fst[sample(nrow(low_fst), 40000),]
 
 #Use subset of data for plotting (9M SNP will be too large)
-fst_for_plot<-rbind(high_fst,subsample)
+fst_for_plot<-rbind(high_fst,subsample)%>%
+  as.data.frame()
 
 #Manhattan plot for full dataset
-manhattan(x = fst_for_plot, chr = "Chr_num", xlab="Chromosome", ylab="FST",
+
+data_cum <- fst_for_plot |>
+  group_by(CHR) |>
+  summarise(max_bp = max(POS)) |>
+  mutate(bp_add = lag(cumsum(max_bp), default = 0)) |>
+  select(CHR, bp_add)
+
+gwas_data <- fst_for_plot |>
+  inner_join(data_cum, by = "CHR") |>
+  mutate(bp_cum = POS + bp_add)
+
+manhattan(x = fst_for_plot, chr = "Chr_num", xlab="Scaffold", ylab="FST",
           bp = "POS",p = "FST",logp = F, col = c("black"))
+
+axis_set <- gwas_data |>
+  group_by(CHR) |>
+  summarize(center = mean(bp_cum))
+
+
+  manhplot <- ggplot(gwas_data, aes(
+    x = bp_cum, y = FST,
+    color = as_factor(CHR), size = FST
+  )) +
+    geom_point(alpha = 0.75) +
+    scale_x_continuous(
+      label = axis_set$CHR,
+      breaks = axis_set$center
+    ) +
+    scale_y_continuous(expand = c(0, 0), limits = c(0,1)) +
+    scale_color_manual(values = rep(
+      c("#276FBF", "#183059"),
+      unique(length(axis_set$CHR))
+   )) +
+    scale_size_continuous(range = c(0.5, 3)) +
+    labs(
+      x = NULL,
+      y = "FST"
+    ) +
+   theme_minimal() +
+    theme(
+     legend.position = "none",
+     panel.grid.major.x = element_blank(),
+     panel.grid.minor.x = element_blank(),
+     axis.title.y = element_markdown(),
+     axis.text.x = element_text(angle = 60, size = 8, vjust = 0.5)
+    )
 
 #Manhattan plot for Chr JACEEZ010007791.1 with highest Fst values
 manhattan(x = all_fst[which(all_fst$CHR=="JACEEZ010007791.1"),],

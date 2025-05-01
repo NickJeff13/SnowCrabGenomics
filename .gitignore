@@ -40,6 +40,7 @@ vignettes/*.pdf
 *.selection
 *.weights
 *.cov
+*.fst
 
 # R Environment Variables
 .Renviron

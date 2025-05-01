@@ -10,7 +10,7 @@ Filter for top SNP (position 31217 bp) use --recode to get genotype .ped file fo
 ```
 ./plink --bfile /filepath/snowcrab/plink/snowcrab_allsnpsind_maf001  --allow-extra-chr --chr JACEEZ010007791.1 --make-bed -out /filepath/snowcrab/plink/snowcrab_allinds_JACEEZ010007791_sexSNP_recode  --from-bp 31217 --to-bp 31217 --recode
 ```
-Download the data for R script
+Download the data for R script - do this from the shell but not while on GPSC server
 ```
 scp username@address:/filepath/snowcrab/plink/snowcrab_allinds_JACEEZ010007791_sexSNP.ped /Users/Name/Downloads/
 ```
