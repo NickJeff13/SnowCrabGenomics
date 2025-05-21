@@ -3,6 +3,12 @@
 ## Written by Nick Jeffery in winter 2025
 
 # Load libraries ----------------------------------------------------------
+
+if (!require("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+
+BiocManager::install("qvalue")
+
 library(adegenet)
 library(hierfstat)
 library(vegan)
@@ -71,7 +77,7 @@ RDA_plot <- function(envdata,sitedata, xaxislab, yaxislab, nudgeX,nudgeY,r2x, r2
 # these large files are on my local Linux computer so the file paths only work for me, but the data will be available on NCBI and other sources later
 # first converted imputed exon snps file to RAW with the following stats: 1072 individuals, 134,087 variants passed QC, genotyping rate is 0.9162
 
-exon.snps <- read.PLINK("/mnt/sdb/SnowCrab_LCWGS/vcfs/rawexon.raw", parallel = TRUE)
+exon.snps <- read.PLINK("/mnt/sdb/SnowCrab_LCWGS/rawexon.raw", parallel = TRUE)
 
 # find clusters while we have this loaded to see if there are any
 #Note, this took 3 days without finishing so we'll skip it
@@ -127,7 +133,7 @@ env.filt <- env[,c(3:5,10,13,16:17, 19, 21,22)]
 env.ordered <- env.filt[order(env.filt$Rpop), ]
 
 #make sure the pops are in the same order between the genetics and the env dataframe
-identical(env.ordered$Rpop, unique(exon.ordered$pop)) #TRUE
+identical(as.factor(env.ordered$Rpop), unique(exon.ordered$pop)) #TRUE
 rownames(env.ordered) <- env.ordered$Rpop
 
 # Run a PCA on the environment data
@@ -156,10 +162,11 @@ fviz_pca_ind(crab_enviro_PCA, repel = T,
 
 fviz_pca_biplot(crab_enviro_PCA, repel=T,
                 col.var="#2E9FDF",
-                col.ind="#696969",
+                col.ind="black",
                 pointsize=3) #looks like there's no real relationship between general location and environment
 
 
+ggsave(filename = "PCA_EnvOnly_Black.png", plot = last_plot(), device = "png", path = "figures/", width = 10, height=8, dpi=320)
 
 # Run the RDAs ------------------------------------------------------------
 
@@ -269,9 +276,6 @@ for (i in 1:length(outliers$snp)) {
 
 cand <- cbind.data.frame(cand,env.cor)  
 head(cand)
-
-
-
 
 
 

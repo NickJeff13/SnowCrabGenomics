@@ -8,7 +8,7 @@ setwd("/mnt/sdb/SnowCrab_LCWGS/")
 all.snp <-read.pcadapt(input = "snowcrab.bed", type = "bed")
 
 #choose k Principal components
-y<-pcadapt(all.snp, K=1)
+y<-pcadapt(all.snp, K=3)
 plot(y, option="manhattan")
 plot(y, option="scores")
 
@@ -32,10 +32,10 @@ for (i in 1:3)
 # Maf and missingness filtered SNPs
 maf.filtered.snp <-read.pcadapt(input = "/mnt/sdb/SnowCrab_LCWGS/MAF_Filtered_Plink/snowcrab.maffiltered.bed", type = "bed")
 
-maf.pcadapt <- pcadapt(maf.filtered.snp, K=3)
+maf.pcadapt <- pcadapt(maf.filtered.snp, K=12)
 
 plot(maf.pcadapt,option="screeplot")
-plot(maf.pcadapt, option="scores")
+plot(maf.pcadapt, option="scores", i=3, j=4)
 plot(maf.pcadapt, option="manhattan")
 
 
