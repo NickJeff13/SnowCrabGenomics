@@ -112,7 +112,7 @@ exon.imp <-  as.data.frame(apply(exon2, 2,
 
 exon.imp$ind <- rownames(exon.imp)
 exon.imp$pop <- poplist
-imp.pca <- dudi.pca(exon.imp, scannf = F, nf = 5)
+imp.pca <- dudi.pca(exon.imp[,1:134087], scannf = F, nf = 5)
 scatter(imp.pca)
 
 #make the genetic data in order by pop
@@ -169,12 +169,13 @@ fviz_pca_biplot(crab_enviro_PCA, repel=T,
 ggsave(filename = "PCA_EnvOnly_Black.png", plot = last_plot(), device = "png", path = "figures/", width = 10, height=8, dpi=320)
 
 # Run the RDAs ------------------------------------------------------------
-
+gc()
 # we will run a full environmental PCA and a partial RDA controlling for lat/long
 
 # need to merge genotype and enviro data, then split again in the rda formula 
 
 env.snps.merged <- left_join(x = exon.ordered, y=env.ordered, by = c("pop"="Rpop"))
+
 env.dat.inds <- env.snps.merged %>% 
   select(-contains("Locus"))
 
@@ -262,22 +263,95 @@ colnames(out1) <- colnames(out2) <- colnames(out3) <- c("axis","snp","loading")
 
 outliers <- rbind(out1, out2, out3)
 outliers$snp <- as.character(outliers$snp)
+ncand <- length(out1$snp) + length(out2$snp) + length(out3$snp)
 
 #Add correlations with SNP loading and environment to see which loci load against which vars
 
-env.cor <- matrix(nrow=(outliers), ncol=8)  # 8 columns for 8 predictors
-colnames(env.cor) <- c("AMT","MDR","sdT","AP","cvP","NDVI","Elev","Tree")
+env.cor <- matrix(nrow=ncand, ncol=7)  # 7 columns for 7 predictors
+colnames(env.cor) <- c("GLORYS.depth..m.", "summer_sal", "winter_temp_min", "winter_temp_mean", "spring_temp_mean", "summer_temp_max", "fall_temp_min")
 
+i=NULL
 for (i in 1:length(outliers$snp)) {
   nam <- outliers[i,2]
-  snp.gen <- gen.imp[,nam]
-  env.cor[i,] <- apply(pred,2,function(x) cor(x,snp.gen))
+  snp.gen <- exon.imp[,nam]
+  env.cor[i,] <- apply(env.dat.inds[,5:length(colnames(env.dat.inds))], 2, function(x) cor(x,snp.gen))
 }
 
-cand <- cbind.data.frame(cand,env.cor)  
+cand <- cbind.data.frame(outliers,env.cor)  
 head(cand)
 
+#check for and remove duplicates 
+length(cand$snp[duplicated(cand$snp)])  # 59 duplicate SNPs
+cand <- cand[!duplicated(cand$snp), ]
 
+#Now determine which predictor each SNP is correlated with
+
+i=NULL
+for (i in 1:length(cand$snp)) {
+  bar <- cand[i,]
+  cand[i,11] <- names(which.max(abs(bar[4:10]))) # gives the variable
+  cand[i,12] <- max(abs(bar[4:10]))            # gives the correlation
+}
+
+colnames(cand)[11] <- "predictor"
+colnames(cand)[12] <- "correlation"
+
+table(cand$predictor) 
+
+# Plot the SNPs and their environmental correlates
+
+sel <- cand$snp
+env <- cand$predictor
+env[env=="GLORYS.depth..m."] <- '#1f78b4'
+env[env=="summer_sal"] <- '#a6cee3'
+env[env=="winter_temp_min"] <- '#6a3d9a'
+env[env=="winter_temp_mean"] <- '#e31a1c'
+env[env=="spring_temp_mean"] <- '#33a02c'
+env[env=="summer_temp_max"] <- '#ffff33'
+env[env=="fall_temp_min"] <- '#fb9a99'
+
+
+# color by predictor:
+col.pred <- rownames(crab.env.rda$CCA$v) # pull the SNP names
+
+i=NULL
+for (i in 1:length(sel)) {           # color code candidate SNPs
+  foo <- match(sel[i],col.pred)
+  col.pred[foo] <- env[i]
+}
+
+col.pred[grep("Locus",col.pred)] <- '#f1eef6' # non-candidate SNPs
+empty <- col.pred
+empty[grep("#f1eef6",empty)] <- rgb(0,1,0, alpha=0) # transparent
+empty.outline <- ifelse(empty=="#00FF0000","#00FF0000","gray32")
+bg <- c('#1f78b4','#a6cee3','#6a3d9a','#e31a1c','#33a02c','#ffff33','#fb9a99')
+
+# axes 1 & 2
+plot(crab.env.rda, type="n", scaling=3, xlim=c(-1,1), ylim=c(-1,1))
+points(crab.env.rda, display="species", pch=21, cex=1, col="gray32", bg=col.pred, scaling=3)
+points(crab.env.rda, display="species", pch=21, cex=1, col=empty.outline, bg=empty, scaling=3)
+text(crab.env.rda, scaling=3, display="bp", col="#0868ac", cex=1)
+legend("bottomright", legend=c("GLORYS.depth..m.", "summer_sal", "winter_temp_min", "winter_temp_mean", "spring_temp_mean", "summer_temp_max", "fall_temp_min"), bty="n", col="gray32", pch=21, cex=1, pt.bg=bg)
+
+ggsave(filename = "RDA1_2_SNP_EnviroCorrelates.png", plot = last_plot(), device = "png", path = "figures/", width = 14, height=12, dpi=400)
+
+# axes 1 & 3
+plot(crab.env.rda, type="n", scaling=3, xlim=c(-1,1), ylim=c(-1,1), choices=c(1,3))
+points(crab.env.rda, display="species", pch=21, cex=1, col="gray32", bg=col.pred, scaling=3, choices=c(1,3))
+points(crab.env.rda, display="species", pch=21, cex=1, col=empty.outline, bg=empty, scaling=3, choices=c(1,3))
+text(crab.env.rda, scaling=3, display="bp", col="#0868ac", cex=1, choices=c(1,3))
+legend("bottomright", legend= c("GLORYS.depth..m.", "summer_sal", "winter_temp_min", "winter_temp_mean", "spring_temp_mean", "summer_temp_max", "fall_temp_min"), bty="n", col="gray32", pch=21, cex=1, pt.bg=bg)
+
+ggsave(filename = "RDA1_3_SNP_EnviroCorrelates.png", plot = last_plot(), device = "png", path = "figures/", width = 14, height=12, dpi=400)
+
+# axes 2 & 3
+plot(crab.env.rda, type="n", scaling=3, xlim=c(-1,1), ylim=c(-1,1), choices=c(2,3))
+points(crab.env.rda, display="species", pch=21, cex=1, col="gray32", bg=col.pred, scaling=3, choices=c(2,3))
+points(crab.env.rda, display="species", pch=21, cex=1, col=empty.outline, bg=empty, scaling=3, choices=c(2,3))
+text(crab.env.rda, scaling=3, display="bp", col="#0868ac", cex=1, choices=c(2,3))
+legend("bottomright", legend= c("GLORYS.depth..m.", "summer_sal", "winter_temp_min", "winter_temp_mean", "spring_temp_mean", "summer_temp_max", "fall_temp_min"), bty="n", col="gray32", pch=21, cex=1, pt.bg=bg)
+
+ggsave(filename = "RDA2_3_SNP_EnviroCorrelates.png", plot = last_plot(), device = "png", path = "figures/", width = 14, height=12, dpi=400)
 
 # Save data ---------------------------------------------------------------
 
