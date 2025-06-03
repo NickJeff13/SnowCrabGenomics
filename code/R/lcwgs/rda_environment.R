@@ -234,7 +234,7 @@ crab.env.rda.plot1 <- RDA_plot(envdata = EnvArrows_GenEnvPCA_RDA,
                                vjust=0)
 crab.env.rda.plot1
 
-ggsave("figures/Crab_RDA_EnvOnly.png", plot = crab.env.rda.plot1, height=8, width=10, units = "in", dpi=300)
+ggsave("figures/Crab_RDA_EnvOnly.png", plot = crab.env.rda.plot1, height=8, width=12, units = "in", dpi=300)
 
 
 
@@ -333,7 +333,6 @@ points(crab.env.rda, display="species", pch=21, cex=1, col=empty.outline, bg=emp
 text(crab.env.rda, scaling=3, display="bp", col="#0868ac", cex=1)
 legend("bottomright", legend=c("GLORYS.depth..m.", "summer_sal", "winter_temp_min", "winter_temp_mean", "spring_temp_mean", "summer_temp_max", "fall_temp_min"), bty="n", col="gray32", pch=21, cex=1, pt.bg=bg)
 
-ggsave(filename = "RDA1_2_SNP_EnviroCorrelates.png", plot = last_plot(), device = "png", path = "figures/", width = 14, height=12, dpi=400)
 
 # axes 1 & 3
 plot(crab.env.rda, type="n", scaling=3, xlim=c(-1,1), ylim=c(-1,1), choices=c(1,3))
@@ -342,16 +341,12 @@ points(crab.env.rda, display="species", pch=21, cex=1, col=empty.outline, bg=emp
 text(crab.env.rda, scaling=3, display="bp", col="#0868ac", cex=1, choices=c(1,3))
 legend("bottomright", legend= c("GLORYS.depth..m.", "summer_sal", "winter_temp_min", "winter_temp_mean", "spring_temp_mean", "summer_temp_max", "fall_temp_min"), bty="n", col="gray32", pch=21, cex=1, pt.bg=bg)
 
-ggsave(filename = "RDA1_3_SNP_EnviroCorrelates.png", plot = last_plot(), device = "png", path = "figures/", width = 14, height=12, dpi=400)
-
 # axes 2 & 3
 plot(crab.env.rda, type="n", scaling=3, xlim=c(-1,1), ylim=c(-1,1), choices=c(2,3))
 points(crab.env.rda, display="species", pch=21, cex=1, col="gray32", bg=col.pred, scaling=3, choices=c(2,3))
 points(crab.env.rda, display="species", pch=21, cex=1, col=empty.outline, bg=empty, scaling=3, choices=c(2,3))
 text(crab.env.rda, scaling=3, display="bp", col="#0868ac", cex=1, choices=c(2,3))
 legend("bottomright", legend= c("GLORYS.depth..m.", "summer_sal", "winter_temp_min", "winter_temp_mean", "spring_temp_mean", "summer_temp_max", "fall_temp_min"), bty="n", col="gray32", pch=21, cex=1, pt.bg=bg)
-
-ggsave(filename = "RDA2_3_SNP_EnviroCorrelates.png", plot = last_plot(), device = "png", path = "figures/", width = 14, height=12, dpi=400)
 
 # Save data ---------------------------------------------------------------
 
