@@ -17,7 +17,6 @@ library("qqman")
 library("DataCombine")
 
 
-
 fst = read.table("AllPools_w1000.fst", header = F) 
 colnames(fst) <-c("CHR", "BP", "SNPs","FRACTION","COV",paste0("V",6:258)) #rename column headers
 fst$ID <- paste(fst$CHR,fst$BP,sep=".")
