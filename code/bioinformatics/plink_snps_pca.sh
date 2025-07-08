@@ -20,9 +20,17 @@ plink --vcf $VCF --double-id --allow-extra-chr \
 
 #now a PCA
 plink --vcf $VCF --double-id --allow-extra-chr \
---make-bed --pca --out snowcrab.maffiltered --mind 0.1
+--make-bed --pca --out snowcrab.poolfiltered --mind 0.3
 #--set-missing-var-ids --extract snowcrab.prune.in \
 
 #compare with Exon data - dont need the --mind flag as missing inds have been removed for this data
 plink --vcf $EXON --double-id --allow-extra-chr \
 --make-bed --pca --out exon
+
+
+# Let's also filter the full SNP dataset with a list of SNPs that overlap with the poolseq data (about 1.8 million SNPs)
+#the intersect SNPs file is a tab delim file with Chromosome as column 1 and SNP position as column 2
+
+vcftools --gzvcf vcfs/allcrub.vcf.gz \
+--positions Poolseq_LCWGS_IntersectingSNPS.txt \
+--out PoolSNPS.only
