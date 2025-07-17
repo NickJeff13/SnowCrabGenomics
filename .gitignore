@@ -10,6 +10,7 @@
 # User-specific files
 .Ruserdata
 
+
 # Example code in package build process
 *-Ex.R
 
@@ -43,6 +44,7 @@ vignettes/*.pdf
 *.weights
 *.cov
 *.fst
+.fst
 
 # R Environment Variables
 .Renviron
