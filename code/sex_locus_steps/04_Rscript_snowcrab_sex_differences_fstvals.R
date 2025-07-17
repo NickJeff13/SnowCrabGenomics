@@ -60,16 +60,15 @@ axis_set <- gwas_data |>
   summarize(center = mean(bp_cum))
 
 
-  manhplot <- ggplot(gwas_data, aes(
-    x = bp_cum, y = FST,
-    color = as_factor(CHR), size = FST
-  )) +
+  manhplot <- ggplot(gwas_data, 
+                     aes(x = bp_cum, 
+                         y = FST)) +
     geom_point(alpha = 0.75) +
     scale_x_continuous(
       label = axis_set$CHR,
       breaks = axis_set$center
     ) +
-    scale_y_continuous(expand = c(0, 0), limits = c(0,1)) +
+    scale_y_continuous(expand = c(0, 0), limits = c(-0.5,1)) +
     scale_color_manual(values = rep(
       c("#276FBF", "#183059"),
       unique(length(axis_set$CHR))
@@ -79,7 +78,7 @@ axis_set <- gwas_data |>
       x = NULL,
       y = "FST"
     ) +
-   theme_minimal() +
+   theme_bw() +
     theme(
      legend.position = "none",
      panel.grid.major.x = element_blank(),

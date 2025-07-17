@@ -10,8 +10,8 @@ library(Polychrome)
 
 # read in data - start with the exome derived SNPs
 
-pca <- read_table("~/Documents/GitHub/SnowCrabGenomics/data/plink pca/exon.eigenvec", col_names = FALSE)
-eigenval <- scan("~/Documents/GitHub/SnowCrabGenomics/data/plink pca/exon.eigenval")
+pca <- read_table("data/plink pca/exon.eigenvec", col_names = FALSE)
+eigenval <- scan("data/plink pca/exon.eigenval")
 # sort out the pca data
 # remove nuisance column
 pca <- pca[,-1]
@@ -21,8 +21,6 @@ names(pca)[2:ncol(pca)] <- paste0("PC", 1:(ncol(pca)-1))
 
 # sort out the individual species and pops
 # spp
-# first extract sequencing batch info from inds to colour PCA by
-pca$batch <- substr(pca$ind, 1,7)
 pca$ind <- gsub(".*i5.","",pca$ind)
 pca$ind <- gsub(".realigned.bam","",pca$ind)
 
@@ -92,11 +90,43 @@ loc[grep("^D0", pca$ind)] <- "Maritime D"
 loc[grep("^BB", pca$ind)] <- "Bradelle"
 loc[grep("^T[[:digit:]]", pca$ind)] <- "CMA N5440"
 
+# region
+region <- rep(NA, length(pca$ind))
+region[grep("^MC", pca$ind)] <- "Scotian Shelf"
+region[grep("^ME", pca$ind)] <- "Scotian Shelf"
+region[grep("^MB", pca$ind)] <- "Scotian Shelf"
+region[grep("^Q", pca$ind)] <- "Gulf of St. Lawrence"
+region[grep("^LC", pca$ind)] <- "Newfoundland"
+region[grep("^3B", pca$ind)] <- "Newfoundland"
+region[grep("^6B", pca$ind)] <- "Newfoundland"
+region[grep("^TB", pca$ind)] <- "Newfoundland"
+region[grep("^10B", pca$ind)] <- "Newfoundland"
+region[grep("^4_", pca$ind)] <- "Newfoundland"
+region[grep("^BdC", pca$ind)] <- "Gulf of St. Lawrence"
+region[grep("^5A", pca$ind)] <- "Newfoundland"
+region[grep("^8A", pca$ind)] <- "Newfoundland"
+region[grep("^CPS", pca$ind)] <- "Newfoundland"
+region[grep("^3D", pca$ind)] <- "Newfoundland"
+region[grep("^10A", pca$ind)] <- "Newfoundland"
+region[grep("^SMB", pca$ind)] <- "Newfoundland"
+region[grep("^FB", pca$ind)] <- "Newfoundland"
+region[grep("^WCB_F", pca$ind)] <- "Gulf of St. Lawrence"
+region[grep("^WCB_M", pca$ind)] <- "Gulf of St. Lawrence"
+region[grep("^3N", pca$ind)] <- "Newfoundland"
+region[grep("^NENS", pca$ind)] <- "Scotian Shelf"
+region[grep("^4X", pca$ind)] <- "Scotian Shelf"
+region[grep("^6222", pca$ind)] <- "Newfoundland"
+region[grep("^2420", pca$ind)] <- "Newfoundland"
+region[grep("^AW", pca$ind)] <- "Newfoundland"
+region[grep("^D0", pca$ind)] <- "Scotian Shelf"
+region[grep("^BB", pca$ind)] <- "Gulf of St. Lawrence"
+region[grep("^T[[:digit:]]", pca$ind)] <- "Newfoundland"
+
 # combine - if you want to plot each in different colours
 spp_loc <- paste0(spp, "_", loc)
 
 # remake data.frame
-pca <- as_tibble(data.frame(pca, spp, loc, spp_loc))
+pca <- as_tibble(data.frame(pca, spp, loc, region, spp_loc))
 
 # first convert to percentage variance explained
 pve <- data.frame(PC = 1:20, pve = eigenval/sum(eigenval)*100)
@@ -118,12 +148,17 @@ b + xlab(paste0("PC2 (", signif(pve$pve[2], 3), "%)")) + ylab(paste0("PC3 (", si
 
 ggsave("Plink_Exon_PCA_facet_PC1PC2.png",plot = b, device = "png", path = "figures/", width = 16, height = 12, units = "in", dpi = 320)
 
-#plot without facet 
-b2 <- ggplot(pca, aes(PC1, PC2)) + geom_point(aes(fill = spp), shape=21, col="black", size = 3) +
-  stat_ellipse(aes(col=spp))
-b2 <- b2 + scale_fill_manual(values = as.vector(glasbey.colors(n=29))) + scale_color_manual(values =as.vector(glasbey.colors(n=29)))
+#plot without facet - fill by location or region
+b2 <- ggplot(pca, aes(PC2, PC3)) + geom_point(aes(fill = region), shape=21, col="black", size = 3) +
+  stat_ellipse(aes(col=region))
+
+#use n=29 when colouring by pop
+#b2 <- b2 + scale_fill_manual(values = as.vector(glasbey.colors(n=29))) + scale_color_manual(values =as.vector(glasbey.colors(n=29)))
+
+# use n=3 when colouring by region
+#b2 <- b2 + scale_fill_manual(values = as.vector(glasbey.colors(n=4))) + scale_color_manual(values =as.vector(glasbey.colors(n=4)))
 b2 <- b2 + coord_equal() + theme_bw()
-b2 + xlab(paste0("PC1 (", signif(pve$pve[1], 3), "%)")) + ylab(paste0("PC2 (", signif(pve$pve[2], 3), "%)"))
+b2 + xlab(paste0("PC2 (", signif(pve$pve[2], 3), "%)")) + ylab(paste0("PC3 (", signif(pve$pve[3], 3), "%)"))
 
 #b2 + xlab(paste0("PC2 (", signif(pve$pve[2], 3), "%)")) + ylab(paste0("PC3 (", signif(pve$pve[3], 3), "%)"))
 
@@ -133,16 +168,14 @@ ggsave("Plink_Exon_PCA_PC1PC2.png",plot = b2, device = "png", path = "figures/",
 # Also the MAF filtered data - only 3442063 SNPs and 1058 inds snowcrab.maffiltered.eigenvec snowcrab.maffiltered.eigenval
 
 
-pca <- read_table("data/plink pca/snowcrab.eigenvec", col_names = FALSE)
-pca.filt <- read_table("data/plink pca/snowcrab.maffiltered.eigenvec", col_names = F)
+pca <- read_table("data/plink pca/snowcrab.maffiltered.eigenvec", col_names = FALSE)
 eigenval <- scan("data/plink pca/snowcrab.maffiltered.eigenval")
 # sort out the pca data
 # remove nuisance column
-pca <- pca.filt[,-1]
+pca <- pca[,-1]
 # set names
 names(pca)[1] <- "ind"
-pca$batch <- substr(pca$ind, 1,7)
-names(pca)[2:(ncol(pca)-1)] <- paste0("PC", 1:length(2:(ncol(pca)-1)))
+names(pca)[2:ncol(pca)] <- paste0("PC", 1:(ncol(pca)-1))
 
 # sort out the individual species and pops
 # spp
@@ -215,6 +248,7 @@ loc[grep("^D0", pca$ind)] <- "Maritime D"
 loc[grep("^BB", pca$ind)] <- "Bradelle"
 loc[grep("^T[[:digit:]]", pca$ind)] <- "CMA N5440"
 
+
 # combine - if you want to plot each in different colours
 spp_loc <- paste0(spp, "_", loc)
 
@@ -257,11 +291,11 @@ ggsave("Plink_MAFfiltered_SNPs_PCA_PC2PC3.png",plot = e, device = "png", path = 
 # MAF and MIND filtered SNPs ----------------------------------------------
 # here we have filtered for minor allele frequency, missing SNPs, and missing genotypes in vcftools and plink
 # we now have 8384961 SNPs and 1082 individuals (63 filtered out in plink for --mind 0.3 or missing data >30%)
+# Also poolseq filtered SNPs
 
 
-
-pca.filt <- read_table("data/plink pca/snowcrab.maffiltered.eigenvec", col_names = FALSE)
-eigenval.filt <- scan("data/plink pca/snowcrab.maffiltered.eigenval")
+pca.filt <- read_table("data/plink pca/snowcrab.poolfiltered.eigenvec", col_names = FALSE)
+eigenval.filt <- scan("data/plink pca/snowcrab.poolfiltered.eigenval")
 # sort out the pca data
 # remove nuisance column
 pca <- pca.filt[,-1]
@@ -340,11 +374,44 @@ loc[grep("^D0", pca$ind)] <- "Maritime D"
 loc[grep("^BB", pca$ind)] <- "Bradelle"
 loc[grep("^T[[:digit:]]", pca$ind)] <- "CMA N5440"
 
+# region
+region <- rep(NA, length(pca$ind))
+region[grep("^MC", pca$ind)] <- "Scotian Shelf"
+region[grep("^ME", pca$ind)] <- "Scotian Shelf"
+region[grep("^MB", pca$ind)] <- "Scotian Shelf"
+region[grep("^Q", pca$ind)] <- "Gulf of St. Lawrence"
+region[grep("^LC", pca$ind)] <- "Newfoundland"
+region[grep("^3B", pca$ind)] <- "Newfoundland"
+region[grep("^6B", pca$ind)] <- "Newfoundland"
+region[grep("^TB", pca$ind)] <- "Newfoundland"
+region[grep("^10B", pca$ind)] <- "Newfoundland"
+region[grep("^4_", pca$ind)] <- "Newfoundland"
+region[grep("^BdC", pca$ind)] <- "Gulf of St. Lawrence"
+region[grep("^5A", pca$ind)] <- "Newfoundland"
+region[grep("^8A", pca$ind)] <- "Newfoundland"
+region[grep("^CPS", pca$ind)] <- "Newfoundland"
+region[grep("^3D", pca$ind)] <- "Newfoundland"
+region[grep("^10A", pca$ind)] <- "Newfoundland"
+region[grep("^SMB", pca$ind)] <- "Newfoundland"
+region[grep("^FB", pca$ind)] <- "Newfoundland"
+region[grep("^WCB_F", pca$ind)] <- "Gulf of St. Lawrence"
+region[grep("^WCB_M", pca$ind)] <- "Gulf of St. Lawrence"
+region[grep("^3N", pca$ind)] <- "Newfoundland"
+region[grep("^NENS", pca$ind)] <- "Scotian Shelf"
+region[grep("^4X", pca$ind)] <- "Scotian Shelf"
+region[grep("^6222", pca$ind)] <- "Newfoundland"
+region[grep("^2420", pca$ind)] <- "Newfoundland"
+region[grep("^AW", pca$ind)] <- "Newfoundland"
+region[grep("^D0", pca$ind)] <- "Scotian Shelf"
+region[grep("^BB", pca$ind)] <- "Gulf of St. Lawrence"
+region[grep("^T[[:digit:]]", pca$ind)] <- "Newfoundland"
+
+
 # combine - if you want to plot each in different colours
 spp_loc <- paste0(spp, "_", loc)
 
 # remake data.frame
-pca <- as_tibble(data.frame(pca, spp, loc, spp_loc))
+pca <- as_tibble(data.frame(pca, spp, loc, region, spp_loc))
 
 # first convert to percentage variance explained
 pve <- data.frame(PC = 1:20, pve = eigenval.filt/sum(eigenval.filt)*100)
@@ -356,9 +423,11 @@ a + ylab("Percentage variance explained") + theme_light()
 cumsum(pve$pve)
 
 
-# plot pca
+# plot pca - like others, can change spp or region depending on what you want to visualize
 w <- ggplot(pca, aes(PC1, PC2)) + geom_point(aes(fill = spp), shape=21, col="black", size = 3)
-w <- w + scale_fill_manual(values = as.vector(glasbey.colors(n=29)))+facet_wrap(~loc)
+
+w <- w + scale_fill_manual(values = as.vector(glasbey.colors(n=29)))+facet_wrap(~spp)
+
 w <- w + coord_equal() + theme_bw()
 w + xlab(paste0("PC1 (", signif(pve$pve[1], 3), "%)")) + ylab(paste0("PC2 (", signif(pve$pve[2], 3), "%)"))
 
@@ -368,7 +437,7 @@ ggsave("Plink_MAFfiltered_SNPs_PCA_facet_PC1PC2.png", plot = w, device = "png",
        path = "figures/", width = 16, height = 12, units = "in", dpi = 320)
 
 #non-faceted
-w2 <- ggplot(pca, aes(PC1, PC2)) + geom_point(aes(fill = spp), shape=21, col="black", size = 3) #+ stat_ellipse(aes(col=spp))
+w2 <- ggplot(pca, aes(PC1, PC2)) + geom_point(aes(fill = spp), shape=21, col="black", size = 3) + stat_ellipse(aes(col=spp))
 w2 <- w2 + scale_fill_manual(values = as.vector(glasbey.colors(n=29)))
 w2 <- w2 + coord_equal() + theme_bw()
 w2 + xlab(paste0("PC1 (", signif(pve$pve[1], 3), "%)")) + ylab(paste0("PC2 (", signif(pve$pve[2], 3), "%)"))
@@ -377,7 +446,7 @@ w2 + xlab(paste0("PC1 (", signif(pve$pve[1], 3), "%)")) + ylab(paste0("PC3 (", s
 w2 + xlab(paste0("PC1 (", signif(pve$pve[1], 3), "%)")) + ylab(paste0("PC2 (", signif(pve$pve[4], 3), "%)"))
 
 
-ggsave("Plink_MAFfiltered_SNPs_PCA_PC2PC3.png",plot = w2, device = "png", path = "figures/", width = 16, height = 12, units = "in", dpi = 320)
+ggsave("Plink_MAFfiltered_SNPs_PCA_PC2PC3_byRegion.png",plot = w2, device = "png", path = "figures/", width = 16, height = 12, units = "in", dpi = 320)
 
 ##########
 #Save Data
