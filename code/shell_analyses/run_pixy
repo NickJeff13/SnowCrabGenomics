@@ -1,0 +1,14 @@
+#Trying pixy for some basic VCF stats
+
+conda activate pixy
+# Requires samtools in the same conda environment
+# in the snow crab VCFs folder
+pixy --stats pi \
+--vcf allcrub.vcf.gz \
+--populations  \
+--window_size 10000 \
+--n_cores 40 \
+--output_prefix crab_pixypi
+--output_folder PixyPi
+
+# RuntimeError: VCF file is missing mandatory header line ("#CHROM...")

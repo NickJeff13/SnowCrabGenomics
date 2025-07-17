@@ -10,8 +10,8 @@ library(Polychrome)
 
 # read in data - start with the exome derived SNPs
 
-pca <- read_table("data/plink pca/exon.eigenvec", col_names = FALSE)
-eigenval <- scan("data/plink pca/exon.eigenval")
+pca <- read_table("~/Documents/GitHub/SnowCrabGenomics/data/plink pca/exon.eigenvec", col_names = FALSE)
+eigenval <- scan("~/Documents/GitHub/SnowCrabGenomics/data/plink pca/exon.eigenval")
 # sort out the pca data
 # remove nuisance column
 pca <- pca[,-1]
@@ -21,6 +21,8 @@ names(pca)[2:ncol(pca)] <- paste0("PC", 1:(ncol(pca)-1))
 
 # sort out the individual species and pops
 # spp
+# first extract sequencing batch info from inds to colour PCA by
+pca$batch <- substr(pca$ind, 1,7)
 pca$ind <- gsub(".*i5.","",pca$ind)
 pca$ind <- gsub(".realigned.bam","",pca$ind)
 
@@ -132,14 +134,15 @@ ggsave("Plink_Exon_PCA_PC1PC2.png",plot = b2, device = "png", path = "figures/",
 
 
 pca <- read_table("data/plink pca/snowcrab.eigenvec", col_names = FALSE)
-pca.filt <- read_table("/mnt/sdb/SnowCrab_LCWGS/vcfs/snowcrab.maffiltered.eigenvec")
-eigenval <- scan("/mnt/sdb/SnowCrab_LCWGS/vcfs/snowcrab.maffiltered.eigenval")
+pca.filt <- read_table("data/plink pca/snowcrab.maffiltered.eigenvec", col_names = F)
+eigenval <- scan("data/plink pca/snowcrab.maffiltered.eigenval")
 # sort out the pca data
 # remove nuisance column
 pca <- pca.filt[,-1]
 # set names
 names(pca)[1] <- "ind"
-names(pca)[2:ncol(pca)] <- paste0("PC", 1:(ncol(pca)-1))
+pca$batch <- substr(pca$ind, 1,7)
+names(pca)[2:(ncol(pca)-1)] <- paste0("PC", 1:length(2:(ncol(pca)-1)))
 
 # sort out the individual species and pops
 # spp
@@ -240,7 +243,7 @@ ggsave("Plink_MAFfiltered_SNPs_PCA_facet_PC1PC2.png", plot = c, device = "png",
        path = "figures/", width = 16, height = 12, units = "in", dpi = 320)
 
 #non-faceted
-e <- ggplot(pca, aes(PC2, PC3)) + geom_point(aes(fill = spp), shape=21, col="black", size = 3) #+ stat_ellipse(aes(col=spp))
+e <- ggplot(pca, aes(PC1, PC2)) + geom_point(aes(fill = spp), shape=21, col="black", size = 3) #+ stat_ellipse(aes(col=spp))
 e <- e + scale_fill_manual(values = as.vector(glasbey.colors(n=29)))
 e <- e + coord_equal() + theme_bw()
 e + xlab(paste0("PC1 (", signif(pve$pve[1], 3), "%)")) + ylab(paste0("PC2 (", signif(pve$pve[2], 3), "%)"))
