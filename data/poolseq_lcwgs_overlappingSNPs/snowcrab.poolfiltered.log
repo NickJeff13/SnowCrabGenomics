@@ -1,0 +1,37 @@
+PLINK v1.90b7.2 64-bit (11 Dec 2023)
+Options in effect:
+  --allow-extra-chr
+  --double-id
+  --make-bed
+  --mind 0.3
+  --out snowcrab.poolfiltered
+  --pca
+  --vcf /mnt/sdb/SnowCrab_LCWGS/PoolSNPS.only.recode.vcf
+
+Hostname: mcrg-Precision-7920-Tower
+Working directory: /mnt/sdb/SnowCrab_LCWGS
+Start time: Fri Jun  6 16:07:46 2025
+
+Random number seed: 1749236866
+515578 MB RAM detected; reserving 257789 MB for main workspace.
+--vcf: snowcrab.poolfiltered-temporary.bed +
+snowcrab.poolfiltered-temporary.bim + snowcrab.poolfiltered-temporary.fam
+written.
+1834608 variants loaded from .bim file.
+1145 people (0 males, 0 females, 1145 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to snowcrab.poolfiltered.nosex .
+51 people removed due to missing genotype data (--mind).
+IDs written to snowcrab.poolfiltered.irem .
+Using up to 79 threads (change this with --threads).
+Before main variant filters, 1094 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate in remaining samples is 0.951776.
+1834608 variants and 1094 people pass filters and QC.
+Note: No phenotypes present.
+Relationship matrix calculation complete.
+--pca: Results saved to snowcrab.poolfiltered.eigenval and
+snowcrab.poolfiltered.eigenvec .
+--make-bed to snowcrab.poolfiltered.bed + snowcrab.poolfiltered.bim +
+snowcrab.poolfiltered.fam ... done.
+
+End time: Fri Jun  6 16:24:27 2025
