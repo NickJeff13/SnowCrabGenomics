@@ -122,7 +122,7 @@ ggsave(filename = "SexGenotype_PiePlot_ByPop.png", plot = p3, path = "figures/",
 # Make a map with pie plots on it -----------------------------------------
 
 #Load map data from Map script
-load("data/crabmapdata.RData")
+load("data/RData/crabmapdata.RData")
 
 combined_genos <- prop_genotypedInd %>%
   left_join(crab_coords, by=c("V1"="SampleSite"))
@@ -170,7 +170,7 @@ p4 <- ggplot()+
     cols = c("GG", "GT", "TT"),
     pie_scale = 1
   ) +
-  coord_sf(expand=F, xlim=plot_extent[c(1,3)],ylim=plot_extent[c(2,4)], datum = "NAD83")+
+  coord_sf(expand=F, xlim=plot_extent[c(1,3)],ylim=plot_extent[c(2,4)])+
   theme_bw() +
   scale_fill_manual(values=c("#D64550","#D8D7BF","dodgerblue4"))+
   #scale_fill_brewer(palette = "Set2")+
@@ -190,4 +190,4 @@ p4 + p1/p2 + plot_layout(widths=c(3,1)) +
   theme(plot.tag = element_text(size=20))+
   plot_layout(widths=c(2,0.5))
 
-ggsave(filename = "CrabSexGenotypes_Combined.png", plot = last_plot(), path = 'figures/', device = "png", dpi=300)
+ggsave(filename = "CrabSexGenotypes_Combined.png", plot = last_plot(), path = 'figures/', device = "png", dpi=300, width=15, height=10)

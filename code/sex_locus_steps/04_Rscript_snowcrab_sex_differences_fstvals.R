@@ -68,7 +68,7 @@ axis_set <- gwas_data |>
       label = axis_set$CHR,
       breaks = axis_set$center
     ) +
-    scale_y_continuous(expand = c(0, 0), limits = c(-0.5,1)) +
+    scale_y_continuous(expand = c(0, 0), limits = c(0,1)) +
     scale_color_manual(values = rep(
       c("#276FBF", "#183059"),
       unique(length(axis_set$CHR))
@@ -84,13 +84,13 @@ axis_set <- gwas_data |>
      panel.grid.major.x = element_blank(),
      panel.grid.minor.x = element_blank(),
      axis.title.y = element_markdown(),
-     axis.text.x = element_text(angle = 60, size = 8, vjust = 0.5)
-    )
+     axis.text.x = element_text()
+    );manhplot
 
 #Manhattan plot for Chr JACEEZ010007791.1 with highest Fst values
 manhattan(x = all_fst[which(all_fst$CHR=="JACEEZ010007791.1"),],
           chr = "Chr_num", xlab="Chr JACEEZ010007791.1", ylab="FST",cex=1.5,
-          bp = "POS",p = "FST",logp = F, col = c("black"), ylim=c(-0.05,1))
+          bp = "POS",p = "FST",logp = F, col = c("black"), ylim=c(-0.05,1), xlim=c(0,80000))
 
 #subset FST values for chr JACEEZ010007791.1 
 chr_sex<-all_fst[which(all_fst$CHR=="JACEEZ010007791.1"),]
@@ -102,7 +102,7 @@ summary(region_sex$POS)
 
 #Write table with top 100 SNPs 
 write.table(all_fst[order(all_fst$FST,decreasing = T),][1:100],
-            "/filepath/snowcrab/SexFST/top_FST_sex.txt",
+            "data/SexDifferences/top_FST_sex.txt",
             quote = F, row.names = F, col.names = T, sep="\t")
 
 
