@@ -277,7 +277,7 @@ ggsave("Plink_MAFfiltered_SNPs_PCA_facet_PC1PC2.png", plot = c, device = "png",
        path = "figures/", width = 16, height = 12, units = "in", dpi = 320)
 
 #non-faceted
-e <- ggplot(pca, aes(PC1, PC2)) + geom_point(aes(fill = spp), shape=21, col="black", size = 3) #+ stat_ellipse(aes(col=spp))
+e <- ggplot(pca, aes(PC2, PC3)) + geom_point(aes(fill = spp), shape=21, col="black", size = 3) #+ stat_ellipse(aes(col=spp))
 e <- e + scale_fill_manual(values = as.vector(glasbey.colors(n=29)))
 e <- e + coord_equal() + theme_bw()
 e + xlab(paste0("PC1 (", signif(pve$pve[1], 3), "%)")) + ylab(paste0("PC2 (", signif(pve$pve[2], 3), "%)"))
@@ -294,8 +294,8 @@ ggsave("Plink_MAFfiltered_SNPs_PCA_PC2PC3.png",plot = e, device = "png", path = 
 # Also poolseq filtered SNPs
 
 
-pca.filt <- read_table("data/plink pca/snowcrab.poolfiltered.eigenvec", col_names = FALSE)
-eigenval.filt <- scan("data/plink pca/snowcrab.poolfiltered.eigenval")
+pca.filt <- read_table("data/poolseq_lcwgs_overlappingSNPs/snowcrab.poolfiltered.eigenvec", col_names = FALSE)
+eigenval.filt <- scan("data/poolseq_lcwgs_overlappingSNPs/snowcrab.poolfiltered.eigenval")
 # sort out the pca data
 # remove nuisance column
 pca <- pca.filt[,-1]
@@ -437,7 +437,7 @@ ggsave("Plink_MAFfiltered_SNPs_PCA_facet_PC1PC2.png", plot = w, device = "png",
        path = "figures/", width = 16, height = 12, units = "in", dpi = 320)
 
 #non-faceted
-w2 <- ggplot(pca, aes(PC1, PC2)) + geom_point(aes(fill = spp), shape=21, col="black", size = 3) + stat_ellipse(aes(col=spp))
+w2 <- ggplot(pca, aes(PC1, PC3)) + geom_point(aes(fill = spp), shape=21, col="black", size = 3) + stat_ellipse(aes(col=spp))
 w2 <- w2 + scale_fill_manual(values = as.vector(glasbey.colors(n=29)))
 w2 <- w2 + coord_equal() + theme_bw()
 w2 + xlab(paste0("PC1 (", signif(pve$pve[1], 3), "%)")) + ylab(paste0("PC2 (", signif(pve$pve[2], 3), "%)"))

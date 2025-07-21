@@ -14,7 +14,7 @@ plot(y, option="scores")
 
 x <- pcadapt(all.snp, K=10)
 plot(x,option="screeplot")
-plot(x, option="scores")
+plot(x, option="scores",i=1,j=2)
 plot(x, option="scores", i=1, j=3)
 plot(x, option="manhattan")
 #reduce K=3 now
@@ -29,16 +29,48 @@ par(mfrow=c(2,2))
 for (i in 1:3)
   plot(xx$loadings[,i], pch=19, cex=.3, ylab=paste0("Loadings PC",i))
 
-# Maf and missingness filtered SNPs
+# Maf and missingness filtered SNPs - 1082 inds, 8384961 SNPs
 maf.filtered.snp <-read.pcadapt(input = "/mnt/sdb/SnowCrab_LCWGS/MAF_Filtered_Plink/snowcrab.maffiltered.bed", type = "bed")
 
-maf.pcadapt <- pcadapt(maf.filtered.snp, K=12)
+maf.pcadapt <- pcadapt(maf.filtered.snp, K=6)
 
+#read in inds file
+maf.inds <- read_table("/mnt/sdb/SnowCrab_LCWGS/MAF_Filtered_Plink/snowcrab.maffiltered.fam", col_names = F)
+head(maf.inds)
+#extract sequencing batch info
+
+seq.batch <- substr(maf.inds$X1, 1,7)
+
+pca.with.depth <- cbind(b$scores, snp.depth)
+pca.with.pops<-cbind(pca.with.depth, pops)
+
+#various plots
 plot(maf.pcadapt,option="screeplot")
-plot(maf.pcadapt, option="scores", i=3, j=4)
+plot(maf.pcadapt, option="scores", i=1, j=3)
 plot(maf.pcadapt, option="manhattan")
 
+maf.pca.batch <- as.data.frame(cbind(maf.pcadapt$scores, seq.batch))
 
+#colour by sequencing batch
+seq.batch.plot<- ggplot(data=maf.pca.batch, aes(x=as.numeric(V1), y=as.numeric(V2), fill=seq.batch))+
+                     geom_point(shape=21, size=3, colour="black")+
+                     scale_fill_brewer(palette = "Set1")+
+                      labs(fill="Sequencing Batch",
+                           x="PCA 1",
+                           y="PCA 2")+
+                      theme_bw();seq.batch.plot
+
+seq.batch.plot2<- ggplot(data=maf.pca.batch, aes(x=as.numeric(V1), y=as.numeric(V3), fill=seq.batch))+
+  geom_point(shape=21, size=3, colour="black")+
+  scale_fill_brewer(palette = "Set1")+
+  labs(fill="Sequencing Batch",
+       x="PCA 1",
+       y="PCA 3")+
+  theme_bw();seq.batch.plot2
+
+seq.batch.plot / seq.batch.plot2
+
+ggsave(filename = "Sequencing_Batch_Effect_PCAdapt.png", plot = last_plot(), device = "png", path = "~/Documents/GitHub/SnowCrabGenomics/figures/", width = 12, height = 10, dpi = 320)
 
 # Exome SNPs --------------------------------------------------------------
 
@@ -69,7 +101,7 @@ summary(b)
 plot(b, option="manhattan")
 plot(b, option="qqplot")
 plot(b, option="scores", pop=pops)
-#plot with ggplot to colour points by sequenching depth 
+#plot with ggplot to colour points by sequencing depth 
 pca.with.depth <- cbind(b$scores, snp.depth)
 pca.with.pops<-cbind(pca.with.depth, pops)
 
@@ -100,12 +132,12 @@ ggsave(filename = "PCAdapt_ExonSNPs_PC2_PC3_NoFacet_withHulls_byRegion.png", plo
 
 
 #Try outlier detections on the exon derived SNPs
-qvals<- qvalue(b$pvalues)$qvalues
-padj <- p.adjust(b$pvalues, method="bonferroni")
-alpha=0.05
+qvals<- qvalue(maf.pcadapt$pvalues)$qvalues
+padj <- p.adjust(maf.pcadapt$pvalues, method="bonferroni")
+alpha=0.001
 
 outliers <-which(padj < alpha)
 length(outliers)
 
 #get the PCs associated with each outlier
-snp_pc <-get.pc(b, outliers)
+snp_pc <-get.pc(maf.pcadapt, outliers)
