@@ -64,8 +64,8 @@ RDA_plot <- function(envdata,sitedata, xaxislab, yaxislab, nudgeX,nudgeY,r2x, r2
           legend.margin=margin(0,0,0,0),
           legend.box.margin=margin(r=20),
           axis.text = element_text(size = 8), 
-          axis.title.x = element_text(size=10, vjust =3),
-          axis.title.y = element_text(size=10, vjust=-3),
+          axis.title.x = element_text(size=14, vjust =1),
+          axis.title.y = element_text(size=14, vjust=-2),
           panel.border = element_rect(linewidth =0.5),
           plot.margin = unit(c(1,1,1,0), 'lines'), #t,r,b,l
           panel.grid=element_blank()) + #t,r,b,l
@@ -123,7 +123,7 @@ sumstats <- adegenet::summary(exon.imp)
 # Read in environmental data ----------------------------------------------
 # here we have seasonal temperature and salinity and depth data from the Digital Twins of the Ocean GLORYS model, and coordinates 
 
-env <- read.csv("data/DTO extractions/Pop_Coords2024_with_GLORYS_info.csv", sep="\t", header = T) %>% glimpse()
+env <- read.csv("~/Documents/GitHub/SnowCrabGenomics/data/DTO extractions/Pop_Coords2024_with_GLORYS_info.csv", sep="\t", header = T) %>% glimpse()
 
 pairs.panels(env[,12:length(colnames(env))], scale=T)
 #this plot shows high correlations between all salinity variables, unsurprisingly, so we'll just select one. Also drop spring temp min and summer temp mean and fall temp max
@@ -140,7 +140,6 @@ rownames(env.ordered) <- env.ordered$Rpop
 crab_enviro_PCA <- dudi.pca(env.ordered %>% dplyr::select(c("GLORYS.depth..m.", 
                                                             "summer_sal", 
                                                             "winter_temp_min", 
-                                                            "winter_temp_mean", 
                                                             "spring_temp_mean",
                                                             "summer_temp_max",
                                                             "fall_temp_min")),
@@ -166,7 +165,7 @@ fviz_pca_biplot(crab_enviro_PCA, repel=T,
                 pointsize=3) #looks like there's no real relationship between general location and environment
 
 
-ggsave(filename = "PCA_EnvOnly_Black.png", plot = last_plot(), device = "png", path = "figures/", width = 10, height=8, dpi=320)
+ggsave(filename = "PCA_EnvOnly_Black.png", plot = last_plot(), device = "png", path = "~/Documents/GitHub/SnowCrabGenomics/figures/", width = 10, height=8, dpi=320)
 
 # Run the RDAs ------------------------------------------------------------
 gc()
@@ -181,10 +180,10 @@ env.dat.inds <- env.snps.merged %>%
 
 #1. Start with RDA with environment only
 
-crab.env.rda <- rda(exon.ordered[,1:134087] ~ GLORYS.depth..m. + summer_sal + winter_temp_min + winter_temp_mean + spring_temp_mean + summer_temp_max + fall_temp_min, data=env.dat.inds, scale =T)
+crab.env.rda <- rda(exon.ordered[,1:134087] ~ GLORYS.depth..m. + summer_sal + winter_temp_min + spring_temp_mean + summer_temp_max + fall_temp_min, data=env.dat.inds, scale =T)
 
-summary(crab.env.rda) #constrained proportion =0.007953 
-RsquareAdj(crab.env.rda) #r square=0.00785, rsq adj=0.0014
+summary(crab.env.rda) #constrained proportion =0.006888 
+RsquareAdj(crab.env.rda) #r square=0.00688, rsq adj=0.0013
 
 signif.env.rda <- anova.cca(crab.env.rda, parallel = 40, permutations = 999) #p=0.001
 anova.cca(crab.env.rda, by="terms", parallel=40)
@@ -192,17 +191,19 @@ anova.cca(crab.env.rda, by="axis", parallel=40)
 
 #2. Run the same RDA but controlling for lat and long
 crab.env.rda.latloncond <- rda(exon.ordered[,1:134087] ~ GLORYS.depth..m. + summer_sal + winter_temp_min + 
-                                 winter_temp_mean + spring_temp_mean + summer_temp_max + fall_temp_min + 
+                                 spring_temp_mean + summer_temp_max + fall_temp_min + 
                                  Condition(Lat + Long), 
                                data=env.dat.inds, scale =T)
 
-summary(crab.env.rda.latloncond) #proportion conditioned =0.0023, proportion constrained =0.00766
-RsquareAdj(crab.env.rda.latloncond) #R2 =0.00766, r2 adj =0.0011
+summary(crab.env.rda.latloncond) #proportion conditioned =0.0023, proportion constrained =0.006575
+RsquareAdj(crab.env.rda.latloncond) #R2 =0.006575, r2 adj =0.00098
 
 #3. Run an RDA on just lat and long
 crab.latlong.rda <- rda(exon.ordered[,1:134087] ~ Lat + Long, 
                                data=env.dat.inds, scale =T)
 summary(crab.latlong.rda) #constrained=0.00229
+RsquareAdj(crab.latlong.rda) #R2 =0.00229, r2 adj =0.000418
+signif.env.rda <- anova.cca(crab.env.rda, parallel = 40, permutations = 999) #p=0.001
 
 # Plot the RDAs -----------------------------------------------------------
 
@@ -216,15 +217,15 @@ IndivPoints_GenEnvPCA_RDA <- as.data.frame(scores(crab.env.rda, scaling = 3, dis
                                              "Quebec", "St Marys Bay", "Trinity Bay", "West Cape Breton")))
 
                 EnvArrows_GenEnvPCA_RDA <- as.data.frame(scores(crab.env.rda, scaling = 2, display = "bp")) %>%
-                                                           dplyr::mutate(Labels = c("Depth","Summer_salinity","Winter_temp_min","Winter_temp_mean",
+                                                           dplyr::mutate(Labels = c("Depth","Summer_salinity","Winter_temp_min",
                                                                                     "Spring_temp_mean","Summer_temp_max", "Fall_temp_min"))
 
 # use the RDA_plot function made at the start
 crab.env.rda.plot1 <- RDA_plot(envdata = EnvArrows_GenEnvPCA_RDA,
                                #snpdata= SNPPoints_GenEnvPCA_RDA,
                                sitedata=IndivPoints_GenEnvPCA_RDA,
-                               xaxislab="RDA 1",
-                               yaxislab="RDA 2",
+                               xaxislab="RDA 1: 27.8%",
+                               yaxislab="RDA 2: 15.6%",
                                nudgeX = 0,
                                nudgeY = 0,
                                r2x=3.2,
@@ -232,9 +233,8 @@ crab.env.rda.plot1 <- RDA_plot(envdata = EnvArrows_GenEnvPCA_RDA,
                                r2=paste("Adjusted~R^2","== 0.001"),
                                hjust=1, 
                                vjust=0)
-crab.env.rda.plot1
-
-ggsave("figures/Crab_RDA_EnvOnly.png", plot = crab.env.rda.plot1, height=8, width=12, units = "in", dpi=300)
+crab.env.rda.plot1 
+ggsave("~/Documents/GitHub/SnowCrabGenomics/figures/Crab_RDA_EnvOnly.png", plot = crab.env.rda.plot1, height=8, width=12, units = "in", dpi=300)
 
 
 
@@ -267,8 +267,11 @@ ncand <- length(out1$snp) + length(out2$snp) + length(out3$snp)
 
 #Add correlations with SNP loading and environment to see which loci load against which vars
 
-env.cor <- matrix(nrow=ncand, ncol=7)  # 7 columns for 7 predictors
-colnames(env.cor) <- c("GLORYS.depth..m.", "summer_sal", "winter_temp_min", "winter_temp_mean", "spring_temp_mean", "summer_temp_max", "fall_temp_min")
+env.cor <- matrix(nrow=ncand, ncol=6)  # 6 columns for 6 predictors
+colnames(env.cor) <- c("GLORYS.depth..m.", "summer_sal", "winter_temp_min", "spring_temp_mean", "summer_temp_max", "fall_temp_min")
+env.dat.inds <- env.dat.inds %>% 
+  dplyr::select(-winter_temp_mean) #remove mean winter temp which we forgot to do above
+
 
 i=NULL
 for (i in 1:length(outliers$snp)) {
@@ -289,12 +292,12 @@ cand <- cand[!duplicated(cand$snp), ]
 i=NULL
 for (i in 1:length(cand$snp)) {
   bar <- cand[i,]
-  cand[i,11] <- names(which.max(abs(bar[4:10]))) # gives the variable
-  cand[i,12] <- max(abs(bar[4:10]))            # gives the correlation
+  cand[i,10] <- names(which.max(abs(bar[4:9]))) # gives the variable
+  cand[i,11] <- max(abs(bar[4:9]))            # gives the correlation
 }
 
-colnames(cand)[11] <- "predictor"
-colnames(cand)[12] <- "correlation"
+colnames(cand)[10] <- "predictor"
+colnames(cand)[11] <- "correlation"
 
 table(cand$predictor) 
 
@@ -305,7 +308,7 @@ env <- cand$predictor
 env[env=="GLORYS.depth..m."] <- '#1f78b4'
 env[env=="summer_sal"] <- '#a6cee3'
 env[env=="winter_temp_min"] <- '#6a3d9a'
-env[env=="winter_temp_mean"] <- '#e31a1c'
+#env[env=="winter_temp_mean"] <- '#e31a1c'
 env[env=="spring_temp_mean"] <- '#33a02c'
 env[env=="summer_temp_max"] <- '#ffff33'
 env[env=="fall_temp_min"] <- '#fb9a99'
@@ -324,14 +327,14 @@ col.pred[grep("Locus",col.pred)] <- '#f1eef6' # non-candidate SNPs
 empty <- col.pred
 empty[grep("#f1eef6",empty)] <- rgb(0,1,0, alpha=0) # transparent
 empty.outline <- ifelse(empty=="#00FF0000","#00FF0000","gray32")
-bg <- c('#1f78b4','#a6cee3','#6a3d9a','#e31a1c','#33a02c','#ffff33','#fb9a99')
+bg <- c('#1f78b4','#a6cee3','#6a3d9a','#33a02c','#ffff33','#fb9a99')
 
 # axes 1 & 2
 plot(crab.env.rda, type="n", scaling=3, xlim=c(-1,1), ylim=c(-1,1))
 points(crab.env.rda, display="species", pch=21, cex=1, col="gray32", bg=col.pred, scaling=3)
 points(crab.env.rda, display="species", pch=21, cex=1, col=empty.outline, bg=empty, scaling=3)
 text(crab.env.rda, scaling=3, display="bp", col="#0868ac", cex=1)
-legend("bottomright", legend=c("GLORYS.depth..m.", "summer_sal", "winter_temp_min", "winter_temp_mean", "spring_temp_mean", "summer_temp_max", "fall_temp_min"), bty="n", col="gray32", pch=21, cex=1, pt.bg=bg)
+legend("bottomright", legend=c("GLORYS.depth..m.", "summer_sal", "winter_temp_min", "spring_temp_mean", "summer_temp_max", "fall_temp_min"), bty="n", col="gray32", pch=21, cex=1, pt.bg=bg)
 
 
 # axes 1 & 3
@@ -346,7 +349,7 @@ plot(crab.env.rda, type="n", scaling=3, xlim=c(-1,1), ylim=c(-1,1), choices=c(2,
 points(crab.env.rda, display="species", pch=21, cex=1, col="gray32", bg=col.pred, scaling=3, choices=c(2,3))
 points(crab.env.rda, display="species", pch=21, cex=1, col=empty.outline, bg=empty, scaling=3, choices=c(2,3))
 text(crab.env.rda, scaling=3, display="bp", col="#0868ac", cex=1, choices=c(2,3))
-legend("bottomright", legend= c("GLORYS.depth..m.", "summer_sal", "winter_temp_min", "winter_temp_mean", "spring_temp_mean", "summer_temp_max", "fall_temp_min"), bty="n", col="gray32", pch=21, cex=1, pt.bg=bg)
+legend("bottomright", legend= c("GLORYS.depth..m.", "summer_sal", "winter_temp_min", "spring_temp_mean", "summer_temp_max", "fall_temp_min"), bty="n", col="gray32", pch=21, cex=1, pt.bg=bg)
 
 # Save data ---------------------------------------------------------------
 
