@@ -2,22 +2,21 @@ library(pcadapt)
 library(qvalue)
 library(dplyr)
 library(ggplot2)
-library(ggConvexHull)
+#library(ggConvexHull)
 library(readr)
+library(patchwork)
 
 setwd("/mnt/sdb/SnowCrab_LCWGS/")
 all.snp <-read.pcadapt(input = "snowcrab.bed", type = "bed")
 
 #choose k Principal components
-y<-pcadapt(all.snp, K=3)
-plot(y, option="manhattan")
-plot(y, option="scores")
 
 x <- pcadapt(all.snp, K=10)
 plot(x,option="screeplot")
 plot(x, option="scores",i=1,j=2)
 plot(x, option="scores", i=1, j=3)
 plot(x, option="manhattan")
+
 #reduce K=3 now
 xx <- pcadapt(all.snp, K=3)
 summary(xx)
@@ -33,21 +32,32 @@ for (i in 1:3)
 # Maf and missingness filtered SNPs - 1082 inds, 8384961 SNPs
 maf.filtered.snp <-read.pcadapt(input = "/mnt/sdb/SnowCrab_LCWGS/MAF_Filtered_Plink/snowcrab.maffiltered.bed", type = "bed")
 
-maf.pcadapt <- pcadapt(maf.filtered.snp, K=6)
+maf.pcadapt <- pcadapt(maf.filtered.snp, K=5)
 
 #read in inds file
 maf.inds <- read_table("/mnt/sdb/SnowCrab_LCWGS/MAF_Filtered_Plink/snowcrab.maffiltered.fam", col_names = F)
 head(maf.inds)
+length(maf.inds$X1) #1082 inds
+
+#extract population info
+lst1 <- gregexpr('.', maf.inds$X1, fixed = TRUE)
+pop.names1 <- substring(maf.inds$X1, sapply(lst1, `[`, 4) + 1, sapply(lst1, `[`, 5) - 1)
+pop.names2 <- gsub("_[0-9]+", "", pop.names1)
+#now lots of gsubbing 
+pop.names2 <- gsub("MC.{1,2}","Mar C", pop.names2, ignore.case = F)
+pop.names2 <- gsub("MC.{1,2}","Mar C", pop.names2, ignore.case = F)
+pop.names2 <- gsub("MC.{1,2}","Mar C", pop.names2, ignore.case = F)
+pop.names2 <- gsub("MC.{1,2}","Mar C", pop.names2, ignore.case = F)
+pop.names2 <- gsub("MC.{1,2}","Mar C", pop.names2, ignore.case = F)
+pop.names2 <- gsub("MC.{1,2}","Mar C", pop.names2, ignore.case = F)
+
 #extract sequencing batch info
 
 seq.batch <- substr(maf.inds$X1, 1,7)
 
-pca.with.depth <- cbind(b$scores, snp.depth)
-pca.with.pops<-cbind(pca.with.depth, pops)
-
 #various plots
 plot(maf.pcadapt,option="screeplot")
-plot(maf.pcadapt, option="scores", i=1, j=3)
+plot(maf.pcadapt, option="scores", i=1, j=2)
 plot(maf.pcadapt, option="manhattan")
 
 maf.pca.batch <- as.data.frame(cbind(maf.pcadapt$scores, seq.batch))
