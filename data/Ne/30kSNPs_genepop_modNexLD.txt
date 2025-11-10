@@ -1,0 +1,42 @@
+Output from NeEstimator v.2
+Starting time: Thu Sep 18 14:55:53 2025
+Input File: "30kSNPs_genepop_mod.txt"
+
+Number of Loci = 29403
+
+
+Mating Model: Random
+
+Lowest allele frequency used:    0.0500
+Up to 17 righmost characters can be shown for population names.
+-------------------------------------------------------------------------------------------------------------------------
+Population #   Samp  Weighted      #Indep.   r^2     Exp(r^2)       Ne^                 CIs for Ne^
+then by :Name  Size  H. Mean       Alleles            Sample                    Parametric       Jackknife Samp  (Eff.df)
+-------------------------------------------------------------------------------------------------------------------------
+1:_i7---UDP0    45     42.5   403515317  0.025037  0.025121    -3985.7  Infinite  Infinite     932.6  Infinite     25502
+2:_i7---UDP0    46     42.8   400586687  0.024968  0.024928     8487.3    7799.7    9306.5     524.4  Infinite     14071
+3:_i7---UDP0    33     30.5   389541783  0.035820  0.035892    -4651.9  Infinite  Infinite     497.1  Infinite     18596
+4:_i7---UDP0    33     31.3   393809122  0.034759  0.035042    -1181.6  Infinite  Infinite    2208.0  Infinite     50346
+5:_i7---UDP0    34     29.8   381950328  0.036991  0.036566      722.5     713.7     731.6     147.6  Infinite      4185
+6:_i7---UDP0    35     31.9   383733324  0.034043  0.034079    -9271.0  Infinite  Infinite     315.8  Infinite      7934
+7:_i7---UDP0    34     32.1   392409508  0.033893  0.034010    -2831.6  Infinite  Infinite     778.5  Infinite     30457
+8:_i7---UDP0    23     20.1   363048374  0.056692  0.056686    48822.1   21149.0  Infinite     122.5  Infinite      4305
+9:_i7---UDP0    36     33.5   393548882  0.032741  0.032401      978.8     965.8     992.2     282.8  Infinite     12406
+10:i7---UDP0    35     32.5   389864236  0.033516  0.033550    -9619.2  Infinite  Infinite     282.4  Infinite      6255
+11:i7---UDP0    23     21.8   380518128  0.051087  0.052331     -249.3  Infinite  Infinite  Infinite  Infinite     39832
+12:i7---UDP0    34     31.3   390883202  0.034872  0.034861    30048.0   20855.4   53706.5     313.8  Infinite      8961
+13:i7---UDP0    43     38.6   389967224  0.027884  0.027686     1674.4    1642.0    1708.0     310.6  Infinite      8320
+14:i7---UDP0    33     30.3   383810318  0.035983  0.036099    -2887.3  Infinite  Infinite     591.8  Infinite     22336
+15:i7---UDP0    35     32.7   395384680  0.033494  0.033327     1984.9    1931.1    2041.8     318.0  Infinite     11742
+16:i7---UDP0    34     31.3   387286811  0.034882  0.034823     5626.2    5194.4    6135.0     323.8  Infinite     10491
+17:i7---UDP0    27     25.7   393245334  0.042902  0.043583     -453.7  Infinite  Infinite  Infinite  Infinite     45437
+18:i7---UDP0    35     33.4   397353082  0.032383  0.032628    -1365.5  Infinite  Infinite    1288.8  Infinite     32631
+19:i7---UDP0    14     12.6   343762761  0.096377  0.099573      -98.0  Infinite  Infinite      89.9  Infinite      1833
+20:i7---UDP0    45     41.9   396596499  0.025546  0.025485     5496.8    5192.3    5839.3     452.7  Infinite     11533
+21:i7---UDP0    27     25.4   392439464  0.043740  0.044066     -946.1  Infinite  Infinite     435.4  Infinite     14328
+22:i7---UDP0    20     16.6   350194122  0.069245  0.069665     -733.6  Infinite  Infinite     176.7  Infinite      8364
+23:i7---UDP0    31     23.0   332062186  0.046707  0.046539     1830.6    1756.3    1911.4     136.5  Infinite      4211
+24:i7---UDP0    35     28.0   347406729  0.038092  0.038085    43436.4   24145.0  216433.2     255.1  Infinite      8218
+25:i7---UDP0    35     30.9   370909283  0.034865  0.035019    -2177.2  Infinite  Infinite    1119.6  Infinite     46932
+26:i7---UDP0    33     29.7   377813636  0.036579  0.036736    -1970.0  Infinite  Infinite     617.0  Infinite     24666
+27:i7---UDP0    35     31.3   377168084  0.034581  0.034593   -26563.0  Infinite  Infinite     415.7  Infinite     14485

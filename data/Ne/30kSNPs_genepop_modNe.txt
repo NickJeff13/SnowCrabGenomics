@@ -1,0 +1,1694 @@
+Output from NeEstimator v.2
+Starting time: Thu Sep 18 14:55:53 2025
+Input File: "30kSNPs_genepop_mod.txt"
+
+Number of Loci = 29403
+
+Non-polymorphic loci:  2410,  4945, 10182, 25858, 25908, 28669
+Total non-polymorphic = 6
+
+LD mating model: Random
+
+Population     1 [NS.1780.003.UDP0195_i7---UDP0]  (Number of Individuals = 45)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       42.5        42.5        42.5        42.5
+Independent Comparisons =  403515317   430388468   432034806   432034806
+OverAll r^2 =                 0.025037    0.025057    0.025061    0.025061
+Expected r^2 Sample =         0.025121    0.025149    0.025153    0.025153
+Estimated Ne^ =               Infinite    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                  Infinite    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+* JackKnife on Samples           932.6       973.6       974.1       974.1
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       43.7        43.7        43.7        43.7 
+Independent Alleles =          28461       29347       29397       29397  
+Weighted Mean D =              0.31603     0.30740     0.30689     0.30689
+Estimated Neb^  =                  2.0         2.0         2.0         2.0
+
+95% CIs for Nb:
+* Parametric                       1.9         2.0         2.0         2.0
+                                   2.0         2.0         2.0         2.0
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           43.7
+OverAll f1^    =                                                   0.08531
+Estimated Neb^ =                                                       5.9
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    5.7
+                                                                       6.1
+**************************************************************************
+
+Time: Fri Sep 19 19:19:21 2025
+
+Non-polymorphic loci:  3213,  4043,  6751,  6833,  8716, 11729, 18785, 19124,
+        26928, 28464
+Total non-polymorphic = 10
+
+
+Population     2 [NS.1780.003.UDP0241_i7---UDP0]  (Number of Individuals = 46)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       42.8        42.7        42.7        42.7
+Independent Comparisons =  400586687   429769912   431895605   431895605
+OverAll r^2 =                 0.024968    0.024990    0.024993    0.024993
+Expected r^2 Sample =         0.024928    0.024969    0.024973    0.024973
+Estimated Ne^ =                 8487.3     15491.2     16652.8     16652.8
+
+95% CIs for Ne^
+* Parametric                    7799.7     13408.0     14275.7     14275.7
+                                9306.5     18341.2     19984.2     19984.2
+
+* JackKnife on Samples           524.4       545.9       547.4       547.4
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       44.3        44.3        44.3        44.3 
+Independent Alleles =          28376       29329       29393       29393  
+Weighted Mean D =              0.30197     0.29312     0.29249     0.29249
+Estimated Neb^  =                  2.0         2.1         2.1         2.1
+
+95% CIs for Nb:
+* Parametric                       2.0         2.1         2.1         2.1
+                                   2.1         2.1         2.1         2.1
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           44.3
+OverAll f1^    =                                                   0.12897
+Estimated Neb^ =                                                       3.9
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    3.8
+                                                                       4.0
+**************************************************************************
+
+Time: Sun Sep 21 00:50:31 2025
+
+Non-polymorphic loci:   214,   322,   785,  1143,  1746,  2284,  2524,  3457,
+         4049,  4879,  5251,  5832,  6091,  7675,  7712,  7726,  7804,  7969,
+         9323, 10146, 10409, 10510, 10616, 11034, 11036, 11178, 12659, 13629,
+        13767, 13894, 14372, 15686, 16153, 16462, 16860, 16897, 17027, 18333,
+        20649, 20707, 21102, 21264, 21360, 21556, 21762, 22462, 23252, 23283,
+        23844, 28240, 28329, 28368, 29297
+Total non-polymorphic = 53
+
+
+Population     3 [NS.1780.004.UDP0193_i7---UDP0]  (Number of Individuals = 33)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       30.5        30.5        30.4        30.4
+Independent Comparisons =  389541783   423421846   430454160   430454160
+OverAll r^2 =                 0.035820    0.035828    0.035844    0.035844
+Expected r^2 Sample =         0.035892    0.035927    0.035948    0.035948
+Estimated Ne^ =               Infinite    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                  Infinite    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+* JackKnife on Samples           497.1       515.3       514.8       514.8
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       31.7        31.7        31.7        31.7 
+Independent Alleles =          27981       29133       29350       29350  
+Weighted Mean D =              0.29745     0.28668     0.28459     0.28459
+Estimated Neb^  =                  2.1         2.1         2.1         2.1
+
+95% CIs for Nb:
+* Parametric                       2.1         2.1         2.1         2.1
+                                   2.1         2.2         2.2         2.2
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           31.7
+OverAll f1^    =                                                   0.16310
+Estimated Neb^ =                                                       3.1
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    3.0
+                                                                       3.2
+**************************************************************************
+
+Time: Sun Sep 21 15:14:25 2025
+
+Non-polymorphic loci:   903,  2439,  3875,  6378,  7726,  7874,  7994,  8211,
+         8493,  8969,  9244,  9526, 12065, 12070, 12107, 13130, 13444, 13518,
+        13681, 13963, 14065, 15397, 16045, 16502, 18636, 19005, 19806, 20957,
+        21363, 21639, 23414, 25695, 28518
+Total non-polymorphic = 33
+
+
+Population     4 [NS.1780.004.UDP0228_i7---UDP0]  (Number of Individuals = 33)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       31.3        31.2        31.2        31.2
+Independent Comparisons =  393809122   425016012   431124052   431124052
+OverAll r^2 =                 0.034759    0.034775    0.034790    0.034790
+Expected r^2 Sample =         0.035042    0.035071    0.035087    0.035087
+Estimated Ne^ =               Infinite    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                  Infinite    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+* JackKnife on Samples          2208.0      2474.8      2448.5      2448.5
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       32.1        32.1        32.1        32.1 
+Independent Alleles =          28112       29177       29370       29370  
+Weighted Mean D =              0.31755     0.30691     0.30492     0.30492
+Estimated Neb^  =                  2.0         2.0         2.0         2.0
+
+95% CIs for Nb:
+* Parametric                       1.9         2.0         2.0         2.0
+                                   2.0         2.0         2.0         2.0
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           32.1
+OverAll f1^    =                                                   0.15388
+Estimated Neb^ =                                                       3.2
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    3.1
+                                                                       3.4
+**************************************************************************
+
+Time: Mon Sep 22 07:10:17 2025
+
+Non-polymorphic loci:    51,  1113,  1277,  1582,  1897,  3033,  3480,  4397,
+         5341,  7001,  7424,  7804,  7954,  8544,  8644,  9193,  9816,  9906,
+        10201, 10310, 10388, 11136, 12000, 12217, 13783, 13926, 13996, 14085,
+        14263, 14803, 14826, 15596, 15810, 16514, 17449, 18284, 19197, 19375,
+        19379, 19990, 20084, 20176, 20630, 21532, 22954, 23279, 23288, 23884,
+        23974, 24154, 24639, 25533, 26994, 27130, 27209, 27257, 27947, 28113,
+        28762, 28876, 29211
+Total non-polymorphic = 61
+
+
+Population     5 [NS.1780.004.UDP0263_i7---UDP0]  (Number of Individuals = 34)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       29.8        29.7        29.7        29.7
+Independent Comparisons =  381950328   419825941   429958013   429958013
+OverAll r^2 =                 0.036991    0.036989    0.037007    0.037007
+Expected r^2 Sample =         0.036566    0.036631    0.036669    0.036669
+Estimated Ne^ =                  722.5       860.4       910.3       910.3
+
+95% CIs for Ne^
+* Parametric                     713.7       848.4       897.1       897.1
+                                 731.6       872.6       923.8       923.8
+
+* JackKnife on Samples           147.6       152.2       153.7       153.7
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       31.7        31.7        31.7        31.7 
+Independent Alleles =          27754       29027       29342       29342  
+Weighted Mean D =              0.26820     0.25751     0.25481     0.25481
+Estimated Neb^  =                  2.3         2.3         2.4         2.4
+
+95% CIs for Nb:
+* Parametric                       2.2         2.3         2.3         2.3
+                                   2.3         2.4         2.4         2.4
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           31.7
+OverAll f1^    =                                                   0.10863
+Estimated Neb^ =                                                       4.6
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    4.5
+                                                                       4.7
+**************************************************************************
+
+Time: Mon Sep 22 23:59:29 2025
+
+Non-polymorphic loci:   553,   598,  1851,  2417,  3437,  6213,  6548,  6713,
+         8594,  8957,  9632,  9781,  9873, 10173, 10867, 12368, 14033, 14511,
+        14601, 14762, 16514, 16684, 17027, 17977, 18636, 18712, 20552, 20809,
+        21329, 21666, 23024, 23248, 26309, 26751, 27392, 28125, 29043
+Total non-polymorphic = 37
+
+
+Population     6 [NS.1781.001.UDP0193_i7---UDP0]  (Number of Individuals = 35)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       31.9        31.8        31.8        31.8
+Independent Comparisons =  383733324   423428878   430875809   430875809
+OverAll r^2 =                 0.034043    0.034081    0.034105    0.034105
+Expected r^2 Sample =         0.034079    0.034148    0.034176    0.034176
+Estimated Ne^ =               Infinite    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                  Infinite    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+* JackKnife on Samples           315.8       331.1       329.8       329.8
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       33.4        33.3        33.3        33.3 
+Independent Alleles =          27802       29140       29366       29366  
+Weighted Mean D =              0.28428     0.27245     0.27040     0.27040
+Estimated Neb^  =                  2.1         2.2         2.2         2.2
+
+95% CIs for Nb:
+* Parametric                       2.1         2.2         2.2         2.2
+                                   2.2         2.2         2.3         2.3
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           33.3
+OverAll f1^    =                                                   0.17930
+Estimated Neb^ =                                                       2.8
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    2.7
+                                                                       2.9
+**************************************************************************
+
+Time: Tue Sep 23 18:56:57 2025
+
+Non-polymorphic loci:   125,  1568,  3147,  3202,  3456,  4945,  5923,  6368,
+         6596,  6621,  6932,  9131,  9364, 10317, 10496, 10629, 11045, 11130,
+        11265, 14596, 14776, 14779, 15403, 15957, 16343, 17019, 17039, 17285,
+        17999, 18673, 20897, 21115, 21383, 21441, 22387, 23248, 24177, 24403,
+        24419, 25451, 25654, 27050, 28622
+Total non-polymorphic = 43
+
+
+Population     7 [NS.1781.001.UDP0228_i7---UDP0]  (Number of Individuals = 34)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       32.1        32.1        32.1        32.1
+Independent Comparisons =  392409508   425221725   430837296   430837296
+OverAll r^2 =                 0.033893    0.033920    0.033931    0.033931
+Expected r^2 Sample =         0.034010    0.034047    0.034061    0.034061
+Estimated Ne^ =               Infinite    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                  Infinite    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+* JackKnife on Samples           778.5       816.4       821.6       821.6
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       33.0        33.0        33.0        33.0 
+Independent Alleles =          28075       29187       29360       29360  
+Weighted Mean D =              0.31134     0.30040     0.29865     0.29865
+Estimated Neb^  =                  2.0         2.0         2.1         2.1
+
+95% CIs for Nb:
+* Parametric                       2.0         2.0         2.0         2.0
+                                   2.0         2.1         2.1         2.1
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           33.0
+OverAll f1^    =                                                   0.16002
+Estimated Neb^ =                                                       3.1
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    3.0
+                                                                       3.2
+**************************************************************************
+
+Time: Wed Sep 24 14:30:05 2025
+
+Non-polymorphic loci:    48,   184,   320,   451,   761,   794,   800,   835,
+         1209,  1231,  1319,  1420,  1438,  1446,  1491,  1532,  1709,  2352,
+         2355,  2445,  2518,  2562,  2653,  2819,  2915,  2992,  3031,  3120,
+         3230,  3276,  3360,  3379,  3470,  3533,  3575,  3586,  3834,  3938,
+         4140,  4158,  4211,  4294,  4501,  4600,  4645,  4647,  4740,  4773,
+         4817,  4837,  4858,  5028,  5120,  5328,  5380,  5486,  5554,  5625,
+         5862,  5880,  5954,  5990,  6422,  6563,  6616,  6683,  6739,  6784,
+         6966,  7013,  7188,  7236,  7711,  7777,  7780,  7922,  8098,  8130,
+         8235,  8426,  8607,  8624,  8629,  8706,  8821,  8938,  9055,  9068,
+         9131,  9133,  9176,  9183,  9186,  9200,  9288,  9380,  9401,  9508,
+         9719,  9861, 10022, 10098, 10205, 10266, 10345, 10349, 10434, 10617,
+        10619, 11085, 11127, 11364, 11390, 11642, 11657, 11671, 11794, 12000,
+        12007, 12176, 12201, 12381, 12428, 12458, 12475, 12483, 12665, 12697,
+        12723, 12759, 12799, 12854, 13016, 13022, 13444, 13446, 13483, 13566,
+        13750, 13780, 13793, 14068, 14086, 14141, 14182, 14191, 14353, 14460,
+        14578, 14596, 14621, 14627, 14632, 14802, 14875, 14999, 15157, 15490,
+        15505, 15601, 15658, 15798, 15799, 15806, 15814, 15866, 16084, 16150,
+        16264, 16283, 16494, 16514, 16523, 16684, 16698, 16700, 16787, 16829,
+        16887, 16945, 17019, 17509, 17889, 17892, 17917, 18133, 18361, 18373,
+        18530, 18540, 18874, 18887, 18897, 18913, 18920, 19087, 19227, 19242,
+        19412, 19515, 19578, 19642, 19665, 19737, 19811, 19825, 19853, 20071,
+        20179, 20204, 20247, 20476, 20557, 20628, 20630, 20709, 20740, 20745,
+        20801, 20823, 20909, 20957, 21007, 21192, 21231, 21234, 21310, 21339,
+        21443, 21545, 21702, 21756, 21781, 21800, 21925, 21939, 22112, 22171,
+        22440, 22474, 22522, 22601, 22890, 22950, 22987, 23005, 23024, 23159,
+        23162, 23271, 23288, 23317, 23414, 23541, 23710, 23739, 23749, 23844,
+        23948, 24248, 24262, 24360, 24514, 24585, 24651, 24720, 25095, 25366,
+        25533, 25557, 25899, 25999, 26130, 26300, 26501, 26860, 27193, 27209,
+        27379, 27565, 27594, 27667, 27914, 27968, 28082, 28091, 28092, 28135,
+        28170, 28360, 28368, 28492, 28528, 28643, 28828, 28919, 29064, 29116,
+        29197, 29211, 29232, 29288, 29347
+Total non-polymorphic = 303
+
+
+Population     8 [NS.1781.001.UDP0265_i7---UDP0]  (Number of Individuals = 23)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       20.1        20.0        20.0        20.0
+Independent Comparisons =  363048374   421693179   421693179   421693179
+OverAll r^2 =                 0.056692    0.056744    0.056744    0.056744
+Expected r^2 Sample =         0.056686    0.056820    0.056820    0.056820
+Estimated Ne^ =                48822.1    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                   21149.0    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+* JackKnife on Samples           122.5       126.2       126.2       126.2
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       21.4        21.4        21.4        21.4 
+Independent Alleles =          27080       29100       29100       29100  
+Weighted Mean D =              0.25224     0.23565     0.23565     0.23565
+Estimated Neb^  =                  2.4         2.5         2.5         2.5
+
+95% CIs for Nb:
+* Parametric                       2.4         2.5         2.5         2.5
+                                   2.4         2.6         2.6         2.6
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           21.4
+OverAll f1^    =                                                   0.14436
+Estimated Neb^ =                                                       3.5
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    3.4
+                                                                       3.6
+**************************************************************************
+
+Time: Wed Sep 24 22:19:28 2025
+
+Non-polymorphic loci:   154,   470,  1611,  2694,  6709,  7298,  7381,  8644,
+        11761, 12287, 12483, 14419, 14564, 14721, 15526, 16148, 17655, 18540,
+        19755, 21762, 22950, 23281, 25608, 25654, 27859, 28161, 28907
+Total non-polymorphic = 27
+
+
+Population     9 [NS.1781.002.UDP0193_i7---UDP0]  (Number of Individuals = 36)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       33.5        33.5        33.4        33.4
+Independent Comparisons =  393548882   426430899   431316433   431316433
+OverAll r^2 =                 0.032741    0.032755    0.032763    0.032763
+Expected r^2 Sample =         0.032401    0.032460    0.032475    0.032475
+Estimated Ne^ =                  978.8      1126.9      1156.2      1156.2
+
+95% CIs for Ne^
+* Parametric                     965.8      1110.3      1138.9      1138.9
+                                 992.2      1144.0      1174.1      1174.1
+
+* JackKnife on Samples           282.8       297.6       299.3       299.3
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       34.7        34.7        34.7        34.7 
+Independent Alleles =          28144       29229       29376       29376  
+Weighted Mean D =              0.30697     0.29655     0.29510     0.29510
+Estimated Neb^  =                  2.0         2.1         2.1         2.1
+
+95% CIs for Nb:
+* Parametric                       2.0         2.1         2.1         2.1
+                                   2.0         2.1         2.1         2.1
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           34.7
+OverAll f1^    =                                                   0.15934
+Estimated Neb^ =                                                       3.1
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    3.0
+                                                                       3.2
+**************************************************************************
+
+Time: Thu Sep 25 22:27:43 2025
+
+Non-polymorphic loci:   152,  1188,  1505,  1882,  2416,  2507,  2524,  2819,
+         3763,  5621,  5683,  6048,  7097,  7755,  7957,  8026,  8283,  9866,
+        10024, 10361, 10533, 12296, 13894, 14841, 14874, 15492, 15853, 15867,
+        16077, 16879, 17472, 17725, 19789, 20693, 22909, 23288, 23802, 24205,
+        25338, 25530, 26146, 26653, 28126, 28312, 29211
+Total non-polymorphic = 45
+
+
+Population    10 [NS.1781.002.UDP0233_i7---UDP0]  (Number of Individuals = 35)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       32.5        32.4        32.4        32.4
+Independent Comparisons =  389864236   425593173   430778998   430778998
+OverAll r^2 =                 0.033516    0.033534    0.033542    0.033542
+Expected r^2 Sample =         0.033550    0.033604    0.033618    0.033618
+Estimated Ne^ =               Infinite    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                  Infinite    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+* JackKnife on Samples           282.4       298.3       298.6       298.6
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       33.7        33.6        33.6        33.6 
+Independent Alleles =          28001       29205       29358       29358  
+Weighted Mean D =              0.30359     0.29216     0.29066     0.29066
+Estimated Neb^  =                  2.0         2.1         2.1         2.1
+
+95% CIs for Nb:
+* Parametric                       2.0         2.1         2.1         2.1
+                                   2.0         2.1         2.1         2.1
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           33.6
+OverAll f1^    =                                                   0.17238
+Estimated Neb^ =                                                       2.9
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    2.8
+                                                                       3.0
+**************************************************************************
+
+Time: Fri Sep 26 21:27:58 2025
+
+Non-polymorphic loci:   472,   626,   938,   972,  1047,  1090,  1092,  1099,
+         1143,  1438,  1746,  1804,  2164,  2428,  2926,  3095,  3147,  3170,
+         3325,  3491,  3748,  3770,  4201,  4246,  4879,  4910,  5117,  5126,
+         5298,  5887,  5972,  6022,  6252,  6607,  6615,  7440,  7500,  7675,
+         8092,  8850,  8930,  9058,  9448,  9732,  9831, 10183, 10218, 10616,
+        10846, 11298, 11319, 11494, 11581, 12192, 12255, 12327, 12567, 12801,
+        13079, 13253, 13331, 13457, 13458, 13507, 13533, 13728, 13794, 13798,
+        13833, 14080, 14085, 14294, 14372, 14510, 14892, 15104, 15216, 15511,
+        15613, 15706, 16465, 16829, 17159, 17838, 18002, 18245, 18718, 18900,
+        19081, 19089, 19129, 19217, 19546, 19795, 19834, 20848, 21007, 21082,
+        21298, 21422, 21504, 21546, 22077, 22140, 22166, 22214, 22596, 22971,
+        23316, 23445, 23680, 23922, 24032, 24048, 24099, 24121, 24367, 24952,
+        25096, 25478, 26067, 26190, 26288, 26925, 27209, 27268, 27402, 27440,
+        28074, 28170, 28411, 28656, 28669, 28871, 29377
+Total non-polymorphic = 135
+
+
+Population    11 [NS.1781.002.UDP0264_i7---UDP0]  (Number of Individuals = 23)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       21.8        21.8        21.8        21.8
+Independent Comparisons =  380518128   427840709   427840709   427840709
+OverAll r^2 =                 0.051087    0.051200    0.051200    0.051200
+Expected r^2 Sample =         0.052331    0.052414    0.052414    0.052414
+Estimated Ne^ =               Infinite    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                  Infinite    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+* JackKnife on Samples        Infinite    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       22.4        22.4        22.4        22.4 
+Independent Alleles =          27651       29268       29268       29268  
+Weighted Mean D =              0.31346     0.29707     0.29707     0.29707
+Estimated Neb^  =                  2.0         2.1         2.1         2.1
+
+95% CIs for Nb:
+* Parametric                       2.0         2.1         2.1         2.1
+                                   2.0         2.1         2.1         2.1
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           22.4
+OverAll f1^    =                                                   0.13967
+Estimated Neb^ =                                                       3.6
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    3.5
+                                                                       3.7
+**************************************************************************
+
+Time: Sat Sep 27 07:05:51 2025
+
+Non-polymorphic loci:   405,   535,  3646,  6118,  6250,  6685,  6899,  6936,
+         8957,  8969,  9331,  9711, 10342, 11544, 15233, 15424, 17820, 18874,
+        19078, 19852, 20078, 20195, 20205, 20221, 20949, 22200, 25371, 25467,
+        25660, 25668, 25763, 26103, 26338, 27265, 27342, 27547, 27751, 28459,
+        28947
+Total non-polymorphic = 39
+
+
+Population    12 [NS.1781.003.UDP0193_i7---UDP0]  (Number of Individuals = 34)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       31.3        31.3        31.2        31.2
+Independent Comparisons =  390883202   424060760   430865952   430865952
+OverAll r^2 =                 0.034872    0.034875    0.034889    0.034889
+Expected r^2 Sample =         0.034861    0.034901    0.034921    0.034921
+Estimated Ne^ =                30048.0    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                   20855.4    Infinite    Infinite    Infinite
+                               53706.5    Infinite    Infinite    Infinite
+
+* JackKnife on Samples           313.8       330.2       330.3       330.3
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       32.6        32.6        32.6        32.6 
+Independent Alleles =          28037       29155       29364       29364  
+Weighted Mean D =              0.29644     0.28599     0.28399     0.28399
+Estimated Neb^  =                  2.1         2.1         2.2         2.2
+
+95% CIs for Nb:
+* Parametric                       2.1         2.1         2.1         2.1
+                                   2.1         2.2         2.2         2.2
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           32.6
+OverAll f1^    =                                                   0.17495
+Estimated Neb^ =                                                       2.9
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    2.8
+                                                                       3.0
+**************************************************************************
+
+Time: Sun Sep 28 04:47:31 2025
+
+Non-polymorphic loci:  2694,  3334,  4052,  5117,  8859, 11551, 12799, 14263,
+        14318, 16413, 16523, 17178, 19515, 19604, 19965, 25833, 27526, 28940,
+        29148, 29373
+Total non-polymorphic = 20
+
+
+Population    13 [NS.1781.003.UDP0228_i7---UDP0]  (Number of Individuals = 43)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       38.6        38.5        38.5        38.5
+Independent Comparisons =  389967224   427221447   431456631   431456631
+OverAll r^2 =                 0.027884    0.027896    0.027910    0.027910
+Expected r^2 Sample =         0.027686    0.027736    0.027751    0.027751
+Estimated Ne^ =                 1674.4      2073.7      2090.4      2090.4
+
+95% CIs for Ne^
+* Parametric                    1642.0      2026.4      2042.6      2042.6
+                                1708.0      2123.2      2140.5      2140.5
+
+* JackKnife on Samples           310.6       321.3       320.2       320.2
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       40.7        40.6        40.6        40.6 
+Independent Alleles =          28022       29261       29383       29383  
+Weighted Mean D =              0.27566     0.26517     0.26409     0.26409
+Estimated Neb^  =                  2.2         2.3         2.3         2.3
+
+95% CIs for Nb:
+* Parametric                       2.2         2.3         2.3         2.3
+                                   2.2         2.3         2.3         2.3
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           40.6
+OverAll f1^    =                                                   0.10266
+Estimated Neb^ =                                                       4.9
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    4.7
+                                                                       5.0
+**************************************************************************
+
+Time: Mon Sep 29 16:44:53 2025
+
+Non-polymorphic loci:    57,   871,  1984,  2010,  2111,  2867,  2933,  3170,
+         3459,  4799,  4918,  5265,  5725,  6241,  6287,  6454,  6784,  7373,
+         7424,  8426,  8690,  9193,  9831,  9902, 10154, 10274, 10838, 11382,
+        11724, 12401, 12697, 12784, 12968, 13108, 13177, 13554, 13794, 14068,
+        14288, 14374, 14529, 14563, 15254, 15460, 15492, 16233, 16324, 16435,
+        16730, 17059, 18192, 18212, 18394, 19281, 19560, 19989, 21730, 22072,
+        23005, 23190, 23285, 23316, 23737, 23945, 24124, 24759, 24952, 25171,
+        25459, 25513, 25958, 26243, 26533, 27879, 28032, 28701, 28754, 28755,
+        28777, 28828
+Total non-polymorphic = 80
+
+
+Population    14 [NS.1781.004.UDP0097_i7---UDP0]  (Number of Individuals = 33)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       30.3        30.2        30.2        30.2
+Independent Comparisons =  383810318   420167499   429544888   429544888
+OverAll r^2 =                 0.035983    0.036017    0.036046    0.036046
+Expected r^2 Sample =         0.036099    0.036153    0.036185    0.036185
+Estimated Ne^ =               Infinite    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                  Infinite    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+* JackKnife on Samples           591.8       601.3       594.1       594.1
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       31.6        31.6        31.6        31.6 
+Independent Alleles =          27793       29025       29323       29323  
+Weighted Mean D =              0.28816     0.27704     0.27427     0.27427
+Estimated Neb^  =                  2.1         2.2         2.2         2.2
+
+95% CIs for Nb:
+* Parametric                       2.1         2.2         2.2         2.2
+                                   2.1         2.2         2.2         2.2
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           31.6
+OverAll f1^    =                                                   0.17689
+Estimated Neb^ =                                                       2.8
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    2.7
+                                                                       2.9
+**************************************************************************
+
+Time: Tue Sep 30 15:53:25 2025
+
+Non-polymorphic loci:  2937,  3212,  4266,  5159,  6440,  8283,  9134, 10901,
+        12066, 13167, 14120, 14336, 14779, 14970, 15111, 16454, 19081, 20552,
+        20883, 21987, 22730, 23399, 23727, 24137, 25654, 26305, 28464, 28794,
+        29377
+Total non-polymorphic = 29
+
+
+Population    15 [NS.1781.004.UDP0132_i7---UDP0]  (Number of Individuals = 35)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       32.7        32.6        32.6        32.6
+Independent Comparisons =  395384680   426375863   431251073   431251073
+OverAll r^2 =                 0.033494    0.033495    0.033503    0.033503
+Expected r^2 Sample =         0.033327    0.033371    0.033383    0.033383
+Estimated Ne^ =                 1984.9      2685.8      2786.4      2786.4
+
+95% CIs for Ne^
+* Parametric                    1931.1      2591.7      2685.9      2685.9
+                                2041.8      2786.8      2894.7      2894.7
+
+* JackKnife on Samples           318.0       337.9       339.3       339.3
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       33.8        33.8        33.8        33.8 
+Independent Alleles =          28189       29226       29374       29374  
+Weighted Mean D =              0.31526     0.30506     0.30354     0.30354
+Estimated Neb^  =                  2.0         2.0         2.0         2.0
+
+95% CIs for Nb:
+* Parametric                       2.0         2.0         2.0         2.0
+                                   2.0         2.0         2.0         2.0
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           33.8
+OverAll f1^    =                                                   0.12615
+Estimated Neb^ =                                                       4.0
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    3.8
+                                                                       4.1
+**************************************************************************
+
+Time: Wed Oct  1 20:09:44 2025
+
+Non-polymorphic loci:   479,  1709,  3170,  3359,  3507,  4052,  4299,  4454,
+         5017,  5406,  5683,  6737,  8615, 11362, 11689, 13136, 13570, 13840,
+        15699, 16259, 17138, 17875, 17971, 18192, 19913, 21880, 22205, 22785,
+        22998, 23316, 23382, 23814, 24640, 25763, 25852, 25959, 27696, 27888,
+        28171, 29361
+Total non-polymorphic = 40
+
+
+Population    16 [NS.1781.004.UDP0167_i7---UDP0]  (Number of Individuals = 34)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       31.3        31.3        31.2        31.2
+Independent Comparisons =  387286811   423632078   430833543   430833543
+OverAll r^2 =                 0.034882    0.034904    0.034918    0.034918
+Expected r^2 Sample =         0.034823    0.034879    0.034901    0.034901
+Estimated Ne^ =                 5626.2     13277.2     19639.8     19639.8
+
+95% CIs for Ne^
+* Parametric                    5194.4     11182.7     15406.7     15406.7
+                                6135.0     16341.0     27071.6     27071.6
+
+* JackKnife on Samples           323.8       341.9       345.4       345.4
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       32.6        32.6        32.6        32.6 
+Independent Alleles =          27908       29143       29363       29363  
+Weighted Mean D =              0.29562     0.28422     0.28213     0.28213
+Estimated Neb^  =                  2.1         2.1         2.2         2.2
+
+95% CIs for Nb:
+* Parametric                       2.1         2.1         2.1         2.1
+                                   2.1         2.2         2.2         2.2
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           32.6
+OverAll f1^    =                                                   0.15790
+Estimated Neb^ =                                                       3.2
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    3.1
+                                                                       3.3
+**************************************************************************
+
+Time: Thu Oct  2 23:15:51 2025
+
+Non-polymorphic loci:   915,  1221,  1299,  1738,  2494,  2511,  2512,  2914,
+         3120,  3655,  3752,  3805,  4029,  4155,  4879,  5342,  5854,  6136,
+         6148,  6240,  6833,  6912,  7168,  8598,  8736,  8882,  8893,  9048,
+         9402,  9531,  9757,  9801, 10017, 10146, 10737, 11094, 11362, 11562,
+        12523, 12713, 12802, 12953, 13207, 13298, 13457, 13945, 13999, 14529,
+        14596, 15031, 15038, 15144, 15395, 15700, 16086, 16464, 16471, 16665,
+        17047, 17137, 17160, 17279, 17308, 17342, 17427, 17938, 18082, 18583,
+        18900, 19231, 19351, 20002, 20219, 20949, 21363, 21443, 21928, 22306,
+        22387, 22659, 22728, 23005, 23187, 23785, 23820, 24026, 24926, 25513,
+        25827, 25899, 25999, 26060, 26182, 26300, 26997, 27731, 28157, 28383,
+        28669, 28836, 28837, 29008
+Total non-polymorphic = 102
+
+
+Population    17 [NS.1789.002.UDP0107_i7---UDP0]  (Number of Individuals = 27)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       25.7        25.6        25.6        25.6
+Independent Comparisons =  393245334   422476522   429010892   429010892
+OverAll r^2 =                 0.042902    0.042993    0.042986    0.042986
+Expected r^2 Sample =         0.043583    0.043680    0.043672    0.043672
+Estimated Ne^ =               Infinite    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                  Infinite    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+* JackKnife on Samples        Infinite    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       26.3        26.3        26.3        26.3 
+Independent Alleles =          28125       29077       29301       29301  
+Weighted Mean D =              0.31685     0.30718     0.30482     0.30482
+Estimated Neb^  =                  2.0         2.0         2.0         2.0
+
+95% CIs for Nb:
+* Parametric                       1.9         2.0         2.0         2.0
+                                   2.0         2.0         2.0         2.0
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           26.3
+OverAll f1^    =                                                   0.11198
+Estimated Neb^ =                                                       4.5
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    4.3
+                                                                       4.6
+**************************************************************************
+
+Time: Fri Oct  3 16:49:43 2025
+
+Non-polymorphic loci:   108,  1357,  2835,  3359,  6799,  7203,  7587,  9803,
+        10317, 11227, 12665, 12674, 13804, 15107, 15125, 15703, 18483, 19064,
+        21338, 22612, 23968, 24207, 24639, 26146, 28300
+Total non-polymorphic = 25
+
+
+Population    18 [NS.1789.002.UDP0142_i7---UDP0]  (Number of Individuals = 35)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       33.4        33.4        33.4        33.4
+Independent Comparisons =  397353082   426840262   431429319   431429319
+OverAll r^2 =                 0.032383    0.032414    0.032422    0.032422
+Expected r^2 Sample =         0.032628    0.032666    0.032677    0.032677
+Estimated Ne^ =               Infinite    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                  Infinite    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+* JackKnife on Samples          1288.8      1373.1      1395.5      1395.5
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       34.2        34.2        34.2        34.2 
+Independent Alleles =          28251       29234       29378       29378  
+Weighted Mean D =              0.32480     0.31475     0.31323     0.31323
+Estimated Neb^  =                  1.9         2.0         2.0         2.0
+
+95% CIs for Nb:
+* Parametric                       1.9         2.0         2.0         2.0
+                                   1.9         2.0         2.0         2.0
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           34.2
+OverAll f1^    =                                                   0.16521
+Estimated Neb^ =                                                       3.0
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    2.9
+                                                                       3.1
+**************************************************************************
+
+Time: Sat Oct  4 23:58:24 2025
+
+Non-polymorphic loci:    59,   129,   154,   216,   237,   281,   332,   363,
+          461,   465,   470,   535,   540,   603,   617,   622,   681,   741,
+          765,   772,   784,   793,   794,   798,   819,   835,   865,   883,
+          908,   940,   953,   959,  1042,  1047,  1048,  1143,  1191,  1231,
+         1244,  1300,  1348,  1379,  1402,  1441,  1458,  1504,  1532,  1533,
+         1538,  1568,  1601,  1660,  1665,  1681,  1702,  1709,  1710,  1757,
+         1772,  1820,  1826,  1892,  1917,  1925,  1928,  1935,  1950,  1952,
+         1964,  1972,  2010,  2058,  2111,  2127,  2129,  2150,  2199,  2247,
+         2292,  2336,  2367,  2432,  2476,  2482,  2511,  2512,  2518,  2592,
+         2657,  2749,  2862,  2906,  2973,  2994,  3003,  3056,  3069,  3095,
+         3107,  3133,  3139,  3146,  3170,  3233,  3315,  3321,  3334,  3371,
+         3386,  3434,  3446,  3491,  3507,  3526,  3646,  3655,  3663,  3713,
+         3734,  3735,  3748,  3756,  3810,  3933,  4049,  4072,  4142,  4158,
+         4160,  4161,  4189,  4218,  4285,  4382,  4404,  4519,  4550,  4552,
+         4611,  4626,  4637,  4638,  4729,  4783,  4785,  4857,  4888,  4891,
+         4900,  4918,  5010,  5025,  5029,  5056,  5100,  5125,  5126,  5128,
+         5133,  5146,  5152,  5268,  5362,  5367,  5380,  5404,  5408,  5461,
+         5551,  5625,  5647,  5800,  5801,  5831,  5904,  5934,  5970,  5991,
+         6220,  6226,  6237,  6242,  6286,  6318,  6332,  6357,  6358,  6440,
+         6454,  6455,  6545,  6564,  6587,  6616,  6631,  6650,  6658,  6685,
+         6734,  6743,  6803,  6832,  6906,  6932,  6936,  7064,  7127,  7149,
+         7203,  7225,  7259,  7269,  7298,  7318,  7431,  7461,  7500,  7515,
+         7553,  7578,  7639,  7716,  7764,  7788,  7870,  7896,  7922,  7928,
+         7961,  7969,  8026,  8039,  8068,  8162,  8225,  8273,  8278,  8337,
+         8399,  8416,  8484,  8493,  8498,  8543,  8585,  8602,  8624,  8689,
+         8692,  8693,  8799,  8817,  8852,  8853,  8867,  8893,  8930,  8931,
+         8938,  8965,  9028,  9055,  9058,  9068,  9172,  9193,  9306,  9311,
+         9349,  9353,  9369,  9386,  9399,  9412,  9435,  9488,  9526,  9528,
+         9535,  9632,  9645,  9675,  9680,  9699,  9712,  9734,  9772,  9791,
+         9861,  9868,  9884,  9900,  9942, 10022, 10061, 10081, 10089, 10130,
+        10138, 10167, 10179, 10225, 10266, 10307, 10342, 10414, 10509, 10510,
+        10530, 10572, 10606, 10619, 10629, 10653, 10741, 10774, 10846, 10867,
+        10871, 10900, 10942, 10967, 10983, 10993, 11002, 11019, 11045, 11062,
+        11068, 11071, 11085, 11094, 11136, 11141, 11142, 11173, 11174, 11191,
+        11254, 11300, 11328, 11362, 11403, 11513, 11552, 11566, 11576, 11591,
+        11602, 11606, 11623, 11679, 11721, 11724, 11779, 11789, 11794, 11825,
+        11840, 11878, 11881, 11975, 11994, 12007, 12043, 12066, 12124, 12136,
+        12168, 12225, 12274, 12381, 12472, 12479, 12483, 12511, 12521, 12537,
+        12606, 12628, 12631, 12656, 12674, 12685, 12712, 12718, 12742, 12758,
+        12772, 12799, 12802, 12892, 12952, 12968, 13013, 13019, 13049, 13076,
+        13117, 13125, 13165, 13254, 13272, 13292, 13355, 13357, 13389, 13440,
+        13516, 13555, 13573, 13588, 13599, 13656, 13669, 13715, 13728, 13741,
+        13750, 13835, 13872, 13894, 13962, 13972, 13986, 13987, 14026, 14086,
+        14087, 14102, 14120, 14125, 14141, 14183, 14205, 14208, 14234, 14318,
+        14338, 14386, 14387, 14445, 14462, 14484, 14511, 14517, 14530, 14563,
+        14565, 14578, 14590, 14594, 14601, 14675, 14733, 14776, 14779, 14783,
+        14940, 14975, 15013, 15031, 15037, 15038, 15040, 15064, 15144, 15174,
+        15256, 15286, 15287, 15311, 15397, 15407, 15415, 15429, 15460, 15482,
+        15485, 15494, 15495, 15509, 15512, 15515, 15689, 15699, 15700, 15702,
+        15703, 15709, 15722, 15853, 15854, 15862, 15967, 16015, 16024, 16098,
+        16112, 16116, 16153, 16174, 16209, 16213, 16217, 16233, 16234, 16267,
+        16269, 16318, 16319, 16330, 16332, 16375, 16377, 16435, 16455, 16486,
+        16509, 16605, 16661, 16662, 16710, 16718, 16730, 16812, 16945, 16949,
+        16967, 16984, 16998, 17007, 17019, 17059, 17134, 17148, 17159, 17163,
+        17182, 17225, 17275, 17364, 17425, 17455, 17473, 17484, 17499, 17573,
+        17605, 17657, 17741, 17774, 17775, 17884, 17912, 17938, 17978, 18020,
+        18082, 18093, 18129, 18144, 18145, 18154, 18182, 18192, 18242, 18248,
+        18304, 18419, 18542, 18548, 18713, 18728, 18756, 18880, 18887, 18896,
+        18908, 18929, 18940, 18969, 19028, 19052, 19124, 19139, 19198, 19208,
+        19227, 19302, 19320, 19346, 19379, 19404, 19595, 19612, 19616, 19622,
+        19671, 19722, 19742, 19749, 19752, 19755, 19770, 19794, 19795, 19797,
+        19806, 19817, 19876, 19911, 19914, 19954, 19964, 20001, 20011, 20031,
+        20061, 20137, 20229, 20230, 20248, 20290, 20295, 20509, 20601, 20630,
+        20648, 20658, 20661, 20673, 20709, 20711, 20719, 20724, 20799, 20825,
+        20839, 20909, 20938, 20957, 21004, 21039, 21056, 21133, 21145, 21209,
+        21386, 21405, 21408, 21443, 21455, 21462, 21523, 21541, 21552, 21554,
+        21639, 21695, 21699, 21703, 21724, 21762, 21794, 21859, 21910, 21922,
+        21925, 21938, 21981, 21988, 22008, 22034, 22041, 22046, 22072, 22083,
+        22196, 22214, 22237, 22240, 22282, 22319, 22324, 22358, 22373, 22387,
+        22428, 22440, 22447, 22468, 22475, 22522, 22547, 22557, 22587, 22595,
+        22624, 22659, 22668, 22705, 22717, 22740, 22744, 22765, 22784, 22785,
+        22794, 22883, 22886, 22888, 22924, 22931, 22935, 22945, 22954, 22971,
+        23059, 23121, 23159, 23178, 23190, 23240, 23263, 23279, 23281, 23282,
+        23286, 23316, 23317, 23388, 23580, 23634, 23659, 23675, 23696, 23702,
+        23711, 23713, 23776, 23790, 23814, 23817, 23820, 23851, 23855, 23891,
+        23892, 23940, 23975, 23984, 24026, 24028, 24093, 24108, 24182, 24204,
+        24218, 24275, 24280, 24301, 24370, 24383, 24388, 24403, 24410, 24419,
+        24425, 24445, 24472, 24476, 24512, 24598, 24627, 24630, 24639, 24640,
+        24651, 24662, 24667, 24668, 24683, 24695, 24789, 24793, 24797, 24824,
+        24856, 24863, 24866, 24868, 24870, 24897, 24920, 24926, 24952, 25033,
+        25037, 25039, 25084, 25093, 25149, 25179, 25211, 25229, 25243, 25254,
+        25289, 25347, 25371, 25384, 25468, 25533, 25537, 25594, 25611, 25654,
+        25660, 25672, 25741, 25758, 25802, 25850, 25858, 25860, 25901, 25932,
+        25952, 25958, 26054, 26074, 26094, 26104, 26140, 26154, 26171, 26215,
+        26257, 26266, 26274, 26296, 26318, 26341, 26369, 26435, 26461, 26514,
+        26520, 26534, 26552, 26577, 26586, 26627, 26629, 26674, 26750, 26775,
+        26794, 26819, 26845, 26893, 26894, 26898, 26924, 26977, 26994, 27035,
+        27076, 27090, 27106, 27111, 27150, 27156, 27161, 27185, 27193, 27232,
+        27338, 27373, 27412, 27413, 27445, 27447, 27565, 27686, 27704, 27727,
+        27737, 27740, 27786, 27859, 27869, 27907, 27947, 27959, 27996, 28000,
+        28090, 28180, 28207, 28221, 28237, 28242, 28312, 28360, 28381, 28452,
+        28479, 28498, 28499, 28532, 28555, 28582, 28589, 28608, 28629, 28637,
+        28643, 28727, 28776, 28798, 28815, 28836, 28850, 28861, 28907, 28965,
+        28987, 29011, 29018, 29069, 29091, 29150, 29155, 29197, 29216, 29254,
+        29288, 29292, 29297, 29336, 29353, 29364
+Total non-polymorphic = 944
+
+
+Population    19 [NS.1789.002.UDP0177_i7---UDP0]  (Number of Individuals = 14)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       12.6        12.5        12.5        12.5
+Independent Comparisons =  343762761   402239750   402239750   402239750
+OverAll r^2 =                 0.096377    0.096677    0.096677    0.096677
+Expected r^2 Sample =         0.099573    0.099996    0.099996    0.099996
+Estimated Ne^ =               Infinite    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                  Infinite    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+* JackKnife on Samples            89.9        99.8        99.8        99.8
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       13.2        13.2        13.2        13.2 
+Independent Alleles =          26398       28459       28459       28459  
+Weighted Mean D =              0.27009     0.25074     0.25074     0.25074
+Estimated Neb^  =                  2.2         2.4         2.4         2.4
+
+95% CIs for Nb:
+* Parametric                       2.2         2.4         2.4         2.4
+                                   2.3         2.4         2.4         2.4
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           13.2
+OverAll f1^    =                                                   0.11264
+Estimated Neb^ =                                                       4.4
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    4.3
+                                                                       4.6
+**************************************************************************
+
+Time: Sun Oct  5 03:41:35 2025
+
+Non-polymorphic loci:  1209,  2670,  3379,  3457,  4879,  9873, 10684, 14970,
+        19404, 22753, 28312
+Total non-polymorphic = 11
+
+
+Population    20 [NS.1792.004.UDP0193_i7---UDP0]  (Number of Individuals = 45)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       41.9        41.8        41.8        41.8
+Independent Comparisons =  396596499   429566504   431866786   431866786
+OverAll r^2 =                 0.025546    0.025561    0.025564    0.025564
+Expected r^2 Sample =         0.025485    0.025525    0.025530    0.025530
+Estimated Ne^ =                 5496.8      9227.9      9614.7      9614.7
+
+95% CIs for Ne^
+* Parametric                    5192.3      8429.4      8753.2      8753.2
+                                5839.3     10192.6     10664.1     10664.1
+
+* JackKnife on Samples           452.7       476.8       477.9       477.9
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       43.4        43.4        43.3        43.3 
+Independent Alleles =          28228       29324       29392       29392  
+Weighted Mean D =              0.30657     0.29620     0.29553     0.29553
+Estimated Neb^  =                  2.0         2.1         2.1         2.1
+
+95% CIs for Nb:
+* Parametric                       2.0         2.1         2.1         2.1
+                                   2.0         2.1         2.1         2.1
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           43.3
+OverAll f1^    =                                                   0.17534
+Estimated Neb^ =                                                       2.9
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    2.8
+                                                                       2.9
+**************************************************************************
+
+Time: Tue Oct  7 05:24:51 2025
+
+Non-polymorphic loci:    76,   213,   216,   461,   531,  1191,  1746,  1783,
+         1851,  2410,  2416,  2692,  3107,  3360,  3655,  3668,  4092,  4879,
+         4890,  4945,  5360,  5497,  5926,  6185,  6479,  6935,  6941,  7399,
+         7686,  8020,  8235,  8716,  9082,  9089,  9268,  9369,  9472, 10510,
+        11142, 11298, 11339, 11403, 11420, 12057, 12372, 12444, 12610, 13384,
+        13388, 13480, 13604, 13829, 14058, 14164, 15073, 15104, 15191, 15506,
+        15542, 15687, 15799, 15939, 16072, 16184, 16259, 16469, 16514, 16698,
+        16924, 17065, 17763, 18033, 18212, 18530, 18956, 19464, 19725, 19974,
+        20037, 20071, 20509, 20875, 20937, 22140, 22577, 23272, 23817, 23842,
+        24064, 24124, 24167, 25093, 25530, 25802, 27294, 27413, 27863, 27869,
+        27947, 28099, 28857, 29188
+Total non-polymorphic = 102
+
+
+Population    21 [NS.1792.004.UDP0289_i7---UDP0]  (Number of Individuals = 27)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       25.4        25.3        25.3        25.3
+Independent Comparisons =  392439464   422226092   428963614   428963614
+OverAll r^2 =                 0.043740    0.043822    0.043804    0.043804
+Expected r^2 Sample =         0.044066    0.044180    0.044170    0.044170
+Estimated Ne^ =               Infinite    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                  Infinite    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+* JackKnife on Samples           435.4       439.3       451.3       451.3
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       26.2        26.1        26.1        26.1 
+Independent Alleles =          28111       29069       29301       29301  
+Weighted Mean D =              0.30956     0.30004     0.29765     0.29765
+Estimated Neb^  =                  2.0         2.1         2.1         2.1
+
+95% CIs for Nb:
+* Parametric                       2.0         2.0         2.0         2.0
+                                   2.0         2.1         2.1         2.1
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           26.1
+OverAll f1^    =                                                   0.16743
+Estimated Neb^ =                                                       3.0
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    2.9
+                                                                       3.1
+**************************************************************************
+
+Time: Wed Oct  8 00:37:20 2025
+
+Non-polymorphic loci:    47,    57,   125,   148,   175,   214,   424,   431,
+          479,   570,   616,   650,   654,   732,   742,   750,   782,   948,
+          994,  1041,  1163,  1189,  1258,  1262,  1346,  1357,  1437,  1535,
+         1691,  1706,  1817,  1849,  1864,  1868,  1925,  1962,  1964,  1985,
+         2053,  2079,  2151,  2254,  2267,  2269,  2309,  2331,  2336,  2396,
+         2431,  2475,  2486,  2505,  2516,  2522,  2545,  2601,  2608,  2619,
+         2651,  2749,  2754,  2781,  2834,  2867,  2939,  3202,  3215,  3224,
+         3230,  3456,  3475,  3569,  3601,  3612,  3681,  3752,  3790,  3810,
+         3811,  3854,  3887,  3984,  4038,  4053,  4073,  4138,  4178,  4233,
+         4286,  4290,  4324,  4339,  4362,  4396,  4413,  4430,  4454,  4462,
+         4543,  4584,  4637,  4642,  4645,  4719,  4753,  4818,  4858,  4860,
+         4885,  4888,  4893,  4900,  4935,  5015,  5028,  5117,  5125,  5128,
+         5129,  5151,  5186,  5191,  5235,  5243,  5340,  5388,  5431,  5459,
+         5571,  5621,  5629,  5700,  5701,  5714,  5725,  5854,  5880,  5887,
+         5895,  5953,  5965,  5990,  6063,  6080,  6114,  6148,  6310,  6440,
+         6473,  6541,  6548,  6564,  6587,  6607,  6616,  6658,  6683,  6743,
+         6763,  6832,  6936,  6953,  7009,  7027,  7159,  7169,  7185,  7188,
+         7194,  7208,  7283,  7376,  7500,  7518,  7530,  7541,  7554,  7586,
+         7587,  7602,  7629,  7665,  7884,  7966,  7986,  8020,  8068,  8092,
+         8171,  8173,  8195,  8317,  8354,  8460,  8465,  8585,  8594,  8613,
+         8616,  8629,  8719,  8772,  8785,  8807,  8877,  8957,  8988,  8992,
+         9176,  9183,  9195,  9199,  9244,  9306,  9321,  9335,  9353,  9382,
+         9383,  9402,  9420,  9435,  9452,  9473,  9491,  9502,  9508,  9535,
+         9597,  9615,  9632,  9644,  9647,  9711,  9725,  9737,  9742,  9769,
+         9806,  9900, 10037, 10146, 10205, 10250, 10266, 10268, 10314, 10454,
+        10483, 10616, 10673, 10774, 10786, 10877, 10938, 10956, 10993, 11002,
+        11062, 11076, 11127, 11136, 11141, 11152, 11178, 11228, 11300, 11420,
+        11493, 11546, 11552, 11622, 11632, 11657, 11662, 11681, 11691, 11694,
+        11709, 11789, 11844, 11975, 12030, 12072, 12107, 12136, 12168, 12180,
+        12406, 12547, 12606, 12631, 12701, 12723, 12779, 12802, 12833, 12867,
+        12883, 12892, 12898, 12902, 12932, 13076, 13083, 13086, 13117, 13131,
+        13183, 13314, 13331, 13355, 13457, 13507, 13517, 13573, 13590, 13602,
+        13612, 13663, 13682, 13697, 13719, 13750, 13793, 13809, 13871, 13886,
+        13951, 13961, 13968, 13986, 13987, 13992, 14033, 14055, 14076, 14085,
+        14122, 14125, 14141, 14162, 14183, 14185, 14325, 14338, 14354, 14402,
+        14429, 14462, 14472, 14484, 14541, 14563, 14643, 14762, 14779, 14852,
+        14892, 14999, 15016, 15069, 15144, 15176, 15216, 15307, 15316, 15317,
+        15318, 15371, 15389, 15398, 15485, 15512, 15593, 15699, 15783, 15798,
+        15800, 15866, 15867, 15885, 15892, 15957, 16057, 16067, 16075, 16077,
+        16089, 16161, 16224, 16268, 16280, 16301, 16332, 16345, 16383, 16410,
+        16416, 16458, 16475, 16488, 16517, 16521, 16528, 16533, 16698, 16700,
+        16703, 16718, 16747, 16749, 16763, 16787, 16816, 16817, 16879, 16921,
+        16939, 16949, 16996, 17018, 17095, 17159, 17196, 17225, 17268, 17279,
+        17301, 17363, 17422, 17470, 17472, 17660, 17663, 17803, 17884, 17912,
+        17972, 18002, 18133, 18134, 18142, 18147, 18245, 18250, 18349, 18350,
+        18371, 18373, 18379, 18382, 18432, 18463, 18506, 18592, 18613, 18681,
+        18716, 18728, 18880, 18887, 18917, 18959, 19012, 19064, 19086, 19210,
+        19214, 19288, 19343, 19415, 19566, 19581, 19612, 19653, 19672, 19698,
+        19749, 19752, 19801, 19817, 19825, 19852, 19914, 19942, 19950, 19979,
+        20057, 20143, 20195, 20285, 20289, 20322, 20347, 20366, 20379, 20478,
+        20552, 20583, 20607, 20617, 20691, 20693, 20719, 20724, 20740, 20777,
+        20825, 20898, 20903, 21145, 21192, 21209, 21279, 21287, 21386, 21401,
+        21418, 21504, 21541, 21658, 21666, 21699, 21721, 21900, 21938, 22034,
+        22050, 22140, 22214, 22226, 22237, 22306, 22318, 22322, 22389, 22524,
+        22577, 22623, 22657, 22663, 22666, 22722, 22744, 22753, 22925, 22926,
+        23005, 23038, 23059, 23104, 23106, 23110, 23158, 23169, 23190, 23235,
+        23240, 23305, 23315, 23388, 23445, 23531, 23579, 23580, 23636, 23689,
+        23739, 23790, 23844, 23975, 23978, 23997, 24025, 24026, 24054, 24056,
+        24058, 24093, 24112, 24121, 24167, 24207, 24229, 24249, 24255, 24260,
+        24292, 24313, 24386, 24410, 24457, 24475, 24510, 24522, 24523, 24613,
+        24657, 24662, 24743, 24782, 24800, 24863, 24939, 25108, 25125, 25140,
+        25156, 25226, 25229, 25243, 25282, 25289, 25358, 25397, 25431, 25447,
+        25482, 25513, 25545, 25567, 25674, 25719, 25760, 25767, 25770, 25833,
+        25850, 25858, 25899, 25919, 25952, 26003, 26091, 26094, 26127, 26146,
+        26215, 26274, 26289, 26304, 26323, 26326, 26339, 26366, 26384, 26478,
+        26499, 26518, 26598, 26692, 26738, 26750, 26782, 26805, 26869, 26981,
+        27035, 27091, 27112, 27232, 27312, 27342, 27348, 27370, 27372, 27379,
+        27398, 27402, 27440, 27492, 27744, 27751, 27779, 27816, 27869, 27953,
+        27961, 27966, 27982, 28090, 28143, 28156, 28157, 28170, 28174, 28219,
+        28387, 28463, 28498, 28499, 28548, 28582, 28629, 28643, 28652, 28707,
+        28727, 28742, 28744, 28828, 28833, 29008, 29014, 29015, 29020, 29037,
+        29043, 29047, 29069, 29115, 29153, 29174, 29324, 29362, 29373, 29383
+Total non-polymorphic = 718
+
+
+Population    22 [NS.1794.002.UDP0097_i7---UDP0]  (Number of Individuals = 20)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       16.6        16.4        16.4        16.4
+Independent Comparisons =  350194122   406525757   406525757   406525757
+OverAll r^2 =                 0.069245    0.069933    0.069933    0.069933
+Expected r^2 Sample =         0.069665    0.070394    0.070394    0.070394
+Estimated Ne^ =               Infinite    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                  Infinite    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+* JackKnife on Samples           176.7       158.7       158.7       158.7
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       18.1        18.1        18.1        18.1 
+Independent Alleles =          26873       28685       28685       28685  
+Weighted Mean D =              0.21539     0.20219     0.20219     0.20219
+Estimated Neb^  =                  2.7         2.9         2.9         2.9
+
+95% CIs for Nb:
+* Parametric                       2.7         2.9         2.9         2.9
+                                   2.8         2.9         2.9         2.9
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           18.1
+OverAll f1^    =                                                   0.24733
+Estimated Neb^ =                                                       2.0
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    2.0
+                                                                       2.1
+**************************************************************************
+
+Time: Wed Oct  8 08:36:50 2025
+
+Non-polymorphic loci:    63,   174,   207,   216,   459,   535,   555,   576,
+          622,   715,   794,   810,   835,   947,   953,  1038,  1189,  1232,
+         1253,  1295,  1300,  1619,  1706,  1726,  1783,  1883,  1922,  1925,
+         1952,  1985,  2013,  2120,  2121,  2162,  2171,  2206,  2247,  2251,
+         2336,  2397,  2507,  2545,  2546,  2562,  2653,  2676,  2722,  2725,
+         2758,  2770,  2834,  2843,  3045,  3054,  3213,  3359,  3360,  3387,
+         3426,  3569,  3649,  3694,  3762,  3763,  3810,  3859,  3868,  4060,
+         4108,  4140,  4235,  4255,  4277,  4286,  4403,  4543,  4645,  4705,
+         4839,  4891,  5028,  5066,  5117,  5145,  5151,  5159,  5235,  5265,
+         5549,  5589,  5731,  6083,  6136,  6184,  6221,  6250,  6302,  6440,
+         6473,  6477,  6563,  6607,  6621,  6660,  6709,  6734,  6751,  6812,
+         6870,  6921,  7011,  7169,  7179,  7203,  7259,  7406,  7420,  7586,
+         7598,  7661,  7665,  7714,  7733,  7856,  7957,  8092,  8097,  8156,
+         8193,  8211,  8495,  8601,  8821,  8855,  9024,  9089,  9193,  9219,
+         9229,  9364,  9488,  9632,  9725,  9737,  9762,  9872,  9878,  9884,
+         9903,  9926, 10173, 10266, 10339, 10345, 10441, 10530, 10603, 10629,
+        10846, 11016, 11045, 11085, 11092, 11130, 11228, 11298, 11382, 11403,
+        11484, 11518, 11521, 11546, 11756, 11789, 11975, 11990, 11991, 12043,
+        12072, 12099, 12136, 12180, 12346, 12483, 12547, 12551, 12610, 12658,
+        12697, 12718, 12742, 12802, 12976, 13117, 13253, 13254, 13314, 13383,
+        13443, 13488, 13556, 13745, 13780, 13804, 13821, 13914, 13915, 14036,
+        14055, 14080, 14099, 14141, 14182, 14231, 14271, 14288, 14336, 14344,
+        14507, 14777, 14780, 14784, 14906, 14958, 15122, 15176, 15192, 15243,
+        15300, 15307, 15363, 15387, 15485, 15601, 15603, 15722, 15842, 15885,
+        16031, 16096, 16270, 16350, 16406, 16486, 16684, 16729, 16743, 16763,
+        16833, 16921, 17158, 17160, 17244, 17393, 17422, 17438, 17498, 17702,
+        17775, 17784, 18002, 18020, 18133, 18148, 18182, 18788, 18900, 18921,
+        19408, 19653, 19698, 19817, 19825, 19853, 20223, 20234, 20289, 20301,
+        20353, 20502, 20567, 20661, 20775, 20809, 20861, 20883, 20892, 21161,
+        21181, 21213, 21319, 21384, 21386, 21408, 21455, 21554, 21589, 21663,
+        21693, 21702, 21708, 21811, 22205, 22463, 22507, 22522, 22883, 22931,
+        23106, 23283, 23388, 23579, 23649, 23727, 23814, 23844, 24031, 24144,
+        24260, 24280, 24313, 24338, 24419, 24508, 24522, 24627, 24729, 24743,
+        24797, 24839, 24853, 24860, 25259, 25397, 25405, 25413, 25510, 25611,
+        25657, 25741, 25745, 25754, 25850, 25958, 26044, 26054, 26058, 26094,
+        26303, 26309, 26318, 26323, 26325, 26326, 26428, 26498, 26520, 26733,
+        26763, 26846, 27222, 27348, 27413, 27565, 27732, 27779, 27888, 27961,
+        27980, 28125, 28156, 28209, 28241, 28459, 28463, 28508, 28555, 28616,
+        28756, 28836, 28842, 28947, 29036, 29115, 29197
+Total non-polymorphic = 385
+
+
+Population    23 [NS.1794.002.UDP0117_i7---UDP0]  (Number of Individuals = 31)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       23.0        22.6        22.7        22.7
+Independent Comparisons =  332062186   404631100   415803051   415803051
+OverAll r^2 =                 0.046707    0.047486    0.047426    0.047426
+Expected r^2 Sample =         0.046539    0.047334    0.047276    0.047276
+Estimated Ne^ =                 1830.6      2032.2      2047.8      2047.8
+
+95% CIs for Ne^
+* Parametric                    1756.3      1947.9      1963.5      1963.5
+                                1911.4      2124.0      2139.6      2139.6
+
+* JackKnife on Samples           136.5       125.8       127.6       127.6
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       26.6        26.3        26.4        26.4 
+Independent Alleles =          26232       28603       29018       29018  
+Weighted Mean D =              0.18369     0.17024     0.16776     0.16776
+Estimated Neb^  =                  3.1         3.4         3.4         3.4
+
+95% CIs for Nb:
+* Parametric                       3.1         3.3         3.4         3.4
+                                   3.2         3.4         3.4         3.4
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           26.4
+OverAll f1^    =                                                   0.25858
+Estimated Neb^ =                                                       1.9
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    1.9
+                                                                       2.0
+**************************************************************************
+
+Time: Thu Oct  9 06:47:01 2025
+
+Non-polymorphic loci:   213,   290,   431,   499,   535,   715,  1262,  1357,
+         1402,  2120,  2355,  2397,  2692,  2863,  2893,  3359,  3387,  3428,
+         3437,  3446,  3484,  3527,  3575,  3601,  3856,  3901,  3910,  3998,
+         4404,  4537,  4626,  4642,  4860,  4886,  4897,  5125,  5128,  5388,
+         5618,  5781,  5862,  5895,  6096,  6182,  6270,  6631,  6657,  6713,
+         6751,  6795,  6899,  7168,  7259,  7376,  7432,  7469,  7499,  7553,
+         7675,  7943,  8092,  8142,  8348,  8624,  8629,  8689,  8692,  9138,
+         9288,  9306,  9369,  9402,  9439,  9489,  9816, 10205, 10263, 10266,
+        10304, 10871, 11092, 11210, 11362, 11531, 11588, 11647, 11657, 12066,
+        12141, 12701, 12846, 12952, 12976, 13254, 13384, 13483, 13779, 13809,
+        13992, 14055, 14104, 14141, 14338, 14675, 14741, 14777, 14803, 14892,
+        15013, 15073, 15289, 15527, 15596, 15661, 15798, 15800, 15853, 16076,
+        16202, 16303, 16350, 16465, 16486, 16531, 16710, 16743, 17022, 17065,
+        17067, 17196, 17285, 17342, 17425, 18020, 18129, 18138, 18373, 18874,
+        18884, 18900, 18962, 19032, 19342, 19440, 19464, 19501, 19722, 19817,
+        20011, 20347, 20520, 20886, 20888, 21726, 21927, 21929, 22050, 22072,
+        22073, 22102, 22671, 22790, 22794, 23158, 23315, 23538, 23544, 23553,
+        23561, 23732, 23817, 23974, 24207, 24262, 24419, 24853, 24860, 25105,
+        25211, 25248, 25368, 25397, 25405, 25513, 25668, 25758, 26054, 26147,
+        26308, 26742, 26768, 26819, 27076, 27207, 27379, 27402, 27565, 27808,
+        27910, 27914, 27953, 28011, 28114, 28240, 28241, 28465, 28629, 28930,
+        29294
+Total non-polymorphic = 209
+
+
+Population    24 [NS.1794.002.UDP0152_i7---UDP0]  (Number of Individuals = 35)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       28.0        27.7        27.7        27.7
+Independent Comparisons =  347406729   407272858   423644825   423644825
+OverAll r^2 =                 0.038092    0.038444    0.038512    0.038512
+Expected r^2 Sample =         0.038085    0.038446    0.038516    0.038516
+Estimated Ne^ =                43436.4    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                   24145.0     90654.1    315563.7    315563.7
+                              216433.2    Infinite    Infinite    Infinite
+
+* JackKnife on Samples           255.1       242.7       242.1       242.1
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       31.2        31.1        31.0        31.0 
+Independent Alleles =          26665       28655       29194       29194  
+Weighted Mean D =              0.20710     0.19455     0.19105     0.19105
+Estimated Neb^  =                  2.8         3.0         3.0         3.0
+
+95% CIs for Nb:
+* Parametric                       2.8         3.0         3.0         3.0
+                                   2.9         3.0         3.1         3.1
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           31.0
+OverAll f1^    =                                                   0.17203
+Estimated Neb^ =                                                       2.9
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    2.8
+                                                                       3.0
+**************************************************************************
+
+Time: Fri Oct 10 12:21:15 2025
+
+Non-polymorphic loci:   100,   887,  1184,  1257,  3382,  4672,  4685,  4755,
+         4817,  4999,  5129,  5188,  5497,  5781,  5865,  6286,  6439,  6607,
+         7149,  7169,  7269,  7461,  7878,  8465,  8614,  8819,  9228,  9229,
+         9762, 10266, 10343, 10345, 11391, 12066, 12099, 12287, 12483, 12902,
+        13088, 13745, 14017, 14196, 14507, 14892, 15306, 15814, 15867, 16075,
+        16812, 17316, 17470, 17651, 17965, 18131, 19399, 19408, 19832, 19914,
+        20005, 20234, 20631, 20719, 21762, 22706, 23649, 23713, 23806, 24856,
+        24971, 25036, 25100, 25402, 25719, 25756, 26003, 26296, 26924, 27054,
+        27232, 27284, 27869, 28329, 28413, 28440, 28653, 29028, 29150
+Total non-polymorphic = 87
+
+
+Population    25 [NS.1794.002.UDP0187_i7---UDP0]  (Number of Individuals = 35)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       30.9        30.7        30.7        30.7
+Independent Comparisons =  370909283   417078697   428892490   428892490
+OverAll r^2 =                 0.034865    0.035020    0.035074    0.035074
+Expected r^2 Sample =         0.035019    0.035171    0.035226    0.035226
+Estimated Ne^ =               Infinite    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                  Infinite    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+* JackKnife on Samples          1119.6      1044.1      1025.6      1025.6
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       32.8        32.8        32.7        32.7 
+Independent Alleles =          27401       28952       29316       29316  
+Weighted Mean D =              0.25099     0.23903     0.23614     0.23614
+Estimated Neb^  =                  2.4         2.5         2.5         2.5
+
+95% CIs for Nb:
+* Parametric                       2.4         2.5         2.5         2.5
+                                   2.4         2.5         2.5         2.5
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           32.7
+OverAll f1^    =                                                   0.17206
+Estimated Neb^ =                                                       2.9
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    2.8
+                                                                       3.0
+**************************************************************************
+
+Time: Sat Oct 11 22:46:24 2025
+
+Non-polymorphic loci:   214,   708,   715,  1219,  1611,  1850,  2129,  3646,
+         4038,  4501,  4512,  4855,  5145,  5251,  5990,  6571,  6607,  6709,
+         6832,  7293,  7467,  7553,  8011,  8417,  8546,  8920,  9382,  9532,
+         9712,  9834, 10120, 10167, 10414, 11362, 11494, 11881, 12466, 12547,
+        12898, 12956, 12968, 13329, 13669, 13750, 13873, 14085, 14838, 14935,
+        15389, 15799, 16202, 16261, 16377, 16533, 16949, 17360, 17470, 17536,
+        17957, 18131, 18896, 19459, 19755, 19817, 19862, 20408, 20661, 21787,
+        22362, 22447, 23501, 24001, 24229, 24301, 25002, 25672, 25758, 25763,
+        26299, 26408, 27141, 27947, 29069, 29091, 29373
+Total non-polymorphic = 85
+
+
+Population    26 [NS.1794.003.UDP0127_i7---UDP0]  (Number of Individuals = 33)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       29.7        29.6        29.6        29.6
+Independent Comparisons =  377813636   418690993   429182033   429182033
+OverAll r^2 =                 0.036579    0.036649    0.036687    0.036687
+Expected r^2 Sample =         0.036736    0.036816    0.036855    0.036855
+Estimated Ne^ =               Infinite    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                  Infinite    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+* JackKnife on Samples           617.0       604.0       592.8       592.8
+                              Infinite    Infinite    Infinite    Infinite
+
+
+HETEROZYGOTE EXCESS METHOD
+
+Harmonic Mean Sample Size =       31.3        31.2        31.2        31.2 
+Independent Alleles =          27607       28990       29318       29318  
+Weighted Mean D =              0.26805     0.25647     0.25366     0.25366
+Estimated Neb^  =                  2.3         2.3         2.4         2.4
+
+95% CIs for Nb:
+* Parametric                       2.2         2.3         2.3         2.3
+                                   2.3         2.4         2.4         2.4
+
+MOLECULAR COANCESTRY METHOD
+
+Harmonic Mean Sample Size =                                           31.2
+OverAll f1^    =                                                   0.19693
+Estimated Neb^ =                                                       2.5
+
+95% CIs for Ne^
+* Jackknife on Loci                                                    2.5
+                                                                       2.6
+**************************************************************************
+
+Time: Mon Oct 13 05:59:24 2025
+
+Non-polymorphic loci:  1738,  2037,  2151,  2705,  3437,  3688,  4038,  4324,
+         4584,  4900,  5159,  5421,  5880,  6332,  7229,  7712,  8529,  8624,
+         8678,  8931,  9417,  9472, 10630, 10874, 11136, 11471, 11721, 12207,
+        13446, 13483, 13612, 15798, 15859, 16077, 16471, 17196, 17622, 17965,
+        18182, 18636, 18874, 19890, 20755, 20848, 20937, 21761, 21762, 21898,
+        21991, 22389, 23649, 23777, 23886, 24167, 24207, 24542, 24640, 24667,
+        24897, 25039, 25259, 25338, 25405, 25510, 25668, 25719, 26341, 26805,
+        27732, 28114, 29064, 29211, 29213
+Total non-polymorphic = 73
+
+
+Population    27 [NS.1794.003.UDP0162_i7---UDP0]  (Number of Individuals = 35)
+****************
+--------------------------------------------------------------------------
+Lowest Allele Frequency Used     0.050       0.020       0.010         0+
+--------------------------------------------------------------------------
+
+LINKAGE DISEQUILIBRIUM METHOD
+
+Harmonic Mean Sample Size =       31.3        31.3        31.2        31.2
+Independent Comparisons =  377168084   419925047   429607169   429607169
+OverAll r^2 =                 0.034581    0.034652    0.034687    0.034687
+Expected r^2 Sample =         0.034593    0.034687    0.034725    0.034725
+Estimated Ne^ =               Infinite    Infinite    Infinite    Infinite
+
+95% CIs for Ne^
+* Parametric                  Infinite    Infinite    Infinite    Infinite
+                              Infinite    Infinite    Infinite    Infinite
+
+* JackKnife on Samples           415.7       423.0       421.2       421.2
+                              Infinite    Infinite    Infinite    Infinite
+
