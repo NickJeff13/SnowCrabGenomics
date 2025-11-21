@@ -1,0 +1,48 @@
+Output from NeEstimator v.2
+Starting time: Tue Oct 14 14:45:49 2025
+Input File: "random_001_snps_Genepop.txt"
+
+Number of Loci = 1844
+
+
+LINKAGE DISEQUILIBRIUM METHOD, Mating Model: Random
+
+Lowest allele frequency used:   0.0500
+Up to 17 rightmost characters are shown for Population name.
+-------------------------------------------------------------
+                   	         	      	             	            	         	          	         	    Parametric CI		    Jackknife CI
+Population [#:Name]	Samp Size	Weighted Mean	Ind. Alleles	    r^2  	  Exp(r^2)	     Ne  	       Low	      High	       Low	      High	  (Eff.df)
+1:UDP0195_i7---UDP0	     45  	      42.6   	   1607726  	 0.024861	  0.025083	  -1503.0	  Infinite	  Infinite	    1414.1	  Infinite	     23324
+2:UDP0241_i7---UDP0	     46  	      42.8   	   1606151  	 0.024983	  0.024912	   4698.7	    2651.0	   20378.0	     485.0	  Infinite	     13220
+3:UDP0193_i7---UDP0	     33  	      30.5   	   1529504  	 0.035752	  0.035788	  -9267.7	    7524.7	  Infinite	     466.4	  Infinite	     18137
+4:UDP0228_i7---UDP0	     33  	      31.4   	   1580755  	 0.034246	  0.034909	   -505.1	  Infinite	  Infinite	  Infinite	  Infinite	     31777
+5:UDP0263_i7---UDP0	     33  	      29.0   	   1518998  	 0.038102	  0.037726	    816.0	     664.3	    1056.3	     147.8	  Infinite	      4202
+6:UDP0193_i7---UDP0	     35  	      32.1   	   1542328  	 0.033976	  0.033892	   3927.3	    2071.0	   36534.7	     295.8	  Infinite	      8677
+7:UDP0228_i7---UDP0	     34  	      32.2   	   1545216  	 0.033588	  0.033910	  -1038.0	  Infinite	  Infinite	     966.0	  Infinite	     20124
+8:UDP0371_i7---UDP0	     33  	      29.9   	   1547718  	 0.036890	  0.036582	    996.5	     786.2	    1358.1	     196.1	  Infinite	      7053
+9:UDP0200_i7---UDP0	     24  	      22.7   	   1518504  	 0.048511	  0.049962	   -214.0	  Infinite	  Infinite	  Infinite	  Infinite	     27646
+10:DP0193_i7---UDP0	     34  	      31.8   	   1547065  	 0.034401	  0.034357	   7563.5	    2756.0	  Infinite	     299.5	  Infinite	      8452
+11:DP0233_i7---UDP0	     35  	      32.6   	   1532646  	 0.033620	  0.033431	   1759.1	    1257.4	    2919.0	     204.5	  Infinite	      4560
+12:DP0193_i7---UDP0	     34  	      31.4   	   1549365  	 0.034741	  0.034757	 -21822.9	    5355.6	  Infinite	     305.2	  Infinite	      8031
+13:DP0228_i7---UDP0	     33  	      29.8   	   1559557  	 0.037031	  0.036757	   1122.8	     862.9	    1603.6	     183.2	  Infinite	      5751
+14:DP0278_i7---UDP0	     25  	      22.6   	   1485029  	 0.049422	  0.049749	   -943.3	  Infinite	  Infinite	     210.3	  Infinite	      6246
+15:DP0097_i7---UDP0	     33  	      30.4   	   1544475  	 0.035867	  0.035996	  -2600.4	  Infinite	  Infinite	     490.8	  Infinite	     15790
+16:DP0132_i7---UDP0	     35  	      32.7   	   1557264  	 0.033409	  0.033324	   3911.4	    2087.7	   30064.6	     325.1	  Infinite	     10256
+17:DP0167_i7---UDP0	     34  	      31.4   	   1556981  	 0.034809	  0.034744	   5083.5	    2328.9	  Infinite	     295.1	  Infinite	      8729
+18:DP0107_i7---UDP0	     28  	      26.6   	   1573434  	 0.041094	  0.041858	   -405.2	  Infinite	  Infinite	  Infinite	  Infinite	     36186
+19:DP0142_i7---UDP0	     35  	      33.5   	   1557294  	 0.031857	  0.032575	   -466.7	  Infinite	  Infinite	  Infinite	  Infinite	     21748
+20:DP0177_i7---UDP0	     34  	      29.2   	   1481619  	 0.037356	  0.037159	   1565.3	    1091.4	    2757.2	     227.2	  Infinite	      8499
+21:DP0002_i7---UDP0	     67  	      57.7   	   1525075  	 0.018023	  0.017897	   2643.3	    1999.6	    3891.1	     749.9	  Infinite	     25453
+22:DP0193_i7---UDP0	     45  	      42.0   	   1568752  	 0.025442	  0.025417	  13076.5	    4068.6	  Infinite	     464.5	  Infinite	     10911
+23:DP0117_i7---UDP0	     31  	      23.1   	   1319012  	 0.046443	  0.046360	   3730.8	    1579.3	  Infinite	     132.5	  Infinite	      3630
+24:DP0152_i7---UDP0	     35  	      28.1   	   1415623  	 0.037922	  0.037996	  -4149.2	   21619.2	  Infinite	     268.6	  Infinite	      7865
+25:DP0187_i7---UDP0	     35  	      31.0   	   1460157  	 0.034640	  0.034875	  -1423.4	  Infinite	  Infinite	    1315.4	  Infinite	     39615
+26:DP0127_i7---UDP0	     33  	      29.7   	   1481540  	 0.036545	  0.036681	  -2255.1	  Infinite	  Infinite	     498.2	  Infinite	     18670
+27:DP0162_i7---UDP0	     35  	      31.4   	   1504088  	 0.034469	  0.034502	 -10096.7	    7402.6	  Infinite	     427.2	  Infinite	     14425
+28:DP0102_i7---UDP0	     35  	      32.1   	   1533332  	 0.034011	  0.033849	   2060.8	    1399.4	    3892.7	     286.9	  Infinite	      9430
+29:DP0097_i7---UDP0	     65  	      59.4   	   1590976  	 0.017470	  0.017557	  -3821.5	  Infinite	  Infinite	    2918.9	  Infinite	     58823
+30:DP0167_i7---UDP0	     34  	      30.1   	   1484333  	 0.035911	  0.036088	  -1887.7	  Infinite	  Infinite	     803.6	  Infinite	     29124
+
+Ending time: Tue Oct 14 14:59:20 2025
+-------------------------------------
+
