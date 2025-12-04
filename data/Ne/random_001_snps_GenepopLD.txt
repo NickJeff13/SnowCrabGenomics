@@ -2,7 +2,7 @@ Output from NeEstimator v.2
 Starting time: Tue Oct 14 14:45:49 2025
 Input File: "random_001_snps_Genepop.txt"
 
-Number of Loci = 1844
+Number of Loci = 10044
 
 LD mating model: Random
 
@@ -81,7 +81,7 @@ Estimated Ne^ =               Infinite    Infinite    Infinite    Infinite    In
 **************************************************************************************
 Non-polymorphic loci:   161,   278,  1674
 Total non-polymorphic = 3
-
+101
 
 Population     4 [NS.1780.004.UDP0228_i7---UDP0]  (Number of Individuals = 33)
 ****************
