@@ -63,22 +63,24 @@ plot_extent <- crab_coords%>%
   st_buffer(100*2000)%>%
   st_bbox()
 
-# Add PC1 and PC2 axis values from pcadapt to map
-head(map.df2)
+# Add PC1 and PC2 axis values from pcadapt script to map
+
+map.df2 <- left_join(crab_coords,map.df, by=c("SampleSite"="pca.with.pops.pops"))
+
 
 # Plot the map with ggplot2 -----------------------------------------------
 
 crab_map <- ggplot()+
-  geom_sf(data=basemap)+
+  geom_sf(data=basemap,color="black")+
   #geom_sf(data=cfas,fill=NA)+
-  geom_sf(data=bathy, fill=NA)+
-  geom_sf(data=map.df2, aes(fill=mean_PC2),colour= "black",shape=21, size=4)+
+  geom_sf(data=bathy, fill=NA, color="lightgrey")+
+  geom_sf(data=map.df2, aes(fill=mean_PC1),colour= "black",shape=21, size=4)+
   scale_fill_viridis_c()+
   #geom_sf_label(data=crab_coords, aes(label = SampleSite))+
   coord_sf(expand=0,xlim=plot_extent[c(1,3)],ylim=plot_extent[c(2,4)])+
   theme_bw();crab_map
 
-ggsave(filename = "CrabMap_PC2.png",plot = crab_map, device = "png", 
+ggsave(filename = "CrabMap_PC1.png",plot = crab_map, device = "png", 
        path = "~/Documents/GitHub/SnowCrabGenomics/figures/", 
        width = 10, height = 8, dpi = 320, units = "in")
 

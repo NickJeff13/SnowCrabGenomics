@@ -29,7 +29,7 @@ plot(xx, option="scores")
 
 par(mfrow=c(2,2))
 for (i in 1:3)
-  plot(xx$loadings[,i], pch=19, cex=.3, ylab=paste0("Loadings PC",i))
+  plot(xx$loadings[,i], pch=19, cex=.3, ylab=paste0("Loadings PC",i))+theme_bw()
 
 # Maf and missingness filtered SNPs - 1082 inds, 8384961 SNPs
 maf.filtered.snp <-read.pcadapt(input = "/mnt/sdb/SnowCrab_LCWGS/MAF_Filtered_Plink/snowcrab.maffiltered.bed", type = "bed")
@@ -97,7 +97,9 @@ str(exo.snps) # 1072 inds with 134087 SNPs
 
 sum(grepl(".BdC",inds))
 inds<-gsub(x = snp.depth$INDV, pattern = ".realigned.bam", replacement = "")
-pops <- c(rep("Mar C", 45),rep("Mar E",45),rep("Mar B",33),rep("Quebec",33), rep("Lilly Canyon",22), rep("CMA 3B",34),rep("CMA 6B",34), rep("CMA N5440", 21), rep("CMA 10B",6),"Chaleurs",rep("CMA 10B",7), "Chaleurs", rep("CMA 10B", 7), "Chaleurs", rep("CMA 10B", 7), "Chaleurs", rep("CMA 10B",7), "Chaleurs", rep("CMA 4", 7), "Baie des Chaleurs", rep("CMA 4", 7), "Chaleurs", rep("CMA 4", 7), "Chaleurs", rep("CMA 4", 7),"Chaleurs", rep("CMA 4", 6), rep("Chaleurs", 12), rep("CMA 5A", 33), rep("CMA 8A", 32), rep("Lilly Canyon", 9), rep("Chaleurs", 4), rep("CMA 3N200", 10), rep("NAFO 3L", 33), rep("CMA 3D", 35), rep("CMA 10A", 34), rep("St Marys Bay", 27), rep("Fortune Bay", 35), rep("Trinity Bay", 13), rep("West Cape Breton FEMALE", 8), rep("Bradelle Bank", 44), rep("CMA 3N200", 15), rep("CMA N5440", 3), "St. Marys Bay", rep("CMA N5440", 8), rep("West Cape Breton FEMALE", 4), rep("Trinity Bay", 20), rep("NENSout", 25), rep("NAFO 4X", 32), rep("NENSin", 35), rep("CMA 12G", 33), rep("CMA 12C", 35), rep("Laurentian Chan", 35), rep("West Cape Breton FEMALE", 54), rep("Mar D", 8), rep("West Cape Breton MALE", 65), rep("Mar D", 26))
+pops <- c(rep("Mar C", 45),rep("Mar E",45),rep("Mar B",33),rep("Quebec",33), rep("Lilly Canyon",22), rep("CMA 3B",34),rep("CMA 6B",34), rep("CMA N5440", 21), rep("CMA 10B",6),"Chaleurs",rep("CMA 10B",7), "Chaleurs", rep("CMA 10B", 7), "Chaleurs", rep("CMA 10B", 7), "Chaleurs", rep("CMA 10B",7), "Chaleurs", rep("CMA 4", 7), "Chaleurs", rep("CMA 4", 7), "Chaleurs", rep("CMA 4", 7), "Chaleurs", rep("CMA 4", 7),"Chaleurs", rep("CMA 4", 6), rep("Chaleurs", 12), rep("CMA 5A", 33), rep("CMA 8A", 32), rep("Lilly Canyon", 9), rep("Chaleurs", 4), rep("CMA 3N200", 10), rep("NAFO 3L", 33), rep("CMA 3D", 35), rep("CMA 10A", 34), rep("St Marys Bay", 27), rep("Fortune Bay", 35), rep("Trinity Bay", 13), rep("West Cape Breton FEMALE", 8), rep("Bradelle Bank", 44), rep("CMA 3N200", 15), rep("CMA N5440", 3), "St Marys Bay", rep("CMA N5440", 8), rep("West Cape Breton FEMALE", 4), rep("Trinity Bay", 20), rep("NENSout", 25), rep("NAFO 4X", 32), rep("NENSin", 35), rep("CMA 12G", 33), rep("CMA 12C", 35), rep("Laurentian Chan", 35), rep("West Cape Breton FEMALE", 54), rep("Mar D", 8), rep("West Cape Breton MALE", 65), rep("Mar D", 26))
+
+region <- c(rep("Scotian Shelf", 45),rep("Scotian Shelf", 45),rep("Scotian Shelf",33),rep("Quebec",33), rep("Newfoundland",22), rep("Newfoundland",34),rep("Newfoundland",34), rep("Labrador", 21), rep("Newfoundland",6),"GSL",rep("Newfoundland",7), "GSL", rep("Newfoundland", 7), "GSL", rep("Newfoundland", 7), "GSL", rep("Newfoundland",7), "GSL", rep("Newfoundland", 7), "GSL", rep("Newfoundland", 7), "GSL", rep("Newfoundland", 7), "GSL", rep("Newfoundland", 7),"GSL", rep("Newfoundland", 6), rep("GSL", 12), rep("Newfoundland", 33), rep("Newfoundland", 32), rep("Newfoundland", 9), rep("GSL", 4), rep("Newfoundland", 10), rep("Newfoundland", 33), rep("Newfoundland", 35), rep("Newfoundland", 34), rep("Newfoundland", 27), rep("Newfoundland", 35), rep("Newfoundland", 13), rep("GSL", 8), rep("GSL", 44), rep("Newfoundland", 15), rep("Labrador", 3), "Newfoundland", rep("Labrador", 8), rep("GSL", 4), rep("Newfoundland", 20), rep("Scotian Shelf", 25), rep("Scotian Shelf", 32), rep("Scotian Shelf", 35), rep("Newfoundland", 33), rep("Newfoundland", 35), rep("Newfoundland", 35), rep("GSL", 54), rep("Scotian Shelf", 8), rep("GSL", 65), rep("Scotian Shelf", 26))
 
 a <-pcadapt(exo.snps, K=4)
 
@@ -116,11 +118,12 @@ plot(b, option="scores", pop=pops)
 #plot with ggplot to colour points by sequencing depth 
 pca.with.depth <- cbind(b$scores, snp.depth)
 pca.with.pops<-cbind(pca.with.depth, pops)
-colnames(pca.with.pops) <- c("PC1","PC2","PC3","PC4","IND","N_SITES","MEAN_DEPTH","pops")
+pca.with.regions <- cbind(pca.with.pops, region)
+colnames(pca.with.regions) <- c("PC1","PC2","PC3","PC4","IND","N_SITES","MEAN_DEPTH","pops", "region")
 
 #colour by sequencing depth
 ggplot()+
-  geom_point(data=pca.with.pops, aes(x=PC1, y=PC3, colour = MEAN_DEPTH))+
+  geom_point(data=pca.with.pops, aes(x=PC3, y=PC4, colour = MEAN_DEPTH))+
   scale_colour_continuous(type="viridis")+
   theme_bw()
 
@@ -136,25 +139,43 @@ ggplot(data=pca.with.pops, aes(x=PC1, y=PC2, colour = pops))+
 ggsave(filename = "PCAdapt_ExonSNPs_PC1_PC2_FacetByPop.png", plot = last_plot(), path = "~/Documents/GitHub/SnowCrabGenomics/figures/", width=10, height = 8, units = "in", dpi=300)
 
 #colour by pop - no facet
-ggplot(data=pca.with.pops, aes(x=PC1, y=PC2, colour = pops))+
-  geom_point()+
-  #scale_fill_manual(values = as.vector(glasbey.colors(n=30))) + 
-  scale_color_manual(values =as.vector(glasbey.colors(n=30)))+
-  #geom_convexhull(aes(fill=pops, color=pops), alpha=0.1)+
-  theme_bw()
+p20 <- ggplot()+
+    geom_point(data=pca.with.regions, aes(x=PC1, y=PC2, fill=region),
+               color="black", size=3, shape=21)+
+    scale_fill_manual(values = c("#c43b3b", "#80c43b", "#3bc4c4", "#7f3bc4","gold")) + 
+    #scale_fill_manual(values =as.vector(glasbey.colors(n=32)))+
+    #geom_convexhull(aes(fill=pops, color=pops), alpha=0.1)+
+  guides(fill="none")+
+    theme_bw();p20
 
-ggsave(filename = "PCAdapt_ExonSNPs_PC2_PC3_NoFacet_withHulls_byRegion.png", plot=last_plot(), path = "figures/", width=10, height=8, units="in", dpi=300)
+ggsave(filename = "PCAdapt_ExonSNPs_PC1_PC2_NoFacet_withHulls_byRegion2.png",
+       plot=p20, path = "~/Documents/GitHub/SnowCrabGenomics/figures/", 
+       width=10, height=8, units="in", dpi=300)
+
+p21 <- ggplot()+
+  geom_point(data=pca.with.regions, aes(x=PC1, y=PC3, fill=region),
+             color="black", size=3, shape=21)+
+  scale_fill_manual(values = c("#c43b3b", "#80c43b", "#3bc4c4", "#7f3bc4","gold")) + 
+  #scale_fill_manual(values =as.vector(glasbey.colors(n=32)))+
+  #geom_convexhull(aes(fill=pops, color=pops), alpha=0.1)+
+  theme_bw();p21
+
+p20 + p21
+
+ggsave(filename = "PCAdapt_ExonSNPs_PC123merged.png",
+       plot=last_plot(), path = "~/Documents/GitHub/SnowCrabGenomics/figures/", 
+       width=10, height=8, units="in", dpi=300)
 
 ## Make a map of PC1 and PC2 mean values 
 
-    map.df <- data.frame(pca.with.pops$PC1, pca.with.pops$PC2, pca.with.pops$pops) %>%
+    map.df <- data.frame(pca.with.pops$PC1, pca.with.pops$PC2, pca.with.pops$PC3,pca.with.pops$pops) %>%
       group_by(pca.with.pops.pops) %>%
       summarise(
         mean_PC1=mean(pca.with.pops.PC1),
-        mean_PC2=mean(pca.with.pops.PC2)
+        mean_PC2=mean(pca.with.pops.PC2),
+        mean_PC3=mean(pca.with.pops.PC3)
       )
 
-  map.df2 <- left_join(crab_coords,map.df, by=c("SampleSite"="pca.with.pops.pops"))
 
 #Try outlier detections on the exon derived SNPs
 qvals<- qvalue(maf.pcadapt$pvalues)$qvalues
