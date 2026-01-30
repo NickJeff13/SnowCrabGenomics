@@ -15,8 +15,9 @@ p1 <- ggplot()+
   geom_boxplot(data = crab.het, aes(x=POP, y=F, fill=POP),colour="black",  alpha=0.7)+
   theme_bw()+
   #guides(fill=guide_legend(nrow=3,byrow=T))+
-  theme(axis.text.x=element_text(angle=45, vjust=0.8, hjust=1), 
-        legend.position = "bottom");p1
+  theme(axis.text.x=element_text(angle=60, vjust=0.8, hjust=1), 
+        text=element_text(size=18),
+        legend.position = "none");p1
 
 #Plot He/Ho
 p2 <- ggplot()+ 
@@ -41,13 +42,13 @@ p3 <- ggplot()+
   geom_boxplot(data=all.snp.het, aes(x=POP, y=F, fill=POP), colour="black", alpha=0.7)+
   theme_bw()+
   theme(text=element_text(size=18), 
-        axis.text.x=element_text(angle=45, vjust=.9, hjust=1), 
+        axis.text.x=element_blank(), 
         legend.position = "none",
         axis.title.x =element_blank());p3
 
 p3/p1
 
-ggsave("figures/CrabPops_Fis.png", plot = last_plot(), device = "png", width = 10, height=8,
+ggsave("figures/CrabPops_FIS.png", plot = last_plot(), device = "png", width = 10, height=8,
        units = "in", dpi = 300)
 
 p4 <- ggplot()+ 
@@ -56,7 +57,7 @@ p4 <- ggplot()+
   theme_bw()+
   xlab(label ="")+
   #guides(fill=guide_legend(nrow=3,byrow=T))+
-  theme(axis.text.x=element_text(angle=60, hjust=1), 
+  theme(axis.text.x=element_blank(), 
         text=element_text(size=18),
         legend.position = "none");p4
 
