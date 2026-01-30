@@ -14,6 +14,8 @@ crab.het <- crab.het %>%
 p1 <- ggplot()+ 
   geom_boxplot(data = crab.het, aes(x=POP, y=F, fill=POP),colour="black",  alpha=0.7)+
   theme_bw()+
+  ylab(bquote(F[IS]))+
+  xlab(label = "")+
   #guides(fill=guide_legend(nrow=3,byrow=T))+
   theme(axis.text.x=element_text(angle=60, vjust=0.8, hjust=1), 
         text=element_text(size=18),
@@ -41,6 +43,8 @@ all.snp.het <- all.snp.het %>%
 p3 <- ggplot()+
   geom_boxplot(data=all.snp.het, aes(x=POP, y=F, fill=POP), colour="black", alpha=0.7)+
   theme_bw()+
+  ylab(bquote(F[IS]))+
+  xlab(label="")+
   theme(text=element_text(size=18), 
         axis.text.x=element_blank(), 
         legend.position = "none",
