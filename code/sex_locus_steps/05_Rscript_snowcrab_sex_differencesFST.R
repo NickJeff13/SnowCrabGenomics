@@ -190,4 +190,7 @@ p4 + p1/p2 + plot_layout(widths=c(3,1)) +
   theme(plot.tag = element_text(size=20))+
   plot_layout(widths=c(2,0.5))
 
-ggsave(filename = "CrabSexGenotypes_Combined.png", plot = last_plot(), path = 'figures/', device = "png", dpi=300, width=15, height=10)
+ggsave(filename = "CrabSexGenotypes_Combined.png", 
+       plot = last_plot(), path = 'figures/',
+       device = "png", 
+       dpi=300, width=15, height=10)
