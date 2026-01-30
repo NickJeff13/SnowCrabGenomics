@@ -184,12 +184,44 @@ ggsave(filename = "PCAdapt_ExonSNPs_PC123merged.png",
     
     #also read in the snp depth data as an effect
     snp.depth <- read.table("/mnt/sdb/SnowCrab_LCWGS/vcfs/out.idepth", header = T) %>% glimpse()
+
     
-    sum(grepl(".BdC",inds))
-    inds<-gsub(x = snp.depth$INDV, pattern = ".realigned.bam", replacement = "")
-    pops <- c(rep("Mar C", 45),rep("Mar E",45),rep("Mar B",33),rep("Quebec",33), rep("Lilly Canyon",22), rep("CMA 3B",34),rep("CMA 6B",34), rep("CMA N5440", 21), rep("CMA 10B",6),"Chaleurs",rep("CMA 10B",7), "Chaleurs", rep("CMA 10B", 7), "Chaleurs", rep("CMA 10B", 7), "Chaleurs", rep("CMA 10B",7), "Chaleurs", rep("CMA 4", 7), "Chaleurs", rep("CMA 4", 7), "Chaleurs", rep("CMA 4", 7), "Chaleurs", rep("CMA 4", 7),"Chaleurs", rep("CMA 4", 6), rep("Chaleurs", 12), rep("CMA 5A", 33), rep("CMA 8A", 32), rep("Lilly Canyon", 9), rep("Chaleurs", 4), rep("CMA 3N200", 10), rep("NAFO 3L", 33), rep("CMA 3D", 35), rep("CMA 10A", 34), rep("St Marys Bay", 27), rep("Fortune Bay", 35), rep("Trinity Bay", 13), rep("West Cape Breton FEMALE", 8), rep("Bradelle Bank", 44), rep("CMA 3N200", 15), rep("CMA N5440", 3), "St Marys Bay", rep("CMA N5440", 8), rep("West Cape Breton FEMALE", 4), rep("Trinity Bay", 20), rep("NENSout", 25), rep("NAFO 4X", 32), rep("NENSin", 35), rep("CMA 12G", 33), rep("CMA 12C", 35), rep("Laurentian Chan", 35), rep("West Cape Breton FEMALE", 54), rep("Mar D", 8), rep("West Cape Breton MALE", 65), rep("Mar D", 26))
+    ovlp.inds <- read.table("/mnt/sdb/SnowCrab_LCWGS/snowcrab.poolfiltered.fam", header = F) %>% glimpse()
+    ovlp.snp.depth <- left_join(ovlp.inds, snp.depth, by=c("V1"="INDV"))
     
-    region <- c(rep("Scotian Shelf", 45),rep("Scotian Shelf", 45),rep("Scotian Shelf",33),rep("Quebec",33), rep("Newfoundland",22), rep("Newfoundland",34),rep("Newfoundland",34), rep("Labrador", 21), rep("Newfoundland",6),"GSL",rep("Newfoundland",7), "GSL", rep("Newfoundland", 7), "GSL", rep("Newfoundland", 7), "GSL", rep("Newfoundland",7), "GSL", rep("Newfoundland", 7), "GSL", rep("Newfoundland", 7), "GSL", rep("Newfoundland", 7), "GSL", rep("Newfoundland", 7),"GSL", rep("Newfoundland", 6), rep("GSL", 12), rep("Newfoundland", 33), rep("Newfoundland", 32), rep("Newfoundland", 9), rep("GSL", 4), rep("Newfoundland", 10), rep("Newfoundland", 33), rep("Newfoundland", 35), rep("Newfoundland", 34), rep("Newfoundland", 27), rep("Newfoundland", 35), rep("Newfoundland", 13), rep("GSL", 8), rep("GSL", 44), rep("Newfoundland", 15), rep("Labrador", 3), "Newfoundland", rep("Labrador", 8), rep("GSL", 4), rep("Newfoundland", 20), rep("Scotian Shelf", 25), rep("Scotian Shelf", 32), rep("Scotian Shelf", 35), rep("Newfoundland", 33), rep("Newfoundland", 35), rep("Newfoundland", 35), rep("GSL", 54), rep("Scotian Shelf", 8), rep("GSL", 65), rep("Scotian Shelf", 26))
+    ovlp.inds$V1 <- gsub(".*i5.","",ovlp.inds$V1)
+    ovlp.inds$V1 <- gsub(".realigned.bam","",ovlp.inds$V1)
+    
+    pop <- rep(NA, length(ovlp.inds$V1))
+    pop[grep("^MC", ovlp.inds$V1)] <- "Mar C"
+    pop[grep("^ME", ovlp.inds$V1)] <- "Mar E"
+    pop[grep("^MB", ovlp.inds$V1)] <- "Mar B"
+    pop[grep("^Q", ovlp.inds$V1)] <- "Quebec"
+    pop[grep("^LC", ovlp.inds$V1)] <- "Lilly Canyon"
+    pop[grep("^3B", ovlp.inds$V1)] <- "CMA 3B"
+    pop[grep("^6B", ovlp.inds$V1)] <- "CMA 6B"
+    pop[grep("^TB", ovlp.inds$V1)] <- "TrinityBay"
+    pop[grep("^10B", ovlp.inds$V1)] <- "CMA 10B"
+    pop[grep("^4_", ovlp.inds$V1)] <- "CMA 4"
+    pop[grep("^BdC", ovlp.inds$V1)] <- "Chaleurs"
+    pop[grep("^5A", ovlp.inds$V1)] <- "CMA 5A"
+    pop[grep("^8A", ovlp.inds$V1)] <- "CMA 8A"
+    pop[grep("^CPS", ovlp.inds$V1)] <- "NAFO 3L"
+    pop[grep("^3D", ovlp.inds$V1)] <- "CMA 3D"
+    pop[grep("^10A", ovlp.inds$V1)] <- "CMA 10A"
+    pop[grep("^SMB", ovlp.inds$V1)] <- "StMarysBay"
+    pop[grep("^FB", ovlp.inds$V1)] <- "FortuneBay"
+    pop[grep("^WCB_F", ovlp.inds$V1)] <- "WCB_Female"
+    pop[grep("^WCB_M", ovlp.inds$V1)] <- "WCB_Male"
+    pop[grep("^3N", ovlp.inds$V1)] <- "CMA 3N200"
+    pop[grep("^NENS", ovlp.inds$V1)] <- "NENS"
+    pop[grep("^4X", ovlp.inds$V1)] <- "NAFO 4X"
+    pop[grep("^6222", ovlp.inds$V1)] <- "CMA 12G"
+    pop[grep("^2420", ovlp.inds$V1)] <- "CMA 12C"
+    pop[grep("^AW", ovlp.inds$V1)] <- "LaurentianChannel"
+    pop[grep("^D0", ovlp.inds$V1)] <- "Mar D"
+    pop[grep("^BB", ovlp.inds$V1)] <- "Bradelle"
+    pop[grep("^T[[:digit:]]", ovlp.inds$V1)] <- "CMA N5440"
     
     a <-pcadapt(ovlp.snps, K=4)
     
@@ -204,20 +236,21 @@ ggsave(filename = "PCAdapt_ExonSNPs_PC123merged.png",
     summary(b)
     plot(b, option="manhattan")
     plot(b, option="qqplot")
-    plot(b, option="scores", pop=pops)
+    plot(b, option="scores", pop=pop)
     #plot with ggplot to colour points by sequencing depth 
-    pca.with.depth <- cbind(b$scores, snp.depth)
-    pca.with.pops<-cbind(pca.with.depth, pops)
-    pca.with.regions <- cbind(pca.with.pops, region)
-    colnames(pca.with.regions) <- c("PC1","PC2","PC3","PC4","IND","N_SITES","MEAN_DEPTH","pops", "region")
+    pca.with.depth <- cbind(b$scores, ovlp.snp.depth)
+    pca.with.pops<-cbind(pca.with.depth, pop) %>% 
+      dplyr::select(-c(V2,V3,V4,V5,V6))
+    #pca.with.regions <- cbind(pca.with.pops, region)
+    colnames(pca.with.pops) <- c("PC1","PC2","PC3","PC4","IND","N_SITES","MEAN_DEPTH","pops")
     
     #colour by sequencing depth
     ggplot()+
-      geom_point(data=pca.with.pops, aes(x=PC3, y=PC4, colour = MEAN_DEPTH))+
+      geom_point(data=pca.with.pops, aes(x=PC1, y=PC3, colour = MEAN_DEPTH))+
       scale_colour_continuous(type="viridis")+
       theme_bw()
     
-    ggsave(filename = "ExonSNPs_pcadapt_PC1_PC3_bySeqDepth.png", plot = last_plot(), path = "~/Documents/GitHub/SnowCrabGenomics/figures/", width = 10, height=8, units = "in", dpi=300)
+    ggsave(filename = "PoolFilteredSNPs_pcadapt_PC1_PC2_bySeqDepth.png", plot = last_plot(), path = "~/Documents/GitHub/SnowCrabGenomics/figures/", width = 10, height=8, units = "in", dpi=300)
     
     
     #colour by pop
@@ -229,35 +262,31 @@ ggsave(filename = "PCAdapt_ExonSNPs_PC123merged.png",
     ggsave(filename = "PCAdapt_ExonSNPs_PC1_PC2_FacetByPop.png", plot = last_plot(), path = "~/Documents/GitHub/SnowCrabGenomics/figures/", width=10, height = 8, units = "in", dpi=300)
     
     #colour by pop - no facet
-    p20 <- ggplot()+
-      geom_point(data=pca.with.regions, aes(x=PC1, y=PC2, fill=region),
+    p40 <- ggplot()+
+      geom_point(data=pca.with.regions, aes(x=PC1, y=PC2, fill=pops),
                  color="black", size=3, shape=21)+
-      scale_fill_manual(values = c("#c43b3b", "#80c43b", "#3bc4c4", "#7f3bc4","gold")) + 
-      #scale_fill_manual(values =as.vector(glasbey.colors(n=32)))+
+      #scale_fill_manual(values = c("#c43b3b", "#80c43b", "#3bc4c4", "#7f3bc4","gold")) + 
+      scale_fill_manual(values =as.vector(glasbey.colors(n=30)))+
       #geom_convexhull(aes(fill=pops, color=pops), alpha=0.1)+
-      guides(fill="none")+
-      theme_bw();p20
+      #guides(fill="none")+
+      theme_bw();p40
     
-    ggsave(filename = "PCAdapt_ExonSNPs_PC1_PC2_NoFacet_withHulls_byRegion2.png",
-           plot=p20, path = "~/Documents/GitHub/SnowCrabGenomics/figures/", 
+    ggsave(filename = "PCAdapt_PoolFilteredSNPs_PC1_PC3_NoFacet.png",
+           plot=p40, path = "~/Documents/GitHub/SnowCrabGenomics/figures/", 
            width=10, height=8, units="in", dpi=300)
     
-    p21 <- ggplot()+
-      geom_point(data=pca.with.regions, aes(x=PC1, y=PC3, fill=region),
-                 color="black", size=3, shape=21)+
-      scale_fill_manual(values = c("#c43b3b", "#80c43b", "#3bc4c4", "#7f3bc4","gold")) + 
-      #scale_fill_manual(values =as.vector(glasbey.colors(n=32)))+
-      #geom_convexhull(aes(fill=pops, color=pops), alpha=0.1)+
-      theme_bw();p21
     
-    p20 + p21
+  (p20 + p21) / p40
     
-    ggsave(filename = "PCAdapt_ExonSNPs_PC123merged.png",
+    ggsave(filename = "PCAdapt_ExonSNPs_PC123merged_withPoolFilteredPlot.png",
            plot=last_plot(), path = "~/Documents/GitHub/SnowCrabGenomics/figures/", 
            width=10, height=8, units="in", dpi=300)
     
     
-#Try outlier detections on the exon derived SNPs
+    
+    
+    
+############### #Try outlier detections on the exon derived SNPs
 qvals<- qvalue(maf.pcadapt$pvalues)$qvalues
 padj <- p.adjust(maf.pcadapt$pvalues, method="bonferroni")
 alpha=0.001
