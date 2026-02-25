@@ -267,6 +267,7 @@ ggsave(filename = "PCAdapt_ExonSNPs_PC123merged.png",
                  color="black", size=3, shape=21)+
       #scale_fill_manual(values = c("#c43b3b", "#80c43b", "#3bc4c4", "#7f3bc4","gold")) + 
       scale_fill_manual(values =as.vector(glasbey.colors(n=30)))+
+      labs(fill="Sample Location")+
       #geom_convexhull(aes(fill=pops, color=pops), alpha=0.1)+
       #guides(fill="none")+
       theme_bw();p40
@@ -280,7 +281,7 @@ ggsave(filename = "PCAdapt_ExonSNPs_PC123merged.png",
     
     ggsave(filename = "PCAdapt_ExonSNPs_PC123merged_withPoolFilteredPlot.png",
            plot=last_plot(), path = "~/Documents/GitHub/SnowCrabGenomics/figures/", 
-           width=10, height=8, units="in", dpi=300)
+           width=14, height=12, units="in", dpi=300)
     
     
     
