@@ -1,0 +1,30 @@
+site,table_name,table_code,table_region,lon,lat,ord
+3N200,CMA 3N200,3N,Newfoundland,-49.3,43.75,1
+AW,Laurentian Channel,AW,Newfoundland,-57.25116667,46.33333333,2
+Baie_des_Chaleurs,Baie des Chaleurs,BDC,Gulf of St. Lawrence,-65.5,47.83,3
+Bonavista,CMA 5A - Bonavista,5A,Newfoundland,-53.12,48.99,4
+Bradelle_Bank,Bradelle Bank,BB,Gulf of St. Lawrence,-63.13306667,47.43418333,5
+CFA8A,CMA 8A,8A,Newfoundland,-52.42,46.83,6
+CMA_10A,CMA 10A,10A,Newfoundland,-54.832167,46.749833,7
+Fortune_Bay,Fortune Bay,FB,Newfoundland,-55.46,47.35,8
+Labrador_2420,CMA 12C,2420,Newfoundland,-58.63138889,48.46416667,9
+Labrador_6222,CMA 12G,6222,Newfoundland,-57.91778,49.48417,10
+LilyCanyon,Lilly Canyon,LC,Newfoundland,-49.147473,44.899451,11
+ManagementArea_4,CMA 4,CMA 4,Newfoundland,-52.88,52.09,12
+MaritimeB,Maritimes B,MAR_B,Scotian Shelf,-58.951,46.0235,13
+MaritimeC,Maritimes C,MAR_C,Scotian Shelf,-63.25367,44.45433,14
+MaritimeD,Maritimes D,MAR_D,Scotian Shelf,-60.865,44.45767,15
+MaritimeE,Maritimes E,MAR_E,Scotian Shelf,-59.24933,44.0905,16
+NAFO_4X,NAFO Area 4X,4X,Scotian Shelf,-63.73833333,44.28166667,17
+NL10B,CMA 10B,10B,Newfoundland,-55.99,46.33,18
+NL3B,CMA 3B,3B,Newfoundland,-56.04,50.33,19
+NL3D,CMA 3D,3D,Newfoundland,-54.999333,49.738333,20
+NL6B,CMA 6B,6B,Newfoundland,-52.84,47.95,21
+Northeast_Nova_Scotia,Northeast Nova Scotia - inner,NENSin,Scotian Shelf,-60.23333333,46.49413333,22
+Northeast_Nova_Scotia_outer,Northeast Nova Scotia - Outer,NENSout,Scotian Shelf,-59.129889,46.389694,23
+Offshore_Newfoundland,NAFO Div. 3L,CPS,Newfoundland,-47.938167,46.948,24
+Quebec,Quebec North Shore,QUE,Quebec,-68.112639,48.901983,25
+St_Marys_Bay,St. Marys Bay,SMB,Newfoundland,-53.85,46.84,26
+Torngat_2N5440,CMA N5440/NAFO Div. 2J,N5440,Labrador,-57.49,55.17,27
+Trinity_Bay,Trinity Bay,TB,Newfoundland,-53.327167,48.1785,28
+Western_Cape_Breton,Western Cape Breton,WCB,Scotian Shelf,-61.38253333,46.53343333,29
