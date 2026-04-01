@@ -19,6 +19,8 @@ geno<-read.table("data/SexDifferences/Results/snowcrab_allinds_JACEEZ010007791_s
 #Check data and combine alleles (V7/V8) to make genotype column
 head(geno)
 geno$genotype <- paste0(geno$V7, geno$V8)
+geno$V1[789:823] <- "NENS_outer"
+
 
 #Load metadata for crabs
 metad<-read.csv("data/SexDifferences/files/PCAdapt_results_100KSNPs_metadat.csv", header=T)
@@ -106,7 +108,7 @@ p3<- ggplot(data=prop_genotypedInd,
        aes(x="", y=freq, fill=genotype)) +
   scale_fill_manual(values=c("#D64550","#D8D7BF","dodgerblue4"))+
   geom_bar(stat="identity", width=1,colour="black") + 
-  labs("none")+
+  #labs("none")+
   coord_polar(theta = "y") + 
   facet_wrap(.~V1, )  + 
   theme_bw()+
@@ -174,8 +176,10 @@ p4 <- ggplot()+
   theme_bw() +
   scale_fill_manual(values=c("#D64550","#D8D7BF","dodgerblue4"))+
   #scale_fill_brewer(palette = "Set2")+
-  theme(text = element_text(size = 20),
-        legend.position = "bottom")
+  theme(text = element_text(size = 16),
+        legend.position = "none",
+        plot.margin=margin(0,0,0,0),
+        panel.spacing = unit(0, 'pt'))
 
 p4 <- p4 + guides(fill=guide_legend(title="Genotype"));p4
 
@@ -183,14 +187,42 @@ p4 <- p4 + guides(fill=guide_legend(title="Genotype"));p4
 ggsave(filename = "CrabSex_Map_byGenotype.png", plot = p4, device = "png", path = "figures/", 
       width = 10, height = 8, dpi = 300)
 
+
+# Make a PCA of individuals coloured by sex 
+PCA_results_crubs<-read.csv("C:/Users/JEFFERYN/Downloads/For_Nick_PCA_SexSNPs_snowcrab.csv")
+pca_results_sex<-PCA_results_crubs[which(PCA_results_crubs$Sex=="Male" |
+                                           PCA_results_crubs$Sex=="Female" ),]
+
+p5 <- ggplot()+
+  geom_point(data=PCA_results_crubs, aes(PC1.x, PC2.x), 
+             col="gray", size=2)+
+  geom_point(data=pca_results_sex, aes(PC1.x, PC2.x, fill=Sex), 
+             col="black", pch=21, size=3)+
+  scale_fill_manual(values = c("#D64550","dodgerblue4"))+
+  theme_bw()+
+  xlab("PC 1") +
+  ylab("PC 2") +
+  theme(text= element_text(size=16),
+        legend.position = "none")
+  ggtitle("All samples, with sexed individuals highlighted");p5
   ##Now make a figure for publication with patchwork and multiple panels
 
-p4 + p1/p2 + plot_layout(widths=c(3,1)) +
-  plot_annotation(tag_levels = "A") & 
-  theme(plot.tag = element_text(size=20))+
-  plot_layout(widths=c(2,0.5))
+  design <- "
+AAB
+CDB
+"
+  
+  (p4 + p5 + p1 + p2) +
+    plot_layout(
+      design = design,
+      widths = c(2, 2, 4),
+      heights = c(NA, 0.33),
+      guides="collect"
+    ) +
+    plot_annotation(tag_levels = "A") &
+    theme(plot.tag = element_text(size = 20),legend.position = "bottom")
 
-ggsave(filename = "CrabSexGenotypes_Combined.png", 
+ggsave(filename = "CrabSexGenotypes_Combined.pdf", 
        plot = last_plot(), path = 'figures/',
-       device = "png", 
+       device = "pdf", 
        dpi=300, width=15, height=10)
