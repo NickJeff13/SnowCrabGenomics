@@ -212,7 +212,7 @@ AAB
 CDB
 "
   
-  (p4 + p5 + p2 + p1) +
+  (p4 + p5 + p1 + p2) +
     plot_layout(
       design = design,
       widths = c(2, 2, 4),
@@ -222,7 +222,7 @@ CDB
     plot_annotation(tag_levels = "A") &
     theme(plot.tag = element_text(size = 20),legend.position = "bottom")
 
-ggsave(filename = "CrabSexGenotypes_Combined.png", 
+ggsave(filename = "CrabSexGenotypes_Combined.pdf", 
        plot = last_plot(), path = 'figures/',
-       device = "png", 
+       device = "pdf", 
        dpi=300, width=15, height=10)
