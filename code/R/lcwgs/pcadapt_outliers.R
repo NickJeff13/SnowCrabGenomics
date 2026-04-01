@@ -1,3 +1,6 @@
+#Script to run several snow crab SNP datasets through pcadapt and plot them for publication.
+
+# Load libraries ----------------------------------------------------------
 library(pcadapt)
 library(qvalue)
 library(dplyr)
@@ -6,14 +9,14 @@ library(ggConvexHull)
 library(readr)
 library(patchwork)
 library(Polychrome)
-
+library(umap)
 
 setwd("/mnt/sdb/SnowCrab_LCWGS/")
 all.snp <-read.pcadapt(input = "snowcrab.bed", type = "bed")
 
 #choose k Principal components
 
-x <- pcadapt(all.snp, K=10)
+x <- pcadapt(all.snp, K=5)
 plot(x,option="screeplot")
 plot(x, option="scores",i=1,j=2)
 plot(x, option="scores", i=1, j=3)
@@ -35,6 +38,12 @@ for (i in 1:3)
 maf.filtered.snp <-read.pcadapt(input = "/mnt/sdb/SnowCrab_LCWGS/MAF_Filtered_Plink/snowcrab.maffiltered.bed", type = "bed")
 
 maf.pcadapt <- pcadapt(maf.filtered.snp, K=5)
+
+#Run UMAP on scores
+umap.scores <- maf.pcadapt$scores
+colnames(umap.scores) <- paste0("PC",rep(1:5))
+crab.umap <- umap::umap(umap.scores)
+colnames(crab.umap$layout) <- c("UMAP1","UMAP2")
 
 #read in inds file
 maf.inds <- read_table("/mnt/sdb/SnowCrab_LCWGS/MAF_Filtered_Plink/snowcrab.maffiltered.fam", col_names = F)
@@ -131,7 +140,7 @@ ggsave(filename = "ExonSNPs_pcadapt_PC1_PC3_bySeqDepth.png", plot = last_plot(),
 
 
 #colour by pop
-ggplot(data=pca.with.pops, aes(x=PC1, y=PC2, colour = pops))+
+ggplot(data=pca.with.pops, aes(x=PC3, y=PC4, colour = pops))+
   geom_point()+
   facet_wrap(vars(pops),scales="free")+
   theme_bw()
@@ -140,7 +149,7 @@ ggsave(filename = "PCAdapt_ExonSNPs_PC1_PC2_FacetByPop.png", plot = last_plot(),
 
 #colour by pop - no facet
 p20 <- ggplot()+
-    geom_point(data=pca.with.regions, aes(x=PC1, y=PC2, fill=region),
+    geom_point(data=pca.with.regions, aes(x=PC3, y=PC4, fill=region),
                color="black", size=3, shape=21)+
     scale_fill_manual(values = c("#c43b3b", "#80c43b", "#3bc4c4", "#7f3bc4","gold")) + 
     #scale_fill_manual(values =as.vector(glasbey.colors(n=32)))+
