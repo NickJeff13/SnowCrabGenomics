@@ -9,6 +9,7 @@ library(ggConvexHull)
 library(readr)
 library(patchwork)
 library(Polychrome)
+library(stringr)
 library(umap)
 
 setwd("/mnt/sdb/SnowCrab_LCWGS/")
@@ -52,12 +53,6 @@ maf.filtered.snp <-read.pcadapt(input = "/mnt/sdb/SnowCrab_LCWGS/MAF_Filtered_Pl
 #run the pcadapt function
 maf.pcadapt <- pcadapt(maf.filtered.snp, K=4)
 
-#Here we're also running UMAP on the PCA scores to see how the plots look relative to PC axes
-#Run UMAP on scores - library(umap) must be loaded
-umap.scores <- maf.pcadapt$scores
-colnames(umap.scores) <- paste0("PC",rep(1:4))
-crab.umap <- umap::umap(umap.scores)
-colnames(crab.umap$layout) <- c("UMAP1","UMAP2")
 
 #read in individuals file for setting up plots
 maf.inds <- read_table("/mnt/sdb/SnowCrab_LCWGS/MAF_Filtered_Plink/snowcrab.maffiltered.fam", col_names = F)
@@ -70,13 +65,29 @@ pop.names1 <- substring(maf.inds$X1, sapply(lst1, `[`, 4) + 1, sapply(lst1, `[`,
 pop.names2 <- gsub("_[0-9]+", "", pop.names1)
 #now lots of gsubbing 
 pop.names2 <- gsub("MC.{1,2}","Mar C", pop.names2, ignore.case = F)
+pop.names2 <- gsub("ME.{1,2}","Mar E", pop.names2, ignore.case = F)
+pop.names2 <- gsub("MB.{1,2}","Mar B", pop.names2, ignore.case = F)
+pop.names2 <- gsub("3D_\\d{1,2}", "CMA 3D", pop.names2)
+pop.names2 <- gsub("LC.{1,2}","Lily Canyon", pop.names2, ignore.case = F)
+pop.names2 <- gsub("BdC.{1,2}","Baie des Chaleurs", pop.names2, ignore.case = F)
+pop.names2 <- gsub("CPS","NAFO 3L", pop.names2, ignore.case = F)
 pop.names2 <- gsub("MC.{1,2}","Mar C", pop.names2, ignore.case = F)
-pop.names2 <- gsub("MC.{1,2}","Mar C", pop.names2, ignore.case = F)
-pop.names2 <- gsub("MC.{1,2}","Mar C", pop.names2, ignore.case = F)
-pop.names2 <- gsub("MC.{1,2}","Mar C", pop.names2, ignore.case = F)
-pop.names2 <- gsub("MC.{1,2}","Mar C", pop.names2, ignore.case = F)
+pop.names2 <- gsub("2420","CMA 12C", pop.names2, ignore.case = F)
+pop.names2 <- gsub("6222","CMA 12G", pop.names2, ignore.case = F)
+pop.names2 <- gsub("D0\\d{1,2}","Mar D", pop.names2, ignore.case = F)
+pop.names2 <- gsub("T\\d{1,2}", "CMA N5400", pop.names2)
+pop.names2 <- gsub("D0\\d{1,2}", "Mar D", pop.names2)
+pop.names2 <- gsub("8A\\d{1,2}", "CMA 8A", pop.names2)
+pop.names2 <- gsub("5A\\d{1,2}", "CMA 5A", pop.names2)
+pop.names2 <- gsub("10B\\d{1,2}", "CMA 10B", pop.names2)
+pop.names2 <- gsub("3B\\d{1,2}", "CMA 3B", pop.names2)
+pop.names2 <- gsub("6B\\d{1,2}", "CMA 6B", pop.names2)
+pop.names2 <- gsub("Q0\\d{1,2}", "QUE", pop.names2)
+pop.names2 <- gsub("3N33", "3N", pop.names2)
+pop.names2 <- gsub("AW", "Laurentian Chnl", pop.names2)
+pop.names2 <- gsub("10A_\\d{1,2}", "CMA 10A", pop.names2)
 
-#extract sequencing batch info
+#Next, extract sequencing batch info for supplemental figures showing batch effect
 
 seq.batch <- substr(maf.inds$X1, 1,7)
 
@@ -86,6 +97,7 @@ plot(maf.pcadapt, option="scores", i=1, j=2)
 plot(maf.pcadapt, option="manhattan")
 
 maf.pca.batch <- as.data.frame(cbind(maf.pcadapt$scores, seq.batch))
+maf.pca.batch$pop <- pop.names2
 
 #colour by sequencing batch
 seq.batch.plot<- ggplot(data=maf.pca.batch, aes(x=as.numeric(V1), y=as.numeric(V2), fill=seq.batch))+
@@ -107,6 +119,81 @@ seq.batch.plot2<- ggplot(data=maf.pca.batch, aes(x=as.numeric(V1), y=as.numeric(
 seq.batch.plot / seq.batch.plot2
 
 ggsave(filename = "Sequencing_Batch_Effect_PCAdapt.png", plot = last_plot(), device = "png", path = "~/Documents/GitHub/SnowCrabGenomics/figures/", width = 12, height = 10, dpi = 320)
+
+
+#colour by population and region
+p10 <- ggplot(data=maf.pca.batch, aes(x=as.numeric(V1), y=as.numeric(V2), fill=pop))+
+  geom_point(shape=21, size=3, colour="black")+
+  scale_fill_manual(values =as.vector(glasbey.colors(n=30)))+
+  labs(fill="Sample Location",
+       x="PCA 1",
+       y="PCA 2")+
+  theme_bw();p10
+
+ggsave(filename = "MAFfilteredSNPS_pcadapt_PC1vs2_byPop.png", plot = p10, device = "png", path = "~/Documents/GitHub/SnowCrabGenomics/figures/", width = 12, height = 10, dpi = 320)
+
+seq.batch.plot2<- ggplot(data=maf.pca.batch, aes(x=as.numeric(V1), y=as.numeric(V3), fill=pop))+
+  geom_point(shape=21, size=3, colour="black")+
+  scale_fill_brewer(palette = "Set1")+
+  labs(fill="Sequencing Batch",
+       x="PCA 1",
+       y="PCA 3")+
+  theme_bw();seq.batch.plot2
+
+
+  # Here we're also running UMAP on the PCA scores to see how the plots look relative to PC axes
+  #Run UMAP on scores - library(umap) must be loaded
+umap.scores <- maf.pcadapt$scores
+colnames(umap.scores) <- paste0("PC",rep(1:4))
+crab.umap <- umap::umap(umap.scores)
+colnames(crab.umap$layout) <- c("UMAP1","UMAP2")
+
+crab.umap.plot <- as.data.frame(crab.umap$layout)
+crab.umap.plot$pop <- as.vector(pop.names2)
+
+crab.umap.plot <- crab.umap.plot %>%
+  mutate(region = case_when(
+    pop == "CMA N5400" ~ "Labrador",
+    str_detect(pop, "Mar|NENS|4X") ~ "Scotian Shelf",
+    str_detect(pop, "CMA") ~ "Newfoundland",
+    pop == "QUE" ~ "St. Lawrence Estuary",
+    str_detect(pop, "WCB") ~ "Gulf of St. Lawrence",
+    pop == "Baie des Chaleurs" ~ "Gulf of St. Lawrence",
+    pop == "Lily Canyon" ~ "Newfoundland",
+    pop == "4" ~ "Newfoundland",
+    pop == "BB" ~ "Gulf of St. Lawrence",
+    pop == "SMB" ~ "Newfoundland",
+    str_detect(pop,"3N|3D|3L|10A") ~ "Newfoundland",
+    pop == "Laurentian Chnl" ~ "Newfoundland",
+    pop == "FB" ~ "Newfoundland", 
+    pop == "TB" ~ "Newfoundland"
+  ))
+
+crab.umap.plot <- crab.umap.plot %>% 
+  mutate(sex = case_when(
+    pop == "WCB_F" ~ "F",
+    pop == "WCB_M" ~ "M"
+  ))
+#colour by pop
+umap.p1 <- ggplot(crab.umap.plot, aes(UMAP1, UMAP2, fill=pop))+
+  geom_point(shape=21, size=3, colour="black")+
+  scale_fill_manual(values =as.vector(glasbey.colors(n=32)))+
+  theme_bw();umap.p1
+
+#colour by region
+umap.p2 <- ggplot(data=crab.umap.plot, aes(x=UMAP1, y=UMAP2, fill=region))+
+  geom_point(color="black", size=3, shape=21)+
+  scale_fill_manual(values = c("#c43b3b", "#80c43b", "#3bc4c4", "#7f3bc4","gold")) +
+  theme_bw()+
+  theme(element_text(size = 20));umap.p2
+
+#colour by sex
+umap.p3 <- ggplot(data=crab.umap.plot, aes(x=UMAP1, y=UMAP2, fill=sex))+
+  geom_point(color="black", size=3, shape=21)+
+  scale_fill_manual(values = c("#c43b3b", "#3bc4c4")) +
+  theme_bw()+
+  theme(element_text(size = 20));umap.p3
+
 
 # Exome SNPs --------------------------------------------------------------
 
