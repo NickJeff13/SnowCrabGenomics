@@ -57,11 +57,12 @@ maf.pcadapt <- pcadapt(maf.filtered.snp, K=4)
 #read in individuals file for setting up plots
 maf.inds <- read_table("/mnt/sdb/SnowCrab_LCWGS/MAF_Filtered_Plink/snowcrab.maffiltered.fam", col_names = F)
 head(maf.inds)
-length(maf.inds$X1) #1082 inds
+colnames(maf.inds) <- c("FID", "IID", "PAT", "MAT", "SEX", "PHENO")
+length(maf.inds$FID) #1082 inds
 
 #extract population info
-lst1 <- gregexpr('.', maf.inds$X1, fixed = TRUE)
-pop.names1 <- substring(maf.inds$X1, sapply(lst1, `[`, 4) + 1, sapply(lst1, `[`, 5) - 1)
+lst1 <- gregexpr('.', maf.inds$FID, fixed = TRUE)
+pop.names1 <- substring(maf.inds$FID, sapply(lst1, `[`, 4) + 1, sapply(lst1, `[`, 5) - 1)
 pop.names1 <- gsub("10A_\\d{1,2}", "CMA 10A", pop.names1)
 pop.names1 <- gsub("^4_.*", "CMA 4", pop.names1)
 pop.names1 <- gsub("^3N.*", "CMA 3N200", pop.names1)
@@ -200,7 +201,32 @@ crab.umap.plot <- crab.umap.plot %>%
     pop == "WCB_F" ~ "F",
     pop == "WCB_M" ~ "M"
   ))
-#colour by pop
+
+#assign these clusters values and names to subset in plink later
+crab.umap.plot$FID <- maf.inds$FID
+crab.umap.plot$IID <- maf.inds$IID
+
+crab.umap.plot$Cluster <- ifelse(crab.umap.plot$UMAP2 > -1, "cluster1", "cluster2")
+  
+
+cat("Cluster 1 (UMAP2 > -1):", sum(crab.umap.plot$Cluster == "cluster1"), "individuals\n")
+cat("Cluster 2 (UMAP2 < -1):", sum(crab.umap.plot$Cluster == "cluster2"), "individuals\n")
+cluster_df <- crab.umap.plot %>% 
+  dplyr::select(FID, IID, Cluster)
+
+#For Fst in plink
+write.table(cluster_df, "MAF_Filtered_Plink/MAFfilteredClusters.txt", quote=F, row.names = F, col.names = F, sep="\t")
+
+# --- Separate keep files (for heterozygosity per cluster) ---
+write.table(crab.umap.plot[crab.umap.plot$Cluster == "cluster1", c("FID", "IID")],
+            "MAF_Filtered_Plink/cluster1_keep.txt",
+            quote = FALSE, row.names = FALSE, col.names = FALSE, sep = "\t")
+
+write.table(crab.umap.plot[crab.umap.plot$Cluster == "cluster2", c("FID", "IID")],
+            "MAF_Filtered_Plink/cluster2_keep.txt",
+            quote = FALSE, row.names = FALSE, col.names = FALSE, sep = "\t")
+
+#colour by pop#colour by MAF_Filtered_Plink/snowcrab.maffiltered.bedpop
 umap.p1 <- ggplot(crab.umap.plot, aes(UMAP1, UMAP2, fill=pop))+
   geom_point(shape=21, size=3, colour="black")+
   scale_fill_manual(values =as.vector(glasbey.colors(n=32)))+
@@ -223,16 +249,16 @@ umap.p3 <- ggplot(data=crab.umap.plot, aes(x=UMAP1, y=UMAP2, fill=sex))+
 
 ## Make a plot for the manuscript combining PCA and UMAP plots with patchwork
 
-p12 + p13 + umap.p2
+p12 + p13 + umap.p2 + inset_element(het.plot, left=0.01, bottom=0.01, right=0.3, top=0.35, clip=T)
 
 # save this as a figure for publication
 
-ggsave(filename = "~/Documents/GitHub/SnowCrabGenomics/figures/MAF_SNPs_3panel_PCA-UMAP_plot.png",
+ggsave(filename = "~/Documents/GitHub/SnowCrabGenomics/figures/MAF_SNPs_3panel_PCA-UMAP_plot_withHetInset.png",
        plot = last_plot(),
        device = "png",
        dpi = 400,
-       width=10,
-       height = 8)
+       width=18,
+       height = 10)
 
 # Exome SNPs --------------------------------------------------------------
 

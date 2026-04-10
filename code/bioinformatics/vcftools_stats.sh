@@ -19,3 +19,9 @@ vcftools --gzvcf  \
 vcftools --gzvcf  \
 	--TajimaD
 	--out
+
+
+#Relatedness
+vcftools --vcf allcrabs.maffiltered.missingfiltered2.recode.vcf\
+	--relatedness
+	--out allcrabs.maffiltered
