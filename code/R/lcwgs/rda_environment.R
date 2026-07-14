@@ -34,11 +34,16 @@ palette <- c("Bradelle Bank" ="#FFFFFF", "Chaleurs"= "#0000FF", "CMA 10A"= "#FF0
              "NAFO 3L" ="#02AD24", "NAFO 4X" = "#C8FF00", "NENSin"= "#886C00", "NENSout"="#FFB79F", "Quebec"= "#858567", 
              "St Marys Bay"= "#A10300", "Trinity Bay"= "#14F9FF", "West Cape Breton"= "#00479E")
 #ggplot
-RDA_plot <- function(envdata,sitedata, xaxislab, yaxislab, nudgeX,nudgeY,r2x, r2y, r2,vjust,hjust){ #xaxis and yaxis are the RDAs to be plotted from envdata
+RDA_plot <- function(envdata, sitedata, xaxislab, yaxislab, nudgeX,nudgeY,r2x, r2y, r2,vjust,hjust){ #xaxis and yaxis are the RDAs to be plotted from envdata
   ggplot(sitedata, aes(x=RDA1, y=RDA2))+
     geom_hline(linewidth=0.3, colour = "grey20", yintercept = 0) + #horizontal line through the origin
     geom_vline(linewidth=0.3, colour = "grey20", xintercept = 0) + #vertical line through the origin
     # geom_point(size=3, alpha = 0.7,shape=20,colour = "grey70", data = snpdata) + #SNPs
+  #labels for env arrows
+    geom_point(data = sitedata,  aes(fill=Pop),shape=21, color="black", size=3, alpha = 0.7) + #sample  points
+    #scale_shape_manual(values = shapes) +
+    scale_fill_manual(values=palette)+
+    #scale_colour_manual(values=palette)+
     geom_segment(data = envdata, aes(x=0, xend=RDA1*3, y=0, yend=RDA2*3), 
                  arrow = ggplot2::arrow(length = unit(0.25, "cm")),
                  colour = "navy", linewidth = 1) +#env arrows
@@ -46,24 +51,16 @@ RDA_plot <- function(envdata,sitedata, xaxislab, yaxislab, nudgeX,nudgeY,r2x, r2
                     size = 5,colour = "navy",parse = T,
                     segment.color=NA,box.padding=0,
                     nudge_x =nudgeX,#however many enviro variables we have
-                    nudge_y = nudgeY) + #labels for env arrows
-    geom_point(data = sitedata,  aes(fill=Pop),shape=21, color="black", size=3, alpha = 0.7) + #sample  points
-    #scale_shape_manual(values = shapes) +
-    scale_fill_manual(values=palette)+
-    #scale_colour_manual(values=palette)+
+                    nudge_y = nudgeY) + 
     annotate("text",x=r2x,y=r2y,label=r2, parse=T,vjust=vjust,hjust=hjust,size=5) +
     xlab(xaxislab) +
     ylab(yaxislab) +
-    guides(color = guide_legend(override.aes = list(size = 2))) +
+    #guides(color = guide_legend(override.aes = list(size = 2))) +
     theme_bw() +
-    theme(plot.title=element_text(size = 10),
+    theme(plot.title=element_text(size = 12),
           legend.position = "right", 
-          legend.title=element_blank(),
           legend.text = element_text(size=12),
-          legend.key = element_blank(),
-          legend.margin=margin(0,0,0,0),
-          legend.box.margin=margin(r=20),
-          axis.text = element_text(size = 8), 
+          axis.text = element_text(size = 12), 
           axis.title.x = element_text(size=14, vjust =1),
           axis.title.y = element_text(size=14, vjust=-2),
           panel.border = element_rect(linewidth =0.5),
@@ -225,18 +222,96 @@ crab.env.rda.plot1 <- RDA_plot(envdata = EnvArrows_GenEnvPCA_RDA,
                                #snpdata= SNPPoints_GenEnvPCA_RDA,
                                sitedata=IndivPoints_GenEnvPCA_RDA,
                                xaxislab="RDA 1: 27.8%",
-                               yaxislab="RDA 2: 15.6%",
+                               yaxislab="",
                                nudgeX = 0,
                                nudgeY = 0,
                                r2x=3.2,
                                r2y=2.5,
-                               r2=paste("Adjusted~R^2","== 0.001"),
+                               #r2=paste("Adjusted~R^2","== 0.001"),
+                               r2="",
                                hjust=1, 
                                vjust=0)
-crab.env.rda.plot1 
+rda.plot.byPop <- crab.env.rda.plot1 + labs(fill="Sampling site") + theme(legend.title = element_text(size = 14, face = "bold"))
 ggsave("~/Documents/GitHub/SnowCrabGenomics/figures/Crab_RDA_EnvOnly.png", plot = crab.env.rda.plot1, height=8, width=12, units = "in", dpi=300)
 
+#plot and colour points by latitude and longitude
+dim(env.dat.inds)
+dim(IndivPoints_GenEnvPCA_RDA)
 
+IndivPoints_GenEnvPCA_RDA$latitude <- env.dat.inds$Lat
+IndivPoints_GenEnvPCA_RDA$longitude <- env.dat.inds$Long
+
+rda.plot2 <- ggplot(IndivPoints_GenEnvPCA_RDA, aes(x=RDA1, y=RDA2))+
+  geom_hline(linewidth=0.3, colour = "grey20", yintercept = 0) + #horizontal line through the origin
+  geom_vline(linewidth=0.3, colour = "grey20", xintercept = 0) + #vertical line through the origin
+  # geom_point(size=3, alpha = 0.7,shape=20,colour = "grey70", data = snpdata) + #SNPs
+  #labels for env arrows
+  geom_point(data = IndivPoints_GenEnvPCA_RDA,  aes(fill=latitude),shape=21, color="black", size=3, alpha = 0.7) + #sample  points
+  #scale_shape_manual(values = shapes) +
+  scale_fill_viridis_c()+
+  labs(fill = "Latitude")+
+  #scale_colour_manual(values=palette)+
+  geom_segment(data = EnvArrows_GenEnvPCA_RDA, aes(x=0, xend=RDA1*3, y=0, yend=RDA2*3), 
+               arrow = ggplot2::arrow(length = unit(0.25, "cm")),
+               colour = "navy", linewidth = 1) +#env arrows
+  geom_text_repel(data = EnvArrows_GenEnvPCA_RDA, aes(x=RDA1*3, y=RDA2*3,label = Labels), 
+                  size = 5,colour = "navy",parse = T,
+                  segment.color=NA,box.padding=0,
+                  nudge_x =0,#however many enviro variables we have
+                  nudge_y = 0) + 
+  annotate("text",x=r2x,y=r2y,label=r2, parse=T,vjust=vjust,hjust=hjust,size=5) +
+  xlab(xaxislab) +
+  ylab(yaxislab) +
+  #guides(color = guide_legend(override.aes = list(size = 2))) +
+  theme_bw() +
+  theme(plot.title=element_text(size = 12),
+        legend.position = "right", 
+        legend.text = element_text(size=12),
+        axis.text = element_text(size = 12), 
+        axis.title.x = element_text(size=14, vjust =1),
+        axis.title.y = element_text(size=14, vjust=-2),
+        legend.title = element_text(size = 14, face = "bold"),
+        panel.border = element_rect(linewidth =0.5),
+        plot.margin = unit(c(1,1,1,0), 'lines'), #t,r,b,l
+        panel.grid=element_blank());rda.plot2
+
+rda.plot3 <- ggplot(IndivPoints_GenEnvPCA_RDA, aes(x=RDA1, y=RDA2))+
+  geom_hline(linewidth=0.3, colour = "grey20", yintercept = 0) + #horizontal line through the origin
+  geom_vline(linewidth=0.3, colour = "grey20", xintercept = 0) + #vertical line through the origin
+  # geom_point(size=3, alpha = 0.7,shape=20,colour = "grey70", data = snpdata) + #SNPs
+  #labels for env arrows
+  geom_point(data = IndivPoints_GenEnvPCA_RDA,  aes(fill=longitude),shape=21, color="black", size=3, alpha = 0.7) + #sample  points
+  #scale_shape_manual(values = shapes) +
+  scale_fill_viridis_c()+
+  #scale_colour_manual(values=palette)+
+  geom_segment(data = EnvArrows_GenEnvPCA_RDA, aes(x=0, xend=RDA1*3, y=0, yend=RDA2*3), 
+               arrow = ggplot2::arrow(length = unit(0.25, "cm")),
+               colour = "navy", linewidth = 1) +#env arrows
+  geom_text_repel(data = EnvArrows_GenEnvPCA_RDA, aes(x=RDA1*3, y=RDA2*3,label = Labels), 
+                  size = 5,colour = "navy",parse = T,
+                  segment.color=NA,box.padding=0,
+                  nudge_x =0,#however many enviro variables we have
+                  nudge_y = 0) + 
+  annotate("text",x=r2x,y=r2y,label=r2, parse=T,vjust=vjust,hjust=hjust,size=5) +
+  xlab(xaxislab) +
+  ylab(yaxislab) +
+  guides(color = guide_legend(override.aes = list(size = 2))) +
+  theme_bw() +
+  theme(plot.title=element_text(size = 12),
+        legend.position = "right", 
+        legend.text = element_text(size=14),
+        axis.text = element_text(size = 10), 
+        axis.title.x = element_text(size=14, vjust =1),
+        axis.title.y = element_text(size=14, vjust=-2),
+        panel.border = element_rect(linewidth =0.5),
+        plot.margin = unit(c(1,1,1,0), 'lines'), #t,r,b,l
+        panel.grid=element_blank());rda.plot3
+
+library(patchwork)
+rda.plot2 + rda.plot.byPop
+
+ggsave(filename = "SnowCrabRDA_2panel.png", plot=last_plot(),
+      device = "png", path = "figures/", width = 18, height=10,dpi = 320)
 
 # Identification of environment associated outliers -----------------------
 
