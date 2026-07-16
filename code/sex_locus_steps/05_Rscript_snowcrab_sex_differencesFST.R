@@ -9,6 +9,7 @@ library(dplyr)
 library(sf)
 library(patchwork)
 library(scatterpie)
+library(stringr)
 
 
 #Script for plotting results (barplot, pie chart) for top SNP that differentiated sexes 
@@ -21,13 +22,25 @@ head(geno)
 geno$genotype <- paste0(geno$V7, geno$V8)
 geno$V1[789:823] <- "NENS_outer"
 
+#Checking some weirdness with CMA 10A
+matches <- geno %>% 
+  filter(if_any(everything(), ~ grepl("10A|10B", .x))) #pattern is 10B12 but 10A_1 etc
 
 #Load metadata for crabs
-metad<-read.csv("data/SexDifferences/files/PCAdapt_results_100KSNPs_metadat.csv", header=T)
+metad<-read.csv("data/SexDifferences/files/PCAdapt_results_100KSNPs_metadat_fixed.csv", header=T)
 head(metad)
+matches2 <- metad %>% 
+  filter(if_any(everything(), ~ grepl("10A|10B", .x)))
 
-#combine genotype data and metadata
-combined_dat<-merge(x=geno, by.x=2, y=metad, by.y=1)
+
+# combine genotype data and metadata
+geno <- geno %>% 
+  mutate(V2 = str_trim(as.character(V2)))
+metad <- metad %>% 
+  mutate(Pop1 = str_trim(as.character(Pop1)))
+# Join by linking the different column names
+combined_dat <- left_join(geno, metad, by = c("V2" = "Pop1"))
+#combined_dat<-merge(x=geno, by.x=2, y=metad, by.y=1)
 
 #Subset data for sexed individuals only (males and females from WCB, BB)
 fem<-combined_dat[which(combined_dat$Sex=="Female"),]
@@ -123,11 +136,19 @@ ggsave(filename = "SexGenotype_PiePlot_ByPop.png", plot = p3, path = "figures/",
 
 # Make a map with pie plots on it -----------------------------------------
 
-#Load map data from Map script
+#Load map data from Map_script.R
 load("data/RData/crabmapdata.RData")
 
+#make the column strings match up
+prop_genotypedInd$V1 <- gsub("NENS","NENSin", prop_genotypedInd$V1)
+prop_genotypedInd$V1 <- gsub("NENSin_outer","NENSout", prop_genotypedInd$V1)
+crab_coords$SampleSite <- gsub("West Cape Breton MALE","West Cape Breton", crab_coords$SampleSite)
+
+
 combined_genos <- prop_genotypedInd %>%
-  left_join(crab_coords, by=c("V1"="SampleSite"))
+  left_join(crab_coords %>% 
+              filter(!SampleSite=="West Cape Breton FEMALE"), 
+            by=c("V1"="SampleSite"))
 
 combined_genos <- combined_genos %>% 
   mutate(
@@ -135,7 +156,9 @@ combined_genos <- combined_genos %>%
     lat = st_coordinates(geometry)[, 2]
   )
 
-combined_genos <- combined_genos[,-8]
+# combined_genos <- combined_genos %>%
+#   st_as_sf(coords=c("lon","lat"), crs=CanProj) %>%
+#   st_transform(equalProj)
 
 #for making the pie chart
 plot_df <- combined_genos %>%
@@ -157,30 +180,29 @@ pie_df <- plot_df %>%
     values_fill = 0
   )
 
-### set plot extent
-plot_extent <- crab_coords%>%
-  st_buffer(100*2000)%>%
+### set plot extent and plot - check that CRS is the same for all layers
+plot_extent <- crab_coords %>%
+  st_buffer(100*2000) %>%
   st_bbox()
 
-p4 <- ggplot()+
-  geom_sf(data=basemap)+
-  geom_sf(data=bathy, fill=NA)+
+p4 <- ggplot() +
+  geom_sf(data = basemap) +
+  geom_sf(data = bathy, fill = NA) +
   scatterpie::geom_scatterpie(
     aes(x = lon, y = lat, group = V1),
     data = pie_df,
-    colour="black",
+    colour = "black",
     cols = c("GG", "GT", "TT"),
-    pie_scale = 1
+    pie_scale = 1.2
   ) +
-  coord_sf(expand=F, xlim=plot_extent[c(1,3)],ylim=plot_extent[c(2,4)])+
+  coord_sf(crs = equalProj, expand = FALSE,
+           xlim = plot_extent[c(1,3)], ylim = plot_extent[c(2,4)]) +
   theme_bw() +
-  scale_fill_manual(values=c("#D64550","#D8D7BF","dodgerblue4"))+
-  #scale_fill_brewer(palette = "Set2")+
+  scale_fill_manual(values = c("#D64550","#D8D7BF","dodgerblue4")) +
   theme(text = element_text(size = 16),
         legend.position = "none",
-        plot.margin=margin(0,0,0,0),
+        plot.margin = margin(0,0,0,0),
         panel.spacing = unit(0, 'pt'))
-
 p4 <- p4 + guides(fill=guide_legend(title="Genotype"));p4
 
 
@@ -203,10 +225,10 @@ p5 <- ggplot()+
   xlab("PC 1") +
   ylab("PC 2") +
   theme(text= element_text(size=16),
-        legend.position = "none")
-  ggtitle("All samples, with sexed individuals highlighted");p5
-  ##Now make a figure for publication with patchwork and multiple panels
-
+        legend.position = "none");p5
+  #ggtitle("All samples, with sexed individuals highlighted");p5
+  
+##Now make a figure for publication with patchwork and multiple panels
   design <- "
 AAB
 CDB
@@ -220,9 +242,9 @@ CDB
       guides="collect"
     ) +
     plot_annotation(tag_levels = "A") &
-    theme(plot.tag = element_text(size = 20),legend.position = "bottom")
+    theme(plot.tag = element_text(size = 20))
 
-ggsave(filename = "CrabSexGenotypes_Combined.pdf", 
+ggsave(filename = "CrabSexGenotypes_Combined.png", 
        plot = last_plot(), path = 'figures/',
-       device = "pdf", 
-       dpi=300, width=15, height=10)
+       device = "png", 
+       dpi=300, width=12, height=10)

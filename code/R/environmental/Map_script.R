@@ -2,10 +2,10 @@
 
 # Load libraries ----------------------------------------------------------
 
-library(rgeos)
+#library(rgeos)
 library(raster)
 library(ggmap)
-library(rgdal)
+#library(rgdal)
 library(RColorBrewer)
 library(broom)
 library(maps) # tool for maps
@@ -25,7 +25,7 @@ library(rnaturalearth)
 #map projections ----
 latlong <- "+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"
 CanProj <- "+proj=lcc +lat_1=49 +lat_2=77 +lat_0=63.390675 +lon_0=-91.86666666666666 +x_0=6200000 +y_0=3000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
-
+equalProj <- 3857
 
 #Crab fishing areas ----
 cfas <- read_sf("data/shapefiles/dfo_east_snow_crab_areas_erase.shp")%>%
@@ -36,10 +36,12 @@ crab_coords <- read.csv("data/Pop_Coords2025.csv")%>%
   st_as_sf(coords=c("Long","Lat"),crs=latlong)%>%
   st_transform(latlong)
 
+crab_coords <- st_transform(crab_coords, equalProj)
+
 # Read in bathymetry contour 
 
 bathy <- read_sf("data/shapefiles/bathymetry/contour_250.shp") %>% 
-  st_transform(latlong)
+  st_transform(equalProj)
 
 
 #Basemap ----
@@ -57,6 +59,8 @@ basemap <- rbind(ne_states(country = "Canada",returnclass = "sf")%>%
                    st_transform(latlong)%>%
                    st_as_sf()%>%
                    mutate(country="USA"))
+## alternate projection
+  basemap <- st_transform(basemap, equalProj)
 
 ### set plot extent
 plot_extent <- crab_coords%>%
@@ -71,17 +75,14 @@ map.df2 <- left_join(crab_coords,map.df, by=c("SampleSite"="pca.with.pops.pops")
 # Plot the map with ggplot2 -----------------------------------------------
 
 crab_map <- ggplot()+
-<<<<<<< HEAD
   geom_sf(data=basemap, color="black")+
   #geom_sf(data=cfas,fill=NA)+
   geom_sf(data=bathy, fill=NA, color="lightgrey")+
   #geom_sf(data=map.df2, aes(fill=mean_PC2),colour= "black",shape=21, size=4)+
-=======
   geom_sf(data=basemap,color="black")+
   #geom_sf(data=cfas,fill=NA)+
   geom_sf(data=bathy, fill=NA, color="lightgrey")+
-  geom_sf(data=map.df2, aes(fill=mean_PC1),colour= "black",shape=21, size=4)+
->>>>>>> e75f19508189a204f0d4f089e1e0b906d4462d25
+  #geom_sf(data=map.df2, aes(fill=mean_PC1),colour= "black",shape=21, size=4)+
   scale_fill_viridis_c()+
   geom_sf_label(data=crab_coords, aes(label = SampleSite))+
   coord_sf(expand=0,xlim=plot_extent[c(1,3)],ylim=plot_extent[c(2,4)])+
@@ -151,3 +152,6 @@ plot(NLCMAS,lwd=5,add=T)
 points(pops$Long,pops$Lat,pch=19,cex=2,col="red")
 dev.off()
 
+
+### Save data
+save.image("data/RData/crabmapdata.RData")
