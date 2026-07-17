@@ -10,6 +10,7 @@ crab.het <- read.table("data/Exon_SNPs_InbreedingStats.csv", header = T, sep="\t
 crab.het <- crab.het %>%
   mutate(He=(N_SITES-E.HOM.)/N_SITES, Ho=(N_SITES-O.HOM.)/N_SITES, POP=gsub("Baie des Chal","Chaleurs",POP))
 
+crab.het$POP <- gsub("LaurentianChannel","CMA 11S", crab.het$POP)
 #plot Fis
 p1 <- ggplot()+ 
   geom_boxplot(data = crab.het, aes(x=POP, y=F, fill=POP),colour="black",  alpha=0.7)+
@@ -38,7 +39,7 @@ all.snp.het <- read.table(file = "data/Full_SNPs_InbreedingStats.csv", header = 
 
 all.snp.het <- all.snp.het %>% 
   mutate(He=(N_SITES-E.HOM.)/N_SITES, Ho=(N_SITES-O.HOM.)/N_SITES, POP=gsub("Baie des Chal","Chaleurs",POP))
-
+all.snp.het$POP <- gsub("LaurentianChannel","CMA 11S", all.snp.het$POP)
 
 p3 <- ggplot()+
   geom_boxplot(data=all.snp.het, aes(x=POP, y=F, fill=POP), colour="black", alpha=0.7)+
