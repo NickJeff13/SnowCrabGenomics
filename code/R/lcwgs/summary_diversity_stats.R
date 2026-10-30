@@ -97,3 +97,11 @@ ggsave("figures/Combined_TajD_Heterozygosity.png",
        device = "png",
        width=12,
        height=10)
+
+p4/p2
+
+ggsave("figures/Combined_Heterozygosity_only.png",
+       plot = last_plot(),
+       device = "png",
+       width=12,
+       height=10)

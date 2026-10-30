@@ -30,7 +30,7 @@ plot(x, option="scores", i=1, j=3)
 plot(x, option="manhattan")
 
 #reduce to K=4 now - no reason to include more since there's no structure
-xx <- pcadapt(all.snp, K=4)
+xx <- pcadapt(all.snp, K=3)
 
 #summarize and plot again
 summary(xx)

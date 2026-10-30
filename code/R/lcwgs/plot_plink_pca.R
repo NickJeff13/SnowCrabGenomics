@@ -9,7 +9,7 @@ library(ggbiplot)
 library(Polychrome)
 
 # read in data - start with the exome derived SNPs
-
+setwd("~/Documents/GitHub/SnowCrabGenomics/")
 pca <- read_table("data/plink pca/exon.eigenvec", col_names = FALSE)
 eigenval <- scan("data/plink pca/exon.eigenval")
 # sort out the pca data
