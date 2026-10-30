@@ -1,9 +1,16 @@
+# Script to plot Admixture results from both PCANGSD and Admixture run on hard called genotypes
+
+
+# Load libraries ----------------------------------------------------------
 library(dplyr)
 library(tidyverse)
 library(ggplot2)
 
+
+# LCWGS Admixture results -------------------------------------------------
+
 #read in .Q file  and combine results with .fam file
-tbl=read.table("/mnt/sdb/SnowCrab_LCWGS/Admixture_Output/snowcrab.maffiltered.3.Q")
+tbl=read.table("data/admixture/snowcrab.maffiltered.3.Q")
 
 #read .fam file
 
@@ -36,18 +43,53 @@ ggplot(results_long, aes(x=ID, y=value, fill=membership))+
 # too many x-axis labels so let's thin them out a bit
 breaks <- levels(results_long$ID)[seq(1, length(levels(results_long$ID)), by = 10)]
         
-ggplot(results_long, aes(x = ID, y = value, fill = membership)) +
-        geom_bar(stat = "identity") +
-        scale_x_discrete(breaks = breaks) +
-        theme_minimal() +
-        theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-        labs(x = "", y = "Proportion", fill = "Ancestry")
+admix1 <- ggplot(results_long, aes(x = ID, y = value, fill = membership)) +
+            geom_bar(stat = "identity") +
+            scale_x_discrete(breaks = breaks) +
+            theme_minimal() +
+            theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+            labs(x = "", y = "Proportion", fill = "Ancestry")
 
 ggsave(filename = "MAF_Filtered_Admixture_Q3.png", plot = last_plot(), device = "png", path = "figures/", width = 10, height=8, dpi = 300)
 
 #old
-barplot(t(results_q2[order(results_q2$Pop),3:4]), 
-        col=c("firebrick","blue","forestgreen", "gold", "turquoise", "grey","limegreen", "aliceblue", "orange","purple"),
-        xlab="Individual #", ylab="Ancestry", border=NA, 
-        names=results_q2[order(results_q2$Pop),1], las=2,space = 0, cex.names = 0.7)
+# barplot(t(results_q2[order(results_q2$Pop),3:4]), 
+#         col=c("firebrick","blue","forestgreen", "gold", "turquoise", "grey","limegreen", "aliceblue", "orange","purple"),
+#         xlab="Individual #", ylab="Ancestry", border=NA, 
+#         names=results_q2[order(results_q2$Pop),1], las=2,space = 0, cex.names = 0.7)
+# 
 
+
+# Plot Genotype Likelihoods Admixture -------------------------------------
+
+
+tbl=read.table("data/pcangsd/snowcrub.big.admix.3.Q")
+
+tbl$ind <- paste0("Ind_",1:1145)
+
+tbl_long <- tbl %>%
+  pivot_longer(cols=c(V1, V2, V3), names_to = "membership", values_to = "value")
+
+breaks2 <- levels(tbl_long$ind)[seq(1, length(levels(tbl_long$ind)), by = 10)]
+
+
+admix2 <- ggplot(tbl_long, aes(x=ind, y = value, fill = membership)) +
+      geom_bar(stat = "identity") +
+      #scale_x_discrete(breaks = breaks) +
+      theme_minimal() +
+      theme(axis.text.x = element_blank(), legend.position = "none") +
+      labs(x = "", y = "Proportion", fill = "Ancestry");admix2
+
+
+library(patchwork)
+
+(admix2 + guides(fill="none"))/admix1 + 
+  plot_layout(guides="collect") +
+  plot_annotation(tag_levels = "A") & 
+  theme(legend.position = "bottom")
+
+ggsave(filename = "figures/Admixture_LCWGS_and_PCANGSD_combined.png",
+       plot = last_plot(),
+       width = 12,
+       height=8,
+       dpi=300, device = "png")
