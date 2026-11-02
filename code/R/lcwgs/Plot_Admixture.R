@@ -44,11 +44,15 @@ ggplot(results_long, aes(x=ID, y=value, fill=membership))+
 breaks <- levels(results_long$ID)[seq(1, length(levels(results_long$ID)), by = 10)]
         
 admix1 <- ggplot(results_long, aes(x = ID, y = value, fill = membership)) +
-            geom_bar(stat = "identity") +
-            scale_x_discrete(breaks = breaks) +
+            geom_bar(stat = "identity", width=1) +
+            #scale_x_discrete(breaks = breaks) +
+            scale_x_discrete(labels = function(x) {
+              ifelse(seq_along(x) %% 10 == 0, x, "")
+            }
+            )+
             theme_minimal() +
             theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-            labs(x = "", y = "Proportion", fill = "Ancestry")
+            labs(x = "", y = "Proportion", fill = "Ancestry");admix1
 
 ggsave(filename = "MAF_Filtered_Admixture_Q3.png", plot = last_plot(), device = "png", path = "figures/", width = 10, height=8, dpi = 300)
 
@@ -65,6 +69,9 @@ ggsave(filename = "MAF_Filtered_Admixture_Q3.png", plot = last_plot(), device = 
 
 tbl=read.table("data/pcangsd/snowcrub.big.admix.3.Q")
 
+sites <- read.table("data/pcangsd/snowcrub.big.sites")
+str(sites)
+
 tbl$ind <- paste0("Ind_",1:1145)
 
 tbl_long <- tbl %>%
@@ -74,8 +81,12 @@ breaks2 <- levels(tbl_long$ind)[seq(1, length(levels(tbl_long$ind)), by = 10)]
 
 
 admix2 <- ggplot(tbl_long, aes(x=ind, y = value, fill = membership)) +
-      geom_bar(stat = "identity") +
+      geom_bar(stat = "identity", width=1) +
       #scale_x_discrete(breaks = breaks) +
+  # scale_x_discrete(labels = function(x) {
+  #   ifelse(seq_along(x) %% 10 ==0, x, "")
+  # }
+  # )+
       theme_minimal() +
       theme(axis.text.x = element_blank(), legend.position = "none") +
       labs(x = "", y = "Proportion", fill = "Ancestry");admix2
