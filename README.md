@@ -15,7 +15,7 @@ __Contact:__      nick.jeffery@dfo-mpo.gc.ca
 # Component 4: PoolSeq
 ### Sampling
 
-![map](figures/Maps/Fig1.png)
+![map](figures/Maps/Figure1_CrabMap.png)
 
 __Figure 1__ Map of genetic sample locations overlaid on minimum winter bottom temperature based on the Bedford Institute of Oceanography North Atlantic Model (BNAM). Crab Fishing Areas (CFAs) overlaid. 
 
