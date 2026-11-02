@@ -8,7 +8,7 @@ __Contact:__      nick.jeffery@dfo-mpo.gc.ca
 2. Genome annotation
 3. Transcriptome assembly using RNA-seq from five tissues
 4. Pool-seq of 15 snow crab populations across Atlantic Canada to examine population structure
-5. Individual whole-genome sequencing ~1100 crabs for SNP genotyping
+5. Individual whole-genome sequencing ~1100 crabs for SNP genotyping (archived at https://www.ebi.ac.uk/ena/browser/view/PRJEB111953) 
 6. ANGSD pipeline to call genotypes and estimate genotype likelihoods
 7. Environmental association analysis
 
